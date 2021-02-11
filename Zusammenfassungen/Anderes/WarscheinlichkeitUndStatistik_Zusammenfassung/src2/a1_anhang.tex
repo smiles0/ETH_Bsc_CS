@@ -1,0 +1,147 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% ANHANG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\part*{Anhang}
+\setcounter{part}{1}
+\setcounter{section}{0}
+\addcontentsline{toc}{part}{Anhang}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% KOMBINATORIK
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Kombinatorik}
+
+Ziehen von \(k\) Elementen aus einer Menge mit \(n\) Elementen
+\begin{center}
+	\begin{tabular}{|c||c|c|}\hline
+		                 & geordnet              & ungeordnet            \\\hline\hline
+		mit zurücklegen  & \(n^k\)               & \({n+k-1 \choose k}\) \\\hline
+		ohne zurücklegen & \(\frac{n!}{(n-k)!}\) & \({n \choose k}\)     \\\hline
+	\end{tabular}
+\end{center}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% REIHEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Reihen}
+
+\[
+	\begin{array}{rcll}
+		\sum_{k=1}^n k                   & = & \frac{n(n+1)}{2}            &             \\[0.5em]
+		\sum_{k=1}^n k^2                 & = & \frac{n(n+1)(2n+1)}{6}      &             \\[0.5em]
+		\sum_{k=0}^n      a_0 q^k        & = & a_0 \frac{1-q^{n+1}}{1-q}   &             \\[0.5em]
+		\sum_{k=0}^\infty a_0 q^k        & = & \frac{a_0}{1-q}             &             \\[0.5em]
+		\sum_{k=0}^\infty \frac{k}{a^k}  & = & \frac{a}{(a-1)^2}         , & \abs{a} > 1 \\[1em]
+		\sum_{k=0}^\infty \frac{x^k}{k!} & = & e^x                         &
+	\end{array}
+\]
+
+
+% ------------------------------------------------------------------------------------------------ %
+% INTEGRALE
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Ableitung, Integration}
+
+\begin{itemize}
+	\item \textbf{Summenregel} $(f(x)+g(x))' = f'(x) + g'(x)$
+	\item \textbf{Produktregel} $(f(x)\cdot g(x))' = f'(x)g(x) + f(x)g'(x)$
+	\item \textbf{Quotientenregel} $\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}(g\neq 0)$
+	\item \textbf{Kettenregel} $(f(g(x)))' = (f\circ g)' = f'(g(x))g'(x)$
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{Partielle Integration:} $\int_a^b f'(x)\cdot g(x)dx = \left[f(x)g(x)\right]_a^b - \int_a^b f(x)g'(x)$
+	\item \textbf{Substitution:} $\int_{\phi(a)}^{\phi(b)} f(x)dx = \int_a^b f(\phi(t))\phi '(t) dt$
+	\item \textbf{$a+c, b+c \in I$} $\int_a^b f(t+c)dt = \int_{a+c}^{b+c} f(x)dx$
+	\item \textbf{$ca,cb\in I$: } $\int_a^b f(ct)dt = \frac{1}{c}f(x)dx$
+	\item \textbf{Logarithmus: }\;$\int\frac{f'(t)}{f(t)}dt = \log(|f(x)|)$, bzw. $\int_a^b\frac{f'(t)}{f(t)}dt = \log(f(|b|)) - \log(f(|a|))$
+\end{itemize}
+
+
+%\begin{center}
+%\begin{tabular}{|l|l|}\hline
+%\(f(x)\)              & \(F(x)\)                            \\\hline\hline
+%\(\frac{1}{x^2+a^2}\) & \(\frac{1}{a}\arctan\frac{x}{a}\)   \\
+%\(x e^{cx}\)          & \(\frac{e^{cx}}{c^2}(cx-1)\)        \\\hline
+%% TRIGONOMETRISCHE FUNKTIONEN
+%\(\sin(ax+b)\)        & \(-\frac{1}{a}\cos(ax+b)\)          \\
+%\(\cos(ax+b)\)        & \(\frac{1}{a}\sin(ax+b)\)           \\
+%\(\tan x\)            & \(-\log\lvert\cos x\rvert\)         \\
+%\(\frac{1}{\sin x}\)  & \(\log\lvert\tan\frac{x}{2}\rvert\) \\
+%\(\frac{1}{\cos x}\)  & \(\log\lvert\tan(\frac{x}{2}+\frac{\pi}{4})\rvert\) \\
+%\(\sin^2 x\)          & \(\frac{1}{2}(x-\sin x\cos x)\)     \\
+%\(\cos^2 x\)          & \(\frac{1}{2}(x+\sin x\cos x)\)     \\
+%\(\tan^2 x\)          & \(\tan x - x\)                      \\\hline
+%\end{tabular}
+%\end{center}
+
+
+Bei den folgenden Integralen wurden die Integrationskonstanten weggelassen.
+\[
+	\begin{array}{rcll}
+		\int a                  \,\d x & = & ax                                                             &             \\[0.5em]
+		\int x^a                \,\d x & = & \frac{1}{a+1} x^{a+1}                                        , & a \neq -1   \\[0.5em]
+		\int (ax+b)^c           \,\d x & = & \frac{1}{a(c+1)}(ax+b)^{c+1}                                 , & c \neq -1   \\[0.5em]
+		\int \frac{1}{x}        \,\d x & = & \log\abs{x}                                                  , & x\neq 0     \\[0.5em]
+		\int \frac{1}{ax+b}     \,\d x & = & \frac{1}{a} \log\abs{ax+b}                                     &             \\[0.5em]
+		\int \frac{1}{x^2+a^2}  \,\d x & = & \frac{1}{a}\arctan\frac{x}{a}                                  &             \\[0.75em]
+		%
+		% EXPONENTIAL
+		%
+		\int e^{ax}             \,\d x & = & \frac{1}{a}e^{ax}                                              &             \\[0.5em]
+		\int x e^{ax}           \,\d x & = & \frac{e^{ax}}{a^2}(ax-1)                                       &             \\[0.5em]
+		\int x^2 e^{ax}         \,\d x & = & e^{ax}\left(\frac{x^2}{a}-\frac{2x}{a^2}+\frac{2}{a^3}\right)  &             \\[0.75em]
+		%
+		% LOGARITHMUS
+		%
+		\int \log\abs{x}        \,\d x & = & x(\log\abs{x} - 1)                                             &             \\[0.5em]
+		\int \log_a\abs{x}      \,\d x & = & x(\log_a\abs{x}-\log_a e)                                      &             \\[0.5em]
+		\int x^a \log x         \,\d x & = & \frac{x^{a+1}}{a+1}\left(\log x - \frac{1}{a+1}\right)       , & a\neq-1,x>0 \\[0.5em]
+		\int \frac{1}{x}\log x  \,\d x & = & \frac{1}{2}\log^2 x                                          , & x>0         \\[0.75em]
+		%
+		% TRIGONOMETRISCHE FUNKTIONEN
+		%
+		\int \sin(ax+b)         \,\d x & = & -\frac{1}{a}\cos(ax+b)                                         &             \\[0.5em]
+		\int \cos(ax+b)         \,\d x & = & \frac{1}{a}\sin(ax+b)                                          &             \\[0.5em]
+		\int \tan x             \,\d x & = & -\log\abs{\cos x}                                              &             \\[0.5em]
+		\int \frac{1}{\sin x}   \,\d x & = & \log\abs{\tan\frac{x}{2}}                                      &             \\[0.5em]
+		\int \frac{1}{\cos x}   \,\d x & = & \log\abs{\tan(\frac{x}{2}+\frac{\pi}{4})}                      &             \\[0.5em]
+		\int \sin^2 x           \,\d x & = & \frac{1}{2}(x-\sin x\cos x)                                    &             \\[0.5em]
+		\int \cos^2 x           \,\d x & = & \frac{1}{2}(x+\sin x\cos x)                                    &             \\[0.5em]
+		\int \tan^2 x           \,\d x & = & \tan x - x                                                     &             \\[0.75em]
+		%
+		% ALLGEMEIN
+		%
+		\int \frac{f'(x)}{f(x)} \,\d x & = & \log\abs{f(x)}                                                 &
+	\end{array}
+\]
+
+\section{\small{Verteilungs-/Momentenerzeugende Funktionen}}
+\begin{tabular}{ l l l}
+	Verteilung X & \( F_X(x) \)                                                                                            & \( \mathcal{M}_X(t) \)                                      \\
+	disk. Unif   & \( \frac{1}{n} \abs{ \{ i \mid k_i \leq n \} } \)                                                       & \( \frac{e^{t}-e^{(n+1)t}}{n(1-e^t)} \)                     \\
+	Bernoulli    & \( (1-p) \1_{x \in [0,1]} + \1_{x \in [0,\infty)}\)                                                     & \( 1-p + p e^t\)                                            \\
+	Binomial     & \( \sum_{i=0}^{\floor{n}} {n \choose i} p^i (1-p)^{n-i} \)                                              & \( (1-p + p e^t))^n\)                                       \\
+	Geometrisch  & \( 1 - (1 -p)^{\floor{x + 1}}\)                                                                         & \( \frac{p e^t}{ 1 - (1-p)e^t}\)                            \\
+	Hypergeom.   & \( \sum_{i=max(0,m-n)}^{\floor{x}} \frac{ {r \choose i} {{n - r} \choose {m - i} } }{ {n \choose m} }\) & kompliziert!                                                \\
+	Poisson      & \( \sum_{i=0}^{\floor{x}} \frac{\lambda^i}{i!} e^{-\lambda} \)                                          & \(exp(\lambda (e^{\lambda} - 1 )\)                          \\
+	Exponential  & \( 1-e^{-\lambda t} \1_{t \geq 0} \)                                                                    & \( \frac{\lambda}{\lambda -t }\) \quad für \(t < \lambda \) \\
+	Normal       & \(\Phi(x)\), siehe \(z_\alpha\)-Quantile                                                                & \( exp(\mu t + \frac{\sigma^2 t^2}{2} ) \)                  \\
+	Gamma        & unbestimmtes Integral                                                                                   & \( ( \frac{ \lambda }{ \lambda - 1 } )^{\alpha} \)          \\
+	Chiquadrat   & siehe \( \chi_{n,1 - \alpha} \)-Quantile                                                                & \( \frac{1}{ (1 - 2t)^{n/2} }\)                             \\
+	t-Vert.      & siehe \( t_{n,1-\alpha} \)-Quantile                                                                     & existiert nicht                                             \\
+	Cauchy       & \( \frac{1}{2} + \frac{1}{\pi} \arctan{(x-\mu)} \)                                                      & existiert nicht
+\end{tabular}
+
+% ------------------------------------------------------------------------------------------------ %

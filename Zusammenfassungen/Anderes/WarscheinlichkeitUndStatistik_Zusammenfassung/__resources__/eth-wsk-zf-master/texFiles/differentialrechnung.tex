@@ -1,0 +1,47 @@
+\section{Differentialrechnung}
+
+\subsection{Faktorregel}
+Ein konstanter Faktor bleibt beim Differenzieren erhalten:
+\[
+y=C\cdot f(x)\Rightarrow y'=C\cdot f'(x)
+\]
+
+\subsection{Summenregel}
+Bei einer endlichen Summe von Funktionen darf gliedweise differenziert werden:
+\[
+y=f_1(x)+f_2(x)+...+f_n(x)\Rightarrow y'=f_1'(x)+f_2'(x)+...+f_n'(x)
+\]
+
+\subsection{Produktregel}
+Die Ableitung einer in Produktform $y=u(x)\cdot v(x)$ darstellbaren Funktion erhält man nach folgender Produktregel:
+\[
+y'=u'(x)\cdot v(x)+u(x)\cdot v'(x)=u'v+uv'
+\]
+
+\subsection{Quotientenregel}
+Die Ableitung einer Funktion, die als Quotient zweier Funktionen $u(x)$ und $v(x)$in der Form $y=\frac{u(x)}{v(x)}$ darstellbar ist, erhält man nach der Quotientenregel:
+\[
+y'=\frac{u'(x)\cdot v(x)-u(x)\cdot v'(x)}{v^2(x)}
+\]
+
+\subsection{Kettenregel}
+Die Ableitung einer zusammengesetzten (verketteten) Funktion $y=F(u(x))=f(x)$ erhält man als Produkt aus äusserer und innerer Ableitung:
+\[
+y'=\frac{dy}{dx}=\frac{dy}{du}\cdot \frac{du}{dx}
+\]
+
+\subsection{Partielle Differentiation}
+Summanden, die keine Variable beinhalten nach der abgeleitet wird, fallen WEG!
+
+\subsection{Wichtige elementare Ableitungen}
+\[
+\begin{array}{lll}
+	f(x)=c & \rightarrow & f'(x)=0 \\
+	f(x)=x^n & \rightarrow & f'(x)=n\cdot x^{n-1} \\	
+	f(x)=\sqrt{x}& \rightarrow & f'(x)=\frac{1}{2\sqrt{x}} \\
+	f(x)=e^x & \rightarrow & f'(x)=e^x \\
+	f(x)=a^x & \rightarrow & f'(x)=(\ln a)\cdot a^x \\
+	f(x)=\ln x & \rightarrow & f'(x)=\frac{1}{x} \\
+	f(x)=\log_{a}x & \rightarrow & f'(x)=\frac{1}{(\ln a)\cdot x} \\
+\end{array}
+\]

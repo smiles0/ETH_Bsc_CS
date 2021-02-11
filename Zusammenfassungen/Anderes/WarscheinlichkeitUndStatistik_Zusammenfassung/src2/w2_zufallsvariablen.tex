@@ -1,0 +1,238 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% Zufallsvariablen
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Zufallsvariablen in \(\R\)}
+
+\begin{definition}[Zufallsvariable]
+	Eine (reelwertige) \emph{Zufallsvariable} \(X\) auf \(\Omega\) ist eine Funktion \(X:\Omega \rightarrow \mathcal{W}(X) \subseteq \R\). Jedes Elementarereignis \(\omega\) wird auf eine Zahl \(X(\omega)\) abgebildet.
+\end{definition}
+
+\begin{definition}[Verteilung]
+	Das stochastische Verhalten einer Zufallsvariablen \(X\) wird durch ihre \emph{Verteilung} \(\mu_X :\R \rightarrow[0,1]\) beschrieben
+	\[
+		\mu_X(B) := \P[X \in B] := \P[\{\omega \mid X(\omega) \in B\}]
+		\quad
+		\text{für } B \subseteq \R.
+	\]
+
+	\begin{note}
+		Jedes Wahrscheinlichkeitsmass \(\mu_X\) erfüllt:
+		\begin{compactenum}
+			\item \(\mu_X(B) \geq 0 \quad \text{für alle } B \subseteq \R \)
+			\item \(\mu_X(\mathcal{W}(X)) = \mu_X(\R) = 1\)
+		\end{compactenum}
+	\end{note}
+
+\end{definition}
+
+% ------------------------------------------------------------------------------------------------ %
+% Verteilungsfunktion
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Verteilungsfunktion}
+\begin{definition}[Verteilungsfunktion]
+	Die \emph{Verteilungsfunktion} einer Zufallsvariable \(X\) ist die Abbildung \(F_X:\R \rightarrow[0,1]\),
+	\[
+		F_X(t) := \P[X \leq t] = \mu_X(-\infty,t)
+	\]
+
+	\begin{note}
+		\(F_X\) hat folgende Eigenschaften:
+		\begin{compactenum}[i:]
+			\item \(a \leq b \Rightarrow F_X(a) \leq F_X(b)\) (monoton wachsend).
+			\item \(\displaystyle\lim_{t\rightarrow u, t > u}F_X(t) = F_X(u)\) (rechtsstetig).
+			\item \(\displaystyle\lim_{t\rightarrow-\infty} F_X(t) = 0\) und \(\displaystyle\lim_{t\rightarrow\infty} F_X(t) = 1\).
+		\end{compactenum}
+	\end{note}
+
+\end{definition}
+
+% ------------------------------------------------------------------------------------------------ %
+% Diskrete Zufallsvariablen
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Diskrete Zufallsvariablen}
+
+Eine Zufallsvariable \(X\) heisst \emph{diskret}, falls \(\Omega\) und somit auch \(\mathcal{W}(X) = \{x_1,x_2\ldots\}\) endlich oder abzählbar ist.
+
+\begin{definition}[Gewichtsfunktion]
+	Die \emph{Gewichtsfunktion} \(p_X:\R \rightarrow [0,1]\) ist definiert als
+	\[
+		p_X(x) :=
+		\left\{\begin{array}{ll}
+			\P[X = x] & \text{für }x \in \mathcal{W}(X) \\
+			0         & \text{sonst}
+		\end{array}\right.
+	\]
+
+	Somit lässt sich die \emph{diskrete Verteilung \(\mu_X\)} berechnen:
+	\[	\mu_X(B) = P[X \in B] = \sum_{x_i \in B} p_X(x_i) \]
+
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Stetige zufallsvariablen
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Stetige Zufallsvariablen}
+Eine Zufallsvariable \(X\) heisst \emph{stetig}, falls \(\Omega\) und somit auch \(\mathcal{W}(X)\) überabzählbar ist.
+Deswegen ist \(\P[X=x]\) immer gleich null; es wird eine andere Definition benötigt.
+\begin{definition}[Dichte]
+	Die \emph{Dichte} \(f_X:\R\rightarrow[0,\infty)\) ist gegeben durch
+	\[
+		F_X(x) = \int_{-\infty}^x f_X(s) \d s
+		\quad
+		\text{für alle } x \in \R.
+	\]
+\end{definition}
+
+Somit lässt sich die \emph{stetige Verteilung \(\mu_X\)} berechnen:
+\[
+	\mu_X(B) = P[X \in B] = \int_{B} f_X(x) \d s
+\]
+
+\begin{note}
+	Es gilt \(\frac{\d}{\d t} F_X(t) = f_X(t)\) falls \(f_X\) an der Stelle \(t\) stetig ist.
+\end{note}
+
+% ------------------------------------------------------------------------------------------------ %
+% Erwartungswert und Momente
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Erwartungswert und Momente}
+
+\begin{definition}[Erwartungswert]
+	Sofern die Reihe / das Integral konvergiert, ist der \emph{Erwartungswert} von \(X\) definiert als
+	\[
+		\E[X] := \sum_{x_i \in \mathcal{W}(X)} x_i p_X(x_i)
+		\quad	\text{ bzw. }	\quad
+		\E[X] := \int_{-\infty}^\infty x f_X(x) \d x
+	\]
+\end{definition}
+
+
+\begin{note}
+	Es gelten folgende Rechenregeln
+	\begin{compactenum}[i:]
+		\item \(\E[a] = a\)
+		\item \(\E[aX + bY] = a\E[X] + b\E[Y]\)
+		\item \(\E[X Y] = \E[X] \E[Y], \quad \text{falls } X \perp Y\)
+		\item \(\E[X] \leq \E[Y] \Leftrightarrow X \leq Y\) \emph{(Monotonie)}
+	\end{compactenum}
+\end{note}
+
+
+\begin{theorem}[4.1]:
+	Für eine Zufallsvariable \(X\) und \(Y=g(X)\) gilt:
+	\[
+		\E[Y] = \sum_{x_i \in \mathcal{W}(X)} y_i p_{X}(x_i)
+		\quad \text{ bzw. } \quad
+		\E[Y] = \int_{-\infty}^\infty y f_X(x) \d x
+	\]
+\end{theorem}
+
+\begin{definition}[p-tes Moment]
+	Für eine Zufallsvariable \(X\) und \(p \in \R^+\) gilt:
+	\begin{compactitem}
+		\item Das p-te absolute Moment \(M_p := \E[\lvert X \rvert ^p] \leq \infty\)
+		\item Das p-te  Moment \(m_p := \E[X  ^p] < \infty\)
+	\end{compactitem}
+
+	Nach Satz 4.1 ist das p-te Moment, sofern existent:
+	\[ \textstyle
+		m_p = \sum_{x_i \in \mathcal{W}(X)} x_i^p p_{X}(x_i)
+		\quad	\text{ bzw. }	\quad
+		m_p = \int_{-\infty}^\infty x^p f_X(x) \d x
+	\]
+
+	\textbf{Momentenerzeugende Funktion:} \(\mathcal{M}_X(t) := \E[e^{tX}] \)
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% VARIANZ UND STANDARDABWEICHUNG
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Varianz und Standardabweichung}
+
+\begin{definition}[Varianz]
+	Sei \(X\) eine Zufallsvariable mit \(\E[X^2] < \infty\). Die \emph{Varianz} von \(X\) ist definiert als
+	\[
+		\var[X] := \E\left[(X-\E(X))^2\right] = \E[X^2]-\E[X]^2.
+	\]
+
+	Nach Satz 4.1 ist die Varianz einer stetigen Zufallsvariable \(X\):
+	\[
+		\var[X] = \int_{-\infty}^\infty (x-\E[X])^2 f_X(x) \d x
+	\]
+
+\end{definition}
+
+
+\begin{note}
+	Es gelten folgende Rechenregeln
+	\begin{compactenum}[i:]
+		\item \(\var[a] = 0\)
+		\item \(\var[a + bX] = b^2 \var[X]\)
+		\item \(\var[aX + bY] = a^2 \var[X] + 2ab\cov[X,Y] + b^2 \var[Y]\)
+	\end{compactenum}
+\end{note}
+
+\begin{definition}[Standardabweichung]
+	Die \emph{Standardabweichung} einer Zufallsvariable \(X\) ist
+	\(	\sigma_X := \sqrt{\var[X]}. \)
+\end{definition}
+
+% ------------------------------------------------------------------------------------------------ %
+% KOVARIANZ UND KORRELATION
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Kovarianz und Korrelation}
+
+\begin{definition}[Kovarianz]
+	Seien \(X\) und \(Y\) Zufallsvariablen mit \(\E[X^2] < \infty\) und \(\E[Y^2] < \infty\),
+	dann ist die \emph{Kovarianz} von \(X\) und \(Y\) gegeben
+	\[
+		\cov[X,Y] := \E[(X-\E(X))(Y-\E(Y))] = \E[XY]-\E[X]\E[Y].
+	\]
+
+	\begin{note}
+		Die Kovarianz ist ein Skalarprodukt:
+		\begin{compactenum}[i:]
+			\item \(\cov[X,Y+aZ] = \cov[X,Y] + a\cov[X,Z]\) \emph{\textbf{(bilinear)}}
+			\item \(\cov[X,Y] = \cov[Y,X]\).	\emph{(symmetrisch)}
+			\item \(\cov[X,X] = \var[X] \geq 0, \quad \cov[X,X]= 0 \Leftrightarrow X=a\)
+			\\	 \(\cov[X,a] = 0\) für alle \(a \in \R\). \emph{(positiv definit)}
+		\end{compactenum}
+		\(\Rightarrow \cov[X,Y]^2 \leq \var[X] \var[Y] \) \emph{(Cauchy-Schwarz)}
+	\end{note}
+
+\end{definition}
+
+
+\begin{definition}[Korrelation]
+	Seien \(X\) und \(Y\) Zufallsvariablen, dann gilt
+	\[ \textstyle
+		\corr[X,Y] := \frac{Cov[X,Y]}{\sqrt{\var[X]}\sqrt{\var[Y]}}
+	\]
+\end{definition}
+
+
+\begin{note}
+	Die Korrelation misst die Stärke und Richtung der\\
+	\emph{linearen Abhängigkeit} zweier Zufallsvariablen \(X\) und \(Y\):
+	\[ \textstyle
+		\corr[X,Y] = \pm 1 \,\Leftrightarrow\, \exists \, a \in \R, b>0: Y = a \pm bX
+	\]
+\end{note}
+
+\begin{definition}[unkorreliert]
+	Ist \(\corr[X,Y] = 0\) und somit \(\cov[X,Y]=0\), dann heissen \(X\) und \(Y\) \emph{unkorreliert}.
+\end{definition}

@@ -1,0 +1,319 @@
+
+\section{Trigonometrische Definitionen \& Sätze}
+\subsection{Definitionen}
+
+$sin(x) := \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!} = \frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} \mp ...$
+
+$cos(x) := \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n}}{(2n)!} = \frac{x^0}{0!} - \frac{x^2}{2!} + \frac{x^4}{4!} \mp ...$
+
+$exp(x) := \sum_{n=0}^{\infty} \frac{x^{n}}{n!} = \lim\limits_{n \rightarrow \infty}{(1 + \frac{x^{n}}{n})^n}$
+
+$arctan(x) := \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{2n+1} = \frac{x}{1} - \frac{x^3}{3} + \frac{x^5}{5} \mp ...$
+
+Hinweis: Für einfache Approximation genügt es die ersten paar Glieder der $arctan(x)-Reihe$ zu berechnen. \newline 
+Falls: $x \notin [0,1]$, gibt es eine Vereinfachung:
+$ arctan(x) = \frac{sgn(x) * \pi}{2} - arctan(\frac{1}{x}) $
+
+\subsubsection{Definition Taylorreihe} Eine Funktion $f(x)$ wird an einer Stelle $x_0$ angenähert durch $Tf(x;x_0) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n = f(x_0)$ \\
+
+\subsubsection{Definitionen csc(x), sec(x), cot(x)}
+$csc(x) := \frac{1}{sin(x)}$
+
+$sec(x) := \frac{1}{cos(x)}$
+
+$cot(x) := \frac{1}{tan(x)} = \frac{cos(x)}{sin(x)}$
+
+\subsection{Sinusssatz}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.4\textwidth]{images/sinussatz.png}
+    \caption{Quelle: https://de.wikipedia.org/}
+    
+\end{figure}
+\subsection{Cosinusssatz}
+$a^2 + b^2 -2ab*cos(\gamma)= c^2$
+
+
+\subsection{Standardintegrale}
+$\frac{d}{dx} arcsin(x) = \frac{1}{\sqrt{1-x^2}}$ \\
+
+$\frac{d}{dx} arccos(x) = \frac{-1}{\sqrt{1-x^2}}$ \\
+
+$\frac{d}{dx} arctan(x) =\frac {1}{x^2+1}$\\
+
+$\frac{d}{dx} arsinh(x) =\frac{1}{\sqrt{x^2+1}}$\\
+
+$\frac{d}{dx} arcosh(x) =\frac{1}{\sqrt{x^2-1}}, $wenn $ x>1$\\
+
+$\frac{d}{dx} artanh(x) =\frac{1}{1-x^2}, $wenn $ |x|<1$\\
+
+
+\subsection{Euler Formel}
+$exp(i \phi) = cos(\phi) + isin(\phi)$
+\\
+$exp(-i \phi) = cos(-\phi) + isin(-\phi) \Longleftrightarrow $ 
+$exp(-i \phi) = cos(\phi) - isin(\phi)$ 
+
+Daraus kann nun sin, sinh, cos und cosh in Termen von exp(x) ausgedrückt werden.
+
+$\frac{exp(i \phi) + exp(-i \phi)}{2}  = cos(\phi)$\\
+$\frac{exp(i \phi) - exp(-i \phi)}{2i}  = sin(\phi)$
+
+Ignoriere alle i, dann folgt...
+
+$\frac{exp(\phi) + exp(-\phi)}{2}  = cosh(\phi)$\\
+$\frac{exp(\phi) - exp(-\phi)}{2}  = sinh(\phi)$
+
+
+
+
+\subsection{Ableitungen, Integrale}
+\subsection{Ableitungen}
+$\frac{d}{dx}sin(x) = cos(x)$
+
+$\frac{d}{dx}cos(x) = -sin(x)$
+
+$\frac{d}{dx}tan(x) = \frac{d}{dx} \frac{sin(x)}{cos(x)} = \frac{cos(x)cos(x)- sin(x)sin(x)}{cos^2(x)} = 1 - \frac{sin^2(x)}{cos^2(x)} = 1 - tan^2(x) = \frac{1}{cos^2(x)}$
+
+$\frac{d}{dx} \frac{1}{sin(x)} = \frac{0*sin(x) - 1*cos(x)}{sin^2(x)} = \frac{-cos(x)}{sin^2(x)}$ 
+
+$\frac{d}{dx} \frac{1}{cos(x)} = \frac{0*cos(x) - 1*(-sin(x))}{cos^2(x)} = \frac{sin(x)}{cos^2(x)}$
+
+$\frac{d}{dx}sin^2(x) = sin(x)*cos(x)+ cos(x)*sin(x) = 2*sin(x)*cos(x)$
+
+$\frac{d}{dx}cos^2(x) = cos(x)*(-sin)(x)+ (-sin(x))*cos(x) = -2*sin(x)*cos(x)$ 
+
+\subsection{Rechenregeln}
+\subsection{Additionstheoreme}
+$sin^2(x)+cos^2(x) = 1$
+
+$sin(x \pm y) = sin(x)cos(y) \pm cos(x)sin(y)$    \ \ $(\# umgekehrteAbleitungsregel)$
+
+$cos(x \pm y) = cos(x)cos(y) \mp \sinx \siny$
+
+$tan(x \pm y) = \frac{\tanx \pm \tany}{ 1 \mp \tanx \; \tany } = \frac{ sin(x \pm y) }{cos(x \pm y) }$
+
+\subsection{Doppelwinkel}
+$sin(2x)= 2\sinx \cosx = \frac{2 \tanx}{ 1 + tan^2(x) }$
+
+$cos(2x)= cos^2(x) - sin^2(x) = 1 - 2sin^2(x) = 2cos^2(x) - 1 = \frac{ 1 - tan^2(x) }{ 1 + tan^2(x) }$
+
+$tan(2x)= \frac{ 2 \tanx }{ 1 - tan^2(x) } = \frac{2}{ cot(x) - \tanx }$
+
+$cot(2x)= \frac{ cot^2(x) - 1}{2cot(x)} = \frac{cot(x) - \tanx}{2}$ \\
+
+Beweis mit Additionstheorem
+
+
+
+\subsection{Produkt-zu-Summen-Formel}
+$\sinx*sin(y) = \frac{1}{2}(cos(x-y)-cos(x+y))$
+
+$\cosx*cos(y) = \frac{1}{2}(cos(x-y)+cos(x+y))$
+
+$sin(x)*cos(y) = \frac{1}{2}(sin(x-y)+sin(x+y))$ \\
+
+
+
+\subsection{Hyperbolische Funktionen}
+$sinh(z) := \frac{e^z - e^{-z}}{2} = z + \frac{z^3}{3!} + \frac{z^5}{5!} + \frac{z^7}{7!} + \dots = \sum_{n=0}^\infty \frac{z^{2n+1}}{(2n+1)!}$
+
+$cosh(z) := \frac{e^z + e^{-z}}{2}= 1 + \frac{z^2}{2!} + \frac{z^4}{4!} + \frac{z^6}{6!} + \dots = \sum_{n=0}^\infty \frac{z^{2n}}{(2n)!}$
+
+
+\subsection{Additionstheoreme}
+$sinh(z_1 \pm z_2) = sinh(z_1) \cdot cosh(z_2) \pm sinh(z_2) \cdot cosh(z_1)$
+
+$cosh(z_1 \pm z_2) = cosh(z_1) \cdot cosh(z_2) \pm sinh(z_1) \cdot sinh(z_2)$
+
+$tanh(z_1 \pm z_2) = \frac{tanh(z_1) \pm tanh(z_2)}{1 \pm tanh(z_1) \cdot tanh(z_2)}$
+
+
+\subsubsection{Zusammenhänge}
+$cosh^2(z) - sinh^2(z) = 1$
+
+$cosh(z) + sinh(z) = e^z$
+
+$cosh(z) - sinh(z) = e^{-z}$
+
+\subsection{Ableitungen}
+$\frac{d}{dz}sinh(z) = cosh(z)$
+
+$\frac{d}{dz}cosh(z) = sinh(z)$
+
+$\frac{d}{dz}tanh(z) = 1 -tanh^2(z) = \frac{1}{cosh^2(x)}$
+
+
+
+\section{Koordinatensysteme mit Funktionaldeterminante}
+
+\subsection{Polarkoordinaten}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.6\textwidth]{images/Ebene_polarkoordinaten.PNG}
+    \caption{Quelle: https://de.wikipedia.org/}
+    
+\end{figure}
+
+Umrechnung erfolgt durch: \\
+$x=r\cos\varphi$\\
+$y=r\sin\varphi$\\
+
+Aus den Umrechnungsformeln von Polarkoordinaten in kartesische Koordinaten erhält man für die Funktionaldeterminante als Determinante der Jacobi-Matrix:\\
+\\$
+\det J = \det\frac{\partial(x,y)}{\partial(r,\varphi)}
+=\begin{vmatrix}
+  \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \varphi} \\
+  \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \varphi}
+\end{vmatrix}
+=\begin{vmatrix}
+  \cos\varphi & -r\sin\varphi \\
+  \sin\varphi &  r\cos\varphi
+\end{vmatrix} =r\cos^2\varphi + r\sin^2\varphi = r
+$
+
+\subsection{Zylinderkoordinaten}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.3\textwidth]{images/zylinderkoord.png}
+    \caption{Quelle: https://de.wikipedia.org/}
+    
+\end{figure}
+Umrechnung erfolgt durch: \\
+$x=\rho\ \cos\varphi$\\
+$y=\rho\ \sin\varphi$\\
+$z=z$\\
+
+Mit Funktionaldeterminante:
+$
+\det\frac{\partial(x,y,z)}{\partial(\rho,\varphi,z)}=\begin{vmatrix}
+  \cos\varphi & -\rho\sin\varphi & 0 \\
+  \sin\varphi &  \rho\cos\varphi & 0 \\
+            0 &                0 & 1
+\end{vmatrix}=\rho$
+
+
+\subsection{Kugelkoordinaten}
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.4\textwidth]{images/kugelkoord.png}
+    \caption{Quelle: https://de.wikipedia.org/}
+    
+\end{figure}
+
+Umrechnung erfolgt durch: \\
+$x = r \cdot \sin \theta \cdot \cos \varphi$ \\
+$y = r \cdot \sin \theta \cdot \sin \varphi$ \\
+$z = r \cdot \cos \theta$ \\
+
+Jacobi-Matrix:
+
+$J =\frac{\partial(x,y,z)}{\partial(r,\theta,\varphi)}
+  =\begin{pmatrix}
+     \sin\theta\cos\varphi&r\cos\theta\cos\varphi&-r\sin\theta\sin\varphi\\
+     \sin\theta \sin\varphi&r\cos\theta\sin\varphi&r\sin\theta\cos\varphi\\
+     \cos\theta&-r\sin\theta&0
+   \end{pmatrix}$\\
+   
+   mit Funktionaldeterminante:
+   $\det J=r^2\sin\theta$
+
+
+
+
+
+
+
+
+\section{Rotationsmatrix, Drehmatrix}
+
+\subsection{Drehmatrix der Ebene}
+Jede Rotation um den Ursprung ist eine lineare Abbildung. Wie bei jeder linearen Abbildung genügt daher zur Festlegung der Gesamtabbildung die Festlegung der Bilder der Elemente einer beliebigen Basis. Wird die Standardbasis gewählt, sind die Bilder der Basisvektoren gerade die Spalten der dazugehörigen Abbildungsmatrix.
+
+Wir haben unter $R_{\alpha}$ \\
+\\
+ $\begin{pmatrix} 1 \\ 0 \end{pmatrix} \mapsto \begin{pmatrix} \cos\alpha \\ \sin\alpha \end{pmatrix}
+\qquad\text{und}\qquad
+\begin{pmatrix} 0 \\ 1 \end{pmatrix} \mapsto \begin{pmatrix} -\sin\alpha \\ \cos\alpha \end{pmatrix}$ \newline
+
+Die Drehmatrix für eine Drehung um $\alpha$ ist also:  \newline
+$R_\alpha = \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \newline \cos\alpha\end{pmatrix}$
+
+ $\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha\end{pmatrix} \cdot \begin{pmatrix} x \\y \end{pmatrix}$\\
+
+\subsubsection{Herleitung}
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.75\textwidth]{images/herldrehmat.png}}
+    \caption{Quelle: Miles Strässle, 20.11.2019}    
+\end{figure}
+
+\subsection{Drehmatrix in 3-Dimensionen}
+In der Physik werden häufig Drehungen des Koordinatensystems benutzt, dann müssen bei den untenstehenden Matrizen die Vorzeichen aller Sinus-Einträge vertauscht werden. Die Drehung eines Vektors um einen bestimmten Winkel in einem Koordinatensystem ist äquivalent zur Drehung des Koordinatensystems um den gleichen Winkel in umgekehrter Richtung (Drehung um negativen Winkel). 
+\vspace{0.5cm}
+„Der Drehsinn ergibt sich, wenn man entgegen der positiven Drehachse auf den Ursprung sieht.“
+
+\subsubsection{Drehung um die x-Achse:}
+$R_x(\alpha) = \begin{pmatrix}
+1 &   0         & 0           \\
+0 & \cos \alpha & -\sin \alpha \\
+0 & \sin \alpha &  \cos \alpha
+\end{pmatrix}$
+\subsubsection{Drehung um die y-Achse:}
+$R_y(\alpha) = \begin{pmatrix}
+\cos \alpha  & 0 & \sin \alpha \\
+   0         & 1 &  0          \\
+-\sin \alpha & 0 & \cos \alpha
+\end{pmatrix}$
+\subsubsection{Drehung um die z-Achse:}
+$R_z(\alpha) = \begin{pmatrix}
+\cos \alpha & -\sin \alpha & 0 \\
+\sin \alpha &  \cos \alpha & 0 \\
+   0        &  0           & 1
+\end{pmatrix}$
+
+
+\section{Plots Trigonometrischer Funktionen}
+Alle Plots in diesem Kapitel von www.wikipedia.org!
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/tan.png}}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/asinacos.png}}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/arctan.png}}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/sinhcoshtanh.png}}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/arsinharcosh.png}}
+\end{figure}
+
+
+
+\section{Nützliches}
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.55\textwidth]{images/Einheitskreis.png}}
+    \caption{Quelle: youtube, 3blue1brown}    
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+    {\includegraphics[width=0.4\textwidth]{images/trigohands.png}}
+    \caption{Quelle: https://www.pinterest.com/pin/68735321805/} 
+\end{figure}
+
+

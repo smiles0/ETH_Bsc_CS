@@ -1,0 +1,301 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% TESTS
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Tests}
+
+\subsection{Grundlagen}
+
+Ausgangspunkt ist eine Stichprobe \(X_1,\ldots,X_n\) in einem Modell \(\P_\theta\) mit unbekanntem
+Parameter \(\theta \in \Theta\).
+
+
+\begin{definition}[Modellklassen]
+	Aufgrund einer Vermutung, wo sich der richtige Parameter \(\theta\) befindet,
+	werden eine \emph{Hypothese} \(\Theta_0 \subseteq \Theta\) und eine \emph{Alternative}
+	\(\Theta_A \subseteq \Theta\) mit \(\Theta_0 \cap \Theta_A = \emptyset\) formuliert:
+
+	\begin{center}
+		\begin{tabular}{r@{ : }l}
+			Hypothese \(H_0\)   & \(\theta \in \Theta_0\) \\
+			Alternative \(H_A\) & \(\theta \in \Theta_A\)
+		\end{tabular}
+	\end{center}
+\end{definition}
+
+\begin{note}
+	Die Hypothese (bzw. Alternative) heisst \emph{einfach},
+	falls sie nur aus einem einzelnen Wert besteht, z.B. \(\Theta_0 = \{\theta_0\}\)
+\end{note}
+
+\begin{definition}[Test]
+	Eine Interpretation der Übereinstimmung zwischen den Daten
+	\(x_1, \ldots, x_n\) und einem vermutetem Modell.
+
+	\begin{compactenum}
+		\item \emph{Entscheidungsregel:} \(\1_{t(x_1,\ldots,x_n) \in K}\)
+		\item \emph{Teststatistik:} \(T = t (X_1,\ldots,X_n)\)
+		\item \emph{Verwerfungsbereich:} \(K \subseteq \R\)
+	\end{compactenum}
+\end{definition}
+
+\begin{definition}[Fehler 1. Art] Die Hypothese wird abgelehnt, obwohl sie richtig ist.
+	Die Wahrscheinlichkeit für einen Fehler 1. Art ist
+	\[
+		\P_\theta[T \in K]
+		\quad\text{für } \theta \in \Theta_0.
+	\]
+\end{definition}
+
+\begin{definition}[Fehler 2. Art]
+	Die Hypothese \(\theta\) wird akzeptiert, obwohl sie falsch ist.
+	Die Wahrscheinlichkeit für einen Fehler 2. Art ist
+	\[
+		\P_\theta[T \notin K] =
+		1 - \P_\theta[T \in K]
+		\quad\text{für } \theta \in \Theta_A.
+	\]
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% MÖGLICHES VORGEHEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Konstruktion von Tests \((T,K)\)}
+
+\begin{compactenum}
+	\item
+	Wähle eine \emph{Hypothese} \(\Theta_0\) (normalerweise \(\{\theta_0\} = \Theta_0\)).
+
+	\item
+	Wähle ein \emph{Signifikanzniveau} \(\alpha \in (0,1)\).
+	Dadurch werden Fehler 1. Art von \(\alpha\) kontrolliert.
+	\[	\sup_{\theta \in \Theta_0} \P_\theta[T \in K] \leq \alpha.	\]
+
+	\item
+	Maximiere die \emph{Macht} \(\beta\) des Tests.
+	Dadurch werden Fehler 2. Art minimiert.
+	\[ \beta(\theta) := \mathbb{P}_\theta[T \in K] \qquad \text{für } \theta \in \Theta_0 \]
+
+	\item
+	Falls der realisierte Wert \(T(\omega)\) im Verwerfungsbereich \(K_\alpha\) liegt,
+	wird die Nullhypothese auf dem Niveau \(\alpha\) verworfen
+\end{compactenum}
+
+\begin{note}
+	Die Hypothese zu verwerfen, ist schwieriger. Es
+	wird häufig die Negation der gewünschten Aussage benutzt.
+\end{note}
+
+\begin{definition}[P-Wert]
+	Der P-Wert ist die Wahrscheinlichkeit, dass unter der Nullhypothese \(H_0\) ein zufälliger Versuch
+	mindestens so extrem ausfällt, wie der beobachtete Wert \(T(\omega)\).
+	\[
+		\textbf{p-Wert} =
+		\left\{\begin{array}{cl}
+			\P_{\theta_0}[T \leq T(\omega)] & \text{für\quad} H_A: \theta < \theta_0 \\
+			\P_{\theta_0}[T \geq T(\omega)] & \text{für\quad} H_A: \theta > \theta_0
+		\end{array}\right.
+	\]
+\end{definition}
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% LIKELIHOOD QUOTIENT
+% ------------------------------------------------------------------------------------------------ %
+
+\begin{definition}[Likelihood-Quotienten Test]
+	Als Teststatistik wird der \emph{Likelihood-Quotient} \(\mathcal{R}\) gewählt,
+	\[
+		T :=
+		\mathcal{R}(x_1,\ldots,x_n) :=
+		\frac
+		{\displaystyle\sup_{\theta\in\Theta_0}\mathcal{L}(x_1,\ldots,x_n ; \theta)}
+		{\displaystyle\sup_{\theta\in\Theta_A}\mathcal{L}(x_1,\ldots,x_n ; \theta)}
+	\]
+	Ist dieser Quotient klein, sind die Beobachtungen im Modell \(\P_{\Theta_A}\) deutlich wahrscheinlicher
+	als im Modell \(\P_{\Theta_0}\). Der Verwerfungsbereich \(K := [0,c)\) wird so gewählt,
+	dass der Test das gewünschte Signifikanzniveau einhält.
+\end{definition}
+
+\begin{theorem}[Neyman-Pearson]
+	Sind Hypothese und Alternative beide einfach, so ist der Test optimal bzgl. Fehler 1. \& 2. Art
+\end{theorem}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Z-TEST
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Einstichprobentests}
+Neyman-Pearson gibt uns eine Systematische Methode um 'gute' Tests zu konstruieren.
+Hier ein paar Beispiele:
+
+\begin{definition}[z-Test] Test für Erwartungswert bei bekannter Varianz \(\sigma^2\)
+
+	\begin{compactenum}
+		\item Stichproben \(X_1, \ldots, X_n \iid \Stdev(\theta,\sigma^2)\)
+		\item Nullhypothese \(H_0: \theta = \theta_0\)
+		\item Teststatistik: \( T := \frac{\overline{X}_n - \theta_0}{\sigma / \sqrt{n}} \sim \Stdev(0,1)\) unter \(\P_{\theta_0}\)
+		\item Signifikanzniveau: wir wählen ein \(\alpha \in (0,1)\)
+		\item Wir konstruieren den Verwerfungsbereich \(K_\alpha\)
+		\[
+			K_\alpha =	\left\{\begin{array}{cl}
+				(-\infty, z_{\alpha})                                 & \text{für\quad} H_A: \theta < \theta_0    \\
+				(z_{1-\alpha}, \infty)                                & \text{für\quad} H_A: \theta > \theta_0    \\
+				(-\infty, z_{\alpha/2}) \cup (z_{1-\alpha/2}, \infty) & \text{für\quad} H_A: \theta \neq \theta_0
+			\end{array}\right.
+		\]
+		\item Falls \(T(\omega) \in K_\alpha\), wird \(H_0\) auf dem Niveau \(\alpha\) verworfen
+	\end{compactenum}
+\end{definition}
+
+%\begin{example}
+%	Zum Beispiel liefert die Bedingung
+%	\[
+%		\alpha =
+%		\P_{\theta_0}[T \in K_>] =
+%		\P_{\theta_0}[T > c_>] =
+%		1- \Phi(c_>),
+%	\]
+%	dass \(c_> = \Phi^{-1}(1-\alpha)\), also das \((1-\alpha)\)-Quantil der \(\mathcal{N}(0,1)\)-Verteilung, sein muss.
+%\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% T-TEST
+% ------------------------------------------------------------------------------------------------ %
+
+\begin{definition}[t-Test] Test für Erwartungswert bei unbekannter Varianz \(\sigma^2\)
+
+	Die Varianz \(S^2\) wird geschätzt
+	\begin{compactenum}
+		\item Stichproben \(X_1, \ldots, X_n \iid \Stdev(\mu,\sigma^2)\)
+		\item Nullhypothese \(H_0: \mu = \mu_0\)
+		\item Teststatistik: \( T := \frac{\overline{X}_n - \mu_0}{S / \sqrt{n}} \sim t_{n-1}\) unter \(\P_{\mu_0}\)
+		\item Signifikanzniveau: wir wählen ein \(\alpha \in (0,1)\)
+		\item Wir konstruieren den Verwerfungsbereich \(K_\alpha\)
+		\[
+			K_\alpha
+			=	\left\{\begin{array}{cl}
+				(-\infty, t_{n-1,\alpha})                                     & \text{für } \mu < \mu_0    \\
+				(t_{n-1,1-\alpha}, \infty)                                    & \text{für } \mu > \mu_0    \\
+				(-\infty, t_{n-1,\alpha/2}) \cup (t_{n-1,1-\alpha/2}, \infty) & \text{für } \mu \neq \mu_0
+			\end{array}\right.
+		\]
+		\item Falls \(T(\omega) \in K_\alpha\), wird \(H_0\) auf dem Niveau \(\alpha\) verworfen
+	\end{compactenum}
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% GEPAARTE ZWEISTICHPROBEN TESTS
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Zweistichprobentest}
+
+\begin{definition}[gepaart] Seien \((X_1, Y_1) \ldots (X_n,Y_n)\) natürliche Paare von ZV
+	mit \(X_1, \ldots, X_n \iid \Stdev(\mu_X,\sigma^2)\)
+	und \(Y_1, \ldots, Y_n \iid \Stdev(\mu_Y,\sigma^2)\)
+
+	Dann lässt sich der Test zum Vergleich von \(\mu_X\) und \(\mu_Y\) auf eine Stichprobe zurückführen:
+	\[	Z_i := X_i - Y_i \iid \Stdev(\mu_x-\mu_y,2\sigma^2) 	\]
+\end{definition}
+
+
+\begin{definition}[ungepaart] Test mit bekannten Varianzen \(\sigma_X, \sigma_Y > 0\)
+
+	\begin{compactenum}
+		\item Stichproben \\
+		\(X_1, \ldots, X_n \iid \Stdev(\mu_X,\sigma_X^2)\),\quad
+		\(Y_1, \ldots, Y_m \iid \Stdev(\mu_Y,\sigma_Y^2)\)
+		\item Nullhypothese \(H_0: \mu_X - \mu_Y = \mu_0\)
+		\item Teststatistik: \( T := \frac{ \overline{X}_n - \overline{Y}_n - \mu_0 }
+		{\sqrt{ \frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m} }} \sim \Stdev(0,1)\) unter \(\P_{\mu_0}\)
+		\item Signifikanzniveau: wir wählen ein \(\alpha \in (0,1)\)
+		\item Wir konstruieren den Verwerfungsbereich \(K_\alpha\)
+		\[
+			K_\alpha
+			=	\left\{\begin{array}{cl}
+				(-\infty, z_{\alpha})                                 & \text{für } \mu_X - \mu_Y < \mu_0    \\
+				(z_{1-\alpha}, \infty)                                & \text{für } \mu_X - \mu_Y > \mu_0    \\
+				(-\infty, z_{\alpha/2}) \cup (z_{1-\alpha/2}, \infty) & \text{für } \mu_X - \mu_Y \neq \mu_0
+			\end{array}\right.
+		\]
+		\item Falls \(T(\omega) \in K_\alpha\), wird \(H_0\) auf dem Niveau \(\alpha\) verworfen
+	\end{compactenum}
+\end{definition}
+
+
+\begin{definition}[ungepaart] Test bei unbekannter, gleicher Varianz \(\sigma > 0\)
+
+	Die Varianz \(S^2 = \frac{ (n-1)S_X^2 + (m-1)S_Y^2 }{ n + m - 2}\) wird geschätzt
+	\begin{compactenum}
+		\item Stichproben \\
+		\(X_1, \ldots, X_n \iid \Stdev(\mu_X,\sigma^2)\), \quad
+		\(Y_1, \ldots, Y_m \iid \Stdev(\mu_Y,\sigma^2)\)
+		\item Nullhypothese \(H_0: \mu_X - \mu_Y = \mu_0\)
+		\item Teststatistik: \( T := \frac{ \overline{X}_n - \overline{Y}_n - \mu_0 }
+		{S \sqrt{ \frac{1}{n} + \frac{1}{m} }} \sim t_{n+m-2}\) unter \(\P_{\mu_0}\)
+		\item Signifikanzniveau: wir wählen ein \(\alpha \in (0,1)\)
+		\item Wir konstruieren den Verwerfungsbereich \(K_\alpha\)
+		\[
+			K_\alpha
+			=	\left\{\begin{array}{cl}
+				(-\infty, t_{n+m-2,\alpha})  & \text{für } \mu_X - \mu_Y < \mu_0    \\
+				(t_{n+m-2,1-\alpha}, \infty) & \text{für } \mu_X - \mu_Y > \mu_0    \\
+				\left.
+				\begin{array}{r}
+					(-\infty, t_{n+m-2,\alpha/2}) \\
+					\cup (t_{n+m-2,1-\alpha/2}, \infty)
+				\end{array}
+				\right.
+				                             & \text{für } \mu_X - \mu_Y \neq \mu_0
+			\end{array}\right.
+		\]
+		\item Falls \(T(\omega) \in K_\alpha\), wird \(H_0\) auf dem Niveau \(\alpha\) verworfen
+	\end{compactenum}
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% VERTRAUENSINTERVALL
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Konfidenzbereiche}
+
+\begin{definition}[Konfidenzbereich]
+	Ein \emph{Konfidenzbereich} für einen Schäetzwert \(\theta\) von den Stichproben \(X_1,\ldots,X_n\)
+	ist eine Menge \(C(X_1,\ldots,X_n) \subseteq \Theta\).
+	In den meisten Fällen ist das ein Intervall, dessen Endpunkte von \(X_1,\ldots,X_n\) abhängen.
+
+	\(C\) heisst ein Konfidenzbereich zum \emph{Niveau} \(1-\alpha\), falls gilt
+	\[	1 - \alpha \leq \P_\theta[\theta \in C(X_1,\ldots,X_n)] \quad \text{für alle } \theta \in \Theta\]
+\end{definition}
+
+
+\begin{example} Konfidenzintervall des Stichprobenmittels \\
+	Annahme: \(C(X_1, \ldots, X_n) = [\, \theta - \delta, \, \theta + \delta \,]\) \\
+	\(1 - \alpha
+	\, \leq \, \P_\theta\big[\abs{\overline{X}_n - \mu} \leq \delta\big]
+	\, \leq \, \P_\theta\big[\abs{ \frac{\overline{X}_n - \mu}{S/\sqrt{n}}} \leq \frac{\delta}{S/\sqrt{n}}\big]\) \\
+	Satz 7.1 \( \Rightarrow \delta = t_{ n-1 , 1 - \frac{\alpha}{2} } \cdot \frac{S}{\sqrt{n}}\)
+\end{example}
+
+\begin{example} Konfidenzintervall der Stichprobenvarianz \\
+	\(1 - \alpha
+	= \P_\theta\big[ \chi_{n-1,\frac{\alpha}{2}}^2 \leq \sigma \leq \chi_{n-1,1 - \frac{\alpha}{2}}^2  \big]\) \\
+	\(	= \P_\theta\big[ \frac{(n-1)S^2}{\chi_{n-1,\frac{\alpha}{2}}^2} \leq \sigma \leq \frac{(n-1)S^2}{\chi_{n-1,1 - \frac{\alpha}{2}}^2}  \big]
+	\Rightarrow C =  \big[ \frac{(n-1)S^2}{\chi_{n-1,\frac{\alpha}{2}}^2}, \frac{(n-1)S^2}{\chi_{n-1,1 - \frac{\alpha}{2}}^2}  \big]\)
+
+\end{example}
+
+
+
+% ------------------------------------------------------------------------------------------------ %

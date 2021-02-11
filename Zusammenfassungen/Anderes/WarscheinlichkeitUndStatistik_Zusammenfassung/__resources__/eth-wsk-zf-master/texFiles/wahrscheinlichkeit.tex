@@ -1,0 +1,84 @@
+\section{Wahrscheinlichkeit}
+
+\subsection{Allgemeine Rechenregeln}
+\[
+\begin{array}{rcl}
+	P\left[A^C\right] & = & 1-P[A] \\
+	P\left[\Omega\right] & = & P[A]+P\left[A^C\right]=1 \\
+	P[\emptyset] & = & 0 \\
+	P\left[B^C|A\right] & = & 1-P[B|A] \\
+	A\subseteq B & \Rightarrow & P[A] \leq P[B] \\
+\end{array}
+\]
+
+\subsection{DeMorgan'sche Gesetze}
+\[
+\begin{array}{rcl}
+	\overline{A\cap B} & = & \overline{A}\cup\overline{B} \\
+	\overline{A\cup B} & = & \overline{A}\cap\overline{B}\\
+\end{array}
+\]
+
+\subsection{Additionssatz}
+Zur Berechnung der Wahrscheinlichkeit, dass Ereignis $A$ oder $B$ eintritt.
+
+\vspace{10pt}
+
+Allgemein:
+\[
+P[A \cup B] = P[A] + P[B] - P[A \cap B]
+\]
+
+A,B disjunkt:
+\[
+P[A \cup B] = P[A] + P[B]
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Wenn die Ereignisse nicht offensichtlich disjunkt sind, die \textbf{erste Formel verwenden}!
+\end{itemize}
+
+\subsection{Multiplikationssatz}
+Zur Berechnung der Wahrscheinlichkeit, dass die Ereignisse $A$ und $B$ eintreten.
+\[
+P[A \cap B] = P[A] \cdot P[B|A]
+\]
+
+\textbf{Bemerkungen}
+\begin{itemize}
+\item $P[A,B]=P[A \cap B]$.
+\end{itemize}
+
+\subsection{Bedingte Wahrscheinlichkeit}
+Die bedingte Wahrscheinlichkeit von B gegeben A entspricht der Wahrscheinlichkeit, dass B eintritt, wenn man schon weiss, dass A eingetreten ist. Es gilt:
+\[
+P[B|A]=\frac{P[A\cap B]}{P[A]}
+\]
+\[
+P[A\cap B]=P[A]\cdot P[B|A]=P[B]\cdot P[A|B]
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Die \textbf{Pfadregel}, nach der Wahrscheinlichkeiten in einem \textbf{Wahrscheinlichkeitsbaum} multipliziert werden, um die Wahrscheinlichkeit eines Blattes zu erhalten, entspricht einer Verkettung bedingter Wahrscheinlichkeiten.
+\end{itemize}
+
+\subsubsection{Satz der totalen Wahrscheinlichkeit}
+\[
+P[B] = \sum \limits_{i=1}^{n} P[A_i] \cdot P[B|A_i]
+\]
+
+\subsubsection{Satz von Bayes}
+Zur Berechnung einer bestimmten Zwischenstation $A_k$ in einem Ereignisbaum, wobei mehrere Ereignisse $A_i$ zu Ereignis $B$ führen.
+\[
+P[A_k|B] = \frac{P[A_k] \cdot P[B|A_k]}{\sum \limits_{i=1}^{n} P[A_i] \cdot P[B|A_i]}
+\]
+
+\subsection{Eigenschaften von Ereignissen}
+
+\subsubsection{Unabhängigkeit}
+Wenn zwischen zwei Ereignissen $A$ und $B$ kein kausaler Zusammenhang besteht (d.h. es gibt keine gemeinsamen Ursachen oder Ausschliessungen), dann sind sie \emph{unabhängig} voneinander. In diesem Fall gilt:
+\[
+P[A \cap B] = P[A] \cdot P[B]
+\]

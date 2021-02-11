@@ -1,0 +1,63 @@
+
+\section{Grenzwert}
+
+\subsection{Dominanz}
+
+\begin{equation*}
+	\begin{split}
+		\text{F{\"u}r}\ x \to +\infty:\quad & ... < \log(\log(x)) < \log(x) < x^\alpha < \alpha^x < x! < x^x \\
+		\text{F{\"u}r}\ x \to 0:\quad & ... < \log(\log(x)) < \log(x) < (\frac{1}{x})^\alpha \\
+	\end{split}
+\end{equation*}
+
+\subsection{Fundamentallimes}
+
+\begin{equation*}
+	\begin{split}
+		\lim_{x \to a} \frac{\sin \odot}{\odot} = \lim_{x \to a} \frac{\tan \odot}{\odot} & = 1\ \text{mit}\ \odot \xrightarrow{\: x \to a \: } 0 \\ 
+		\lim_{x \to a} (1 + \frac{1}{\odot})^\odot & = e\ \text{mit}\ \odot \xrightarrow{\: x \to a \: } \infty \\ 
+		\lim_{x \to a} (1 + \odot)^\frac{1}{\odot} & = e\ \text{mit}\ \odot \xrightarrow{\: x \to a \: } 0 \\ 
+	\end{split}
+\end{equation*}
+
+\subsection{Wurzeltrick}
+
+\begin{equation*}
+	\lim_{x\to\infty} \sqrt{\alpha}+\beta = \lim_{x\to\infty}(\sqrt{\alpha}+\beta)\frac{\sqrt{\alpha}-\beta}{\sqrt{\alpha}-\beta}
+\end{equation*}
+\newpage
+\subsection{$e^{\log(x)}$-Trick}
+
+\paragraph{Anforderung:}Term der Form $f(x)^{g(x)}$ mit Grenzwert "$0^0$", "$\infty^0$" oder "$1^\infty$" f{\"u}r $x \to 0$
+
+\begin{equation*}
+	\textbf{Grundsatz:}\quad\lim_{x\to a}f(x)^{g(x)} = \lim_{x\to a}e^{g(x) \cdot \log(f(x))}
+\end{equation*}
+
+\emph{Tipp:} Danach den Limes des Exponenten berechnen. Oft ist Bernoulli-de l'H{\^o}pital dazu n{\"u}tzlich.
+
+\subsection{Substitution}
+
+\begin{equation*}
+	\begin{split}
+		\lim_{x\to \infty} x^2(1 - \cos(\frac{1}{x})) \Rightarrow u = \frac{1}{x} \Rightarrow \lim_{x\to 0} \frac{1 - \cos(u)}{u^2}
+	\end{split}
+\end{equation*}
+
+\subsection{Satz von Bernoulli-de l'H{\^o}pital}
+
+\paragraph{Anforderung:}Term der Form $\frac{f(x)}{g(x)}$ mit Grenzwert entweder "$\frac{0}{0}$" oder "$\frac{\infty}{\infty}$" mit $g'(x) \neq 0$. \\
+
+\begin{equation*}
+	\textbf{Grundsatz:}\quad\lim_{x\to a}\frac{f(x)}{g(x)} = \lim_{x\to a}\frac{f'(x)}{g'(x)}
+\end{equation*}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Term} & \textbf{Anforderung} & \textbf{Umformung} \\ \hline
+		$f(x)g(x)$              & "$0\cdot\infty$"                     & $\frac{g(x)}{\frac{1}{f(x)}}$          \\ \hline 
+		$\frac{f(x)}{g(x)} - \frac{h(x)}{i(x)}$ & "$\infty - \infty$"  & $\frac{f(x)i(x) - h(x)g(x)}{g(x)i(x)}$ \\ \hline      
+	\end{tabular}
+\end{table}

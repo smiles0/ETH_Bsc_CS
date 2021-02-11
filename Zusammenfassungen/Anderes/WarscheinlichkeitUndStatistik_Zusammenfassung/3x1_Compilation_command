@@ -1,0 +1,1 @@
+pdfjam --nup 3x1 main_2.pdf --landscape --a4paper --outfile Zusammenfassung_Warschk_Statistik.pdf

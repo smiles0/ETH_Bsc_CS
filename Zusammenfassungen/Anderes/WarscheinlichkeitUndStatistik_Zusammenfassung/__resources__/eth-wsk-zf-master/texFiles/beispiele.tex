@@ -1,0 +1,165 @@
+\section{Beispiele}
+
+\subsection{t-Test}
+Ein Waschmittelhersteller bringt 5kg-Packungen in den Umlauf. Die Konsumentenschutzorganisation kauft 25 Packungen. Es ergibt sich ein Mittel von $\overline{X}=4.9kg$ und eine empirische Stichprobenvarianz $S^2 = 0.1kg^2$. Die einzelnen Gewichte seine durch unabhängige $N(\mu,\sigma^2)$ Zufallsvariablen beschrieben.
+
+\begin{enumerate}
+\item Wie lauten die Hypothesen $H_0$ und $H_A$?
+\item Wie ist $(\overline{X}-5) / (S / 5))$ verteilt unter $H_0$?
+\item Führen Sie den t-Test auf dem 5%-Niveau durch. Wie gross ist der P-Wert? Wird die Nullhypothese verworfen?
+\item Berechnen Sie das 95\%-Vertrauensintervall für den in 3. beschriebenen Test.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Lösung:}
+\begin{enumerate}
+\item $H_0: \mu = 5, H_1: \mu < 5$
+\item Verteilung: $\sim t_{5^2-1} = t_{24}$
+\item $T_1 = \frac{\overline{X}-\mu_0}{S/\sqrt{n}} = -1.581$. Wir ermitteln das t-Quantil für $n-1 = 24$ Freiheitsgrade und $t^{-1}(\alpha) = t^{-1}(0.05) = t^{-1}(0.95) = 1.711$. Somit erhalten wir eine kritische Grenze von $c = -1.711$. Weil $T_1 = -1.581 > c$ ist, wird die Nullhypothese nicht verworfen.
+\item ???
+\end{enumerate}
+
+\subsection{P-Wert berechnen}
+Für einen t-Test oder einen z-Test kann der P-Wert wie folgt berechnet werden:
+
+\vspace{10pt}
+
+\textbf{P-Wert bei zweiseitigem Test:} \\
+Beispiel mit $c=3.43$ als Grenze des Verwerfungsbereichs:
+\[
+\begin{array}{rcl}
+	P_{H_0}[|T|>3.43] & = & 2\cdot P_{H_0}[T>3.43] \\
+	& = & 2\cdot (1-P_{H_0}[T\leq 3.43] \\
+	& = & 2\cdot (1-\Phi(3.43)) \\
+	& = & 2\cdot (1-0.999698) \\	
+	& \approx & 0.0006
+\end{array}
+\]
+
+\vspace{10pt}
+
+\textbf{P-Wert bei einseitigem Test (rechts):} \\
+Beispiel mit $c=3.43$ als Grenze des Verwerfungsbereichs:
+\[
+\begin{array}{rcl}
+	P_{H_0}[T>3.43] & = & (1-P_{H_0}[T\leq 3.43] \\
+	& = & (1-\Phi(3.43)) \\
+	& = & (1-0.999698) \\	
+	& \approx & 0.0003
+\end{array}
+\]
+
+\vspace{10pt}
+
+\textbf{P-Wert bei einseitigem Test (links):} \\
+Beispiel mit $c=3.43$ als Grenze des Verwerfungsbereichs:
+\[
+\begin{array}{rcl}
+	P_{H_0}[T<3.43] & = & \Phi(3.43) \\
+	& \approx & 0.999698) \\
+\end{array}
+\]
+
+\subsection{Likelihood-Quotienten-Test (Neyman-Pearson-Lemma}
+Du erhältst den Auftrag, die Anzahl Ausfälle eines Systems zu überprüfen. Nach Angaben des Herstellers sollen erwartungsgemäss 0.5 Ausfälle/h eintreten. Gehe davon aus, dass die Anzahl Ausfälle poisson-verteilt mit unbekanntem Parameter $\lambda$ ist und dass die einzelnen Ausfälle unabhängig voneinander sind. Die Analyse nach 6 Betriebsstunden hat nun folgendes Ergebnis gebracht:
+
+\begin{center}
+  \begin{tabular}{|l|c|c|c|c|c|c|}
+    \hline
+    \textbf{Betriebsstunde i} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+    \textbf{Anz. Ausfälle $X_i$} & 1 & 0 & 1 & 1 & 2 & 1 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Aufgrund der hohen Anzahl Ausfälle haben wir den Verdacht, dass $\lambda$ grösser als die vom Hersteller angegebenen Anzahl Ausfälle ist. Prüfe anhand eines einseitigen Tests auf dem Niveau 2.5\%, ob tatsächlich $\lambda=0.5$ Ausfälle/h angenommen werden kann. Gib
+\begin{enumerate}
+\item das Modell,
+\item die Nullhypothese,
+\item die Alternativhypothese,
+\item die Teststatistik,
+\item die Verteilung der Teststatistik unter der Nullhypothese,
+\item den Verwerfungsbereich,
+\item den beobachteten Wert der Teststatistik, sowie
+\item den Testentscheid
+\end{enumerate}
+an.
+
+\vspace{10pt}
+
+\textbf{Lösung:}
+\begin{enumerate}
+\item \textbf{Modell:} Unter $P_{\lambda}$ sind die $X_i,\ i.i.d.\sim Pois(\lambda),\ i=1,...,6,\ \lambda$ unbekannt.
+\item \textbf{Nullhypothese:} $H_0:\ \lambda =\lambda_0=0.5$
+\item \textbf{Alternativhypothese:} $H_A:\ \lambda =\lambda_A >\lambda_0$
+\item \textbf{Teststatistik:} $T=\sum\limits_{i=1}^{6}X_i$, denn
+\[
+R(x_1,...,x_6;\lambda_0,\lambda_A) =
+\frac{
+	L(x_1,x_2,...,x_6;\lambda_0)
+}{
+	L(x_1,x_2,...,x_6;\lambda_A)
+} =
+\]
+\[
+\frac{
+	e^{-6\lambda_0}\prod\limits_{i=1}^{6}\frac{\lambda_{0}^{x_i}}{x_i!}
+}{
+	e^{-6\lambda_A}\prod\limits_{i=1}^{6}\frac{\lambda_{A}^{x_i}}{x_i!}
+} =
+e^{-6(\lambda_0-\lambda_A)}\left(\frac{\lambda_0}{\lambda_A}\right)^{\sum\limits_{i=1}^{6}x_i}
+\]
+Da $\lambda_0<\lambda_A$ wird $R(x_1,...,x_6;\lambda_0,\lambda_A)$ klein, genau dann, wenn $\sum\limits_{i=1}^{6}x_i$ gross ist. Statt des komplizierten Quotienten wählen wir als Teststatistik also
+\[
+T=\sum\limits_{i=1}^{6}X_i
+\]
+\item \textbf{Verteilung der Teststatistik unter $H_0$:} $T\sim Pois(6\lambda_0)=Pois(3)$
+\item \textbf{Verwerfungsbereich:} Der kritische Bereich "'Quotient klein"' hat die äquivalente Form "'Summe gross"', also ist der Verwerfungsbereich von der Form $K=[k,\infty)$. Um das Signifikanzniveau einzuhalten, muss gelten $P_{\lambda_0}[T\geq k]\leq 2.5\% \Leftrightarrow P_{\lambda_0}[T<k]\geq 97.5\%$:
+
+\begin{center}
+  \begin{tabular}{c|c|c}
+    k & $P_{\lambda_0}[T=k]$ & $P_{\lambda_0}[T\leq k]$ \\ \hline
+    0 & 0.050 & 0.050 \\
+    1 & 0.149 & 0.199 \\
+    2 & 0.224 & 0.423 \\
+    3 & 0.224 & 0.647 \\
+    4 & 0.168 & 0.815 \\
+    5 & 0.101 & 0.916 \\
+    6 & 0.050 & 0.966 \\
+    7 & 0.022 & 0.988 \\
+  \end{tabular}
+\end{center}
+
+Deshalb haben wir als Verwerfungsbereich $=[8,\infty)$.
+\item \textbf{Beobachteter Wert der Teststatistik:} $t=6$
+\item \textbf{Testentscheid:} Da $6$ nicht im Verwerfungsbereich liegt, wird die Nullhypothese \textbf{nicht} verworfen.
+
+
+\end{enumerate}
+
+
+
+
+
+\subsection{Erwartungstreuer Schätzer}
+Wir prüfen, ob der Schätzer $T = \frac{1}{n}\sum\limits_{i=1}^{n}X_i$ erwartungstreu ist.
+
+\[
+E[T] = E\left[\frac{1}{n}\sum\limits_{i=1}^{n}X_i\right] = \frac{1}{n}\sum\limits_{i=0}^{n}E[X_i] = \frac{1}{n} \cdot n \cdot \mu = \mu
+\]
+
+Der Schätzer $T$ ist erwartungstreu.
+
+\subsection{Verteilung der Summe zweier normalerverteilter ZV}
+Seien $X\sim N(\mu_1,\sigma_1^2)$ und $Y\sim N(\mu_2,\sigma_2^2)$. Wie ist $Z=1+aX+bY$ verteilt?
+
+\vspace{10pt}
+
+\textbf{Lösung:} \\
+\[
+\begin{array}{rcl}
+	Z & \sim & N(1+aE[X]+bE[Y],a^2Var[X]+b^2Var[Y]) \\
+	& \sim & N(1+a\mu_1+b\mu_2,a^2\sigma_1^2+b^2\sigma_2^2) \\
+\end{array}
+\]

@@ -1,0 +1,166 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% GRENZWERTSÄTZE
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Grenzwertsätze}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% GESETZ DER GROSSEN ZAHLEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Gesetz der grossen Zahlen}
+
+\begin{theorem}[Schwaches GGZ]
+	Für eine Folge \(X_1,X_2,\ldots\) von unkorrelierten Zufallsvariablen, die alle den
+	Erwartungswert \(\mu = \E[X_i]\) und die Varianz \(\var[X_i] = \sigma^2\) haben, gilt
+	\[
+		\overline{X}_n := \frac{1}{n} \sum_{i=1}^n X_i
+		\quad\overset{n\rightarrow\infty}{\longrightarrow}\quad
+		\mu = \E[X_i].
+	\]
+	Das heisst
+	\[
+		\P\left[\lvert\overline{X}_n-\mu\rvert > \epsilon \right] \overset{n\rightarrow\infty}{\longrightarrow} 0
+		\quad \forall \epsilon > 0.
+	\]
+\end{theorem}
+
+\begin{theorem}[Starkes GGZ]
+	Für eine Folge \(X_1,X_2,\ldots\) unabhängiger Zufallsvariablen, die alle den
+	endlichen Erwartungswert \(\mu = \E[X_i]\) haben, gilt
+	\[
+		\overline{X}_n := \frac{1}{n} \sum_{i=1}^n X_i
+		\quad\overset{n\rightarrow\infty}{\longrightarrow}\quad
+		\mu = \E[X_i].
+		\quad\text{P-fastsicher}
+	\]
+	Das heisst
+	\[
+		\P\left[\{\omega \in \Omega \mid \overline{X}_n(\omega) \overset{n\rightarrow\infty}{\longrightarrow} \mu\}\right] = 1.
+	\]
+\end{theorem}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% ZENTRALER GRENZWERTSATZ
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Zentraler Grenzwertsatz}
+
+\begin{theorem}[ZGS]
+	Sei \(X_1,X_2,\ldots\) eine Folge von i.i.d. Zufallsvariablen mit \(\mu = \E[X_i]\) und
+	\(\sigma^2 = \var[X_i]\), dann gilt für die Summe \(S_n = \sum_{i=1}^n X_i\)
+	\[
+		\lim_{n\rightarrow\infty} \P\left[ \frac{S_n-n\mu}{\sigma\sqrt{n}} \leq t \right] =
+		\Phi(t) \quad \forall t \in \R
+	\]
+	wobei \(\Phi\)  die Verteilungsfunktion von \(\mathcal{N}(0,1)\) ist.
+\end{theorem}
+
+\begin{note}
+	Die Summe \(S_n\) hat Erwartungswert \(\E[S_n] = n\mu\) und Varianz \\ \(\var[S_n] = n \sigma^2\).
+	Die Grösse
+	\[
+		S_n^\ast := \frac{S_n-n\mu}{\sigma\sqrt{n}} = \frac{S_n - \E[S_n]}{\sqrt{\var[S_n]}}
+	\]
+	hat Erwartungswert \(0\) und Varianz \(1\). Für grosse \(n\) gilt zudem:
+	\[\begin{array}{rcl}
+			\P[S_n^\ast \leq x] & \approx                        & \Phi(x)                     \\
+			S_n^\ast            & \overset{\text{approx.}}{\sim} & \mathcal{N}(0,1)            \\
+			S_n                 & \overset{\text{approx.}}{\sim} & \mathcal{N}(n\mu,n\sigma^2)
+		\end{array}\]
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% CHEBYSHEV UNGLEICHUNG
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Ungleichungen}
+
+\begin{definition}[Markov]
+	Für eine wachsende Funktion \(g: \R \rightarrow [0,\infty]\)
+	mit \(g(c)>0\) \textbf{für alle c} und eine Indikatorvariable I gilt:
+	\begin{eqnarray*}
+		\left. {
+		\begin{split}
+			g(c) I_{\{g(c) \leq g(X)\}} 	&\quad\leq\quad		g(X)		\\
+			g(c) I_{\{X \geq c\}} 			&\quad\leq\quad		g(X)		\\
+			g(c) \E(I_{\{X \geq c\}})		&\quad\leq\quad		\E(g(X))	\\
+			g(c) \P[X \geq c]				&\quad\leq\quad		\E(g(X))	\\
+		\end{split}
+		}\right\}	\quad 	\P[X \geq c] \leq \frac{\E[g(X)]}{g(c)}
+	\end{eqnarray*}
+\end{definition}
+
+\begin{definition}[Chebychev]
+	Sei \(X=\abs{Y-\E[Y]}\) und \(g(x)=x^2\), dann folgt:
+	\[
+		\P[\abs{Y-\E[Y]} \geq c]
+		\quad \stackrel{\text{Markov}}{\leq} \quad
+		\frac{\E[\abs{Y-\E[Y]}^2]}{c^2}
+		\quad = \quad
+		\frac{\var[Y]}{c^2}
+	\]
+\end{definition}
+
+\begin{definition}[Chernoff]
+	Seien \(X_1,\ldots,X_n\) unabhängig mit \(X_i \sim Be(p_i)\).\\
+	Wir wählen \(S_n = \sum X_i\) mit \(\E[S_n]=\sum p_i\) und \(g(c) = exp(ct)\)
+
+	\begin{eqnarray*}
+		\begin{split}
+			\P[S_n \geq c]									\quad\stackrel{\text{Markov}}{\leq}\quad&
+			\frac{1}{g(c)}		\E[g(S_n)]					\\ \quad\stackrel{g(c),S_n}{=}\quad&
+			\frac{1}{ e^{tc} } \E[ exp( t \sum X_i ) ]  	\\ \quad\stackrel{X_i \perp X_j}{=}\quad&
+			\frac{1}{ e^{tc} } \prod \E[ e^{t X_i} ]		\\ \quad\stackrel{\text{Def }\E[X_i]}{=}\quad&
+			\frac{1}{ e^{tc} } \prod  e^{t \cdot 0} (1-p_i) + e^{t \cdot 1} p_i \\ \quad\stackrel{\text{arith.}}{=}\quad&
+			\frac{1}{ e^{tc} } \prod  1 + p_i(e^t - 1) 		\\\quad\stackrel{1+z \leq e^z}{\leq}\quad&
+			\frac{1}{ e^{tc} } \prod  exp( p_i(e^t - 1) )	\\ \quad\stackrel{arith.}{=}\quad&
+			\frac{1}{ e^{tc} }  exp\big( \sum p_i(e^t - 1) \big)	\\ \quad\stackrel{\E[S_n]}{=}\quad&
+			exp\big( \E[S_n] (e^t - 1) - tc \big)
+		\end{split}
+	\end{eqnarray*}
+
+	Nun setzen wir \( \E[S_n] = \mu_n \), \( c = (1 \pm \delta) \mu_n \) für \(\delta > 0\)
+	und wählen \( t=log(1 \pm \delta) \), denn so wird die rechte Seite minimiert.
+	\[
+		\P[S_n \geq (1 \pm \delta)\mu_n] 					\quad \leq \quad
+		\bigg( \frac{ e^{ \pm \delta} }{ (1 \pm \delta)^{ (1 \pm \delta) } } \bigg) ^{\mu_n}
+	\]
+
+\end{definition}
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% MONTE CARLO
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Monte Carlo Integration}
+
+Das Integral
+\[
+	I := \int_0^1 g(x) dx
+\]
+lässt sich als Erwartungswert auffassen, denn mit einer gleichverteilten Zufallsvariable
+\(U \sim \mathcal{U}(0,1)\) folgt
+\[
+	\E[g(U)] = \int_{-\infty}^\infty g(x) f_U(x) \d x = \int_0^1 g(x) \d x.
+\]
+Mit einer Folge von Zufallsvariablen \(U_1,\ldots,U_n\), die unabhängig gleichverteilt
+\(U_i \sim \mathcal{U}(0,1)\) sind, lässt sich das Integral approximieren:
+Nach dem schwachen Gesetz der grossen Zahlen gilt
+\[
+	\overline{g(U_n)} = \frac{1}{n}\sum_{i=1}^n g(U_i)
+	\overset{n\rightarrow\infty}{\longrightarrow} \E[g(U_1)] = I.
+\]
+
+
+% ------------------------------------------------------------------------------------------------ %

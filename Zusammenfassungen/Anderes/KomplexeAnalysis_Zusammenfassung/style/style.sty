@@ -1,0 +1,219 @@
+% use greek letters for phi and epsilon
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% bolds math symbols
+\newcommand{\bs}{\boldsymbol}
+% Shortcut to write caligraphic math symbols
+\newcommand{\mc}{\mathcal}
+% norm
+\newcommand{\norm}[1]{\left| \!\:\! \left| #1 \right| \!\:\! \right|}
+
+% some shortcuts
+\newcommand{\ds}{\displaystyle}
+\newcommand{\arr}{\rightarrow}
+\newcommand{\Arr}{\Rightarrow}
+\newcommand{\LRA}{\Leftrightarrow}
+\newcommand{\LLRA}{\Longleftrightarrow}
+\newcommand{\nop}[1]{}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\cond}{\operatorname{cond}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\mx}{\mathop{\mathrm{max}}}
+\newcommand{\bigcupdot}{\bigcup \hspace{-0.35cm} \cdot}
+
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand*\abs[1]{\vert #1 \vert}
+\newcommand*\floor[1]{\lfloor #1 \rfloor}
+\newcommand*\set[1]{\lbrace #1 \rbrace}
+\newcommand{\eqdef}{\xlongequal{\text{def}}}
+\newcommand{\lims}{\lim_{x \rightarrow x_0}}
+\newcommand*\seq[1]{(#1)_{n = 0}^{\infty}}
+\newcommand{\sinx}{sin(x)}
+\newcommand{\siny}{sin(y)}
+\newcommand{\cosx}{cos(x)}
+\newcommand{\cosy}{cos(y)}
+\newcommand{\tanx}{tan(x)}
+\newcommand{\tany}{tan(y)}
+
+% stuff for integrals
+\newcommand{\intl}{\int\limits}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmD}{\mathrm{D}}
+
+% number sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\M}{\mathbb{M}}
+
+% big-o notation
+\newcommand{\bigO}{\mathcal{O}}
+
+
+
+%%%From other styles
+\definecolor{formula}{RGB}{229,204,255}
+%%Simon-Color
+%\definecolor{formula}{RGB}{153,255,153}
+
+\newcommand{\eqbox}[1]{\fcolorbox{black}{formula}{\hspace{0.5em}$\displaystyle#1$\hspace{0.5em}}}
+
+
+% matrix
+\newcommand{\MATR}[1]{ \displaystyle \left( \begin{matrix} #1 \end{matrix} \right)}
+
+% matrix without braces
+\newcommand{\BMATR}[1]{ \displaystyle \begin{matrix} #1 \end{matrix}}
+
+% gauss schema
+\newcommand{\ARRA}[2]{ \displaystyle \left( \begin{array}{#1} #2 \end{array} \right)}
+
+% determinante
+\newcommand{\DET}[1]{\text{det} \left( #1 \right)}
+\newcommand{\DETT}{\text{det}}
+
+% determinante
+\newcommand{\GDW}{\Longleftrightarrow}
+
+
+%macro for vectors 
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+%%%END From other styles
+
+% 'with' in set notation
+\newcommand{\with}{\;|\;}
+
+% hyperref
+\usepackage[colorlinks=false,pdfborder = {0 0 0 0}]{hyperref}
+
+
+\colorlet{shadecolor}{orange!15}
+\columnsep24pt
+\columnseprule0.1pt
+
+\setlength{\parindent}{0px}
+\setlength{\parskip}{5px}
+\setlength{\parsep}{0px}
+\setcounter{secnumdepth}{4}
+
+%% Redefine the \paragraph command:
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+	{-\baselineskip}%
+	{0.5\baselineskip}%
+	{\normalfont\bfseries}%
+}%
+\makeatother 
+
+% algorithms
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\algsetup{linenodelimiter=}
+
+% listings
+\definecolor{darkgreen}{RGB}{0,127,14}
+\definecolor{purple}{RGB}{75,0,130}
+\usepackage{listings}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=Pascal,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+    escapeinside={!}{!},
+    tabsize=2,
+}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+% theorem package
+\usepackage{amsthm}
+\usepackage{thmtools}
+\newtheoremstyle{my-thm-style}% name
+{6pt}% Space above
+{5pt}% Space below
+{}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{3pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal')
+
+\definecolor{grey}{RGB}{40, 55, 71}
+\definecolor{blue}{RGB}{93, 173, 226}
+\definecolor{green}{RGB}{130, 224, 170}
+\definecolor{red}{RGB}{229, 115, 115 }
+
+\declaretheoremstyle[
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=8pt,
+spaceabove=1pt,
+mdframed={
+  skipabove=2pt,
+  skipbelow=2pt,
+  hidealllines=false,
+  backgroundcolor={blue!10},
+  innerleftmargin=2pt,
+  innerrightmargin=2pt}
+]{def}
+
+\declaretheoremstyle[
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=8pt,
+spaceabove=1pt,
+mdframed={
+  skipabove=2pt,
+  skipbelow=2pt,
+  hidealllines=false,
+  backgroundcolor={grey!10},
+  innerleftmargin=2pt,
+  innerrightmargin=2pt}
+]{sat}
+
+\declaretheoremstyle[
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=8pt,
+spaceabove=1pt,
+mdframed={
+  skipabove=2pt,
+  skipbelow=2pt,
+  hidealllines=false,
+  backgroundcolor={green!10},
+  innerleftmargin=2pt,
+  innerrightmargin=2pt}
+]{lem}
+
+\declaretheoremstyle[
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=8pt,
+spaceabove=1pt,
+mdframed={
+  skipabove=2pt,
+  skipbelow=2pt,
+  hidealllines=false,
+  backgroundcolor={green!0},
+  innerleftmargin=2pt,
+  innerrightmargin=2pt}
+]{kor}
+
+\declaretheorem[style=def, name=Def. , numberwithin=section]{definition}
+\declaretheorem[style=sat, name=Satz, numberwithin=section]{satz}
+\declaretheorem[style=lem, name=Lemma, numberwithin=section]{lemma}
+\declaretheorem[style=kor, name=Korollar, numberwithin=section]{korollar}

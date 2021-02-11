@@ -1,0 +1,61 @@
+\section{Kombinatorik}
+
+\subsection{Permutation}
+n unterschiedlichen Kugeln:
+\[
+P(n)=n!
+\]
+
+n unterschiedliche Kugeln mit $n_1,n_2,...,n_k$ gleichen Kugeln:
+\[
+P(n,n_1,n_2,...,n_k)=\frac{n!}{n_1!n_2!...n_k!}
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Ermitteln der Anzahl Anordnungen.
+\end{itemize}
+
+\subsection{Kombination}
+Mit Zurücklegen:
+\[
+C_w(n,k)=\left( 
+	\begin{array}{c}
+		n+k-1 \\
+		k
+	\end{array}
+\right) =
+\frac{(n+k-1)!}{k!(n-1)!}
+\]
+
+Ohne Zurücklegen:
+\[
+C(n,k)=\left( 
+	\begin{array}{c}
+		n \\
+		k
+	\end{array}
+\right) =
+\frac{n!}{k!(n-k)!}
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Reihenfolge spielt keine Rolle.
+\end{itemize}
+
+\subsection{Variation}
+Mit Zurücklegen:
+\[
+V_w(n,k)=n^k
+\]
+
+Ohne Zurücklegen:
+\[
+V(n,k)=\frac{n!}{(n-k)!}
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Reihenfolge ist wesentlich.
+\end{itemize}

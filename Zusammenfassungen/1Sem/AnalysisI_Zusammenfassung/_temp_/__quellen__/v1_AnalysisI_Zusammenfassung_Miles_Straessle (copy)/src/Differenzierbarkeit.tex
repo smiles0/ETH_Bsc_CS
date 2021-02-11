@@ -1,0 +1,35 @@
+
+\section{Differenzialrechnung}
+
+Eine stetige Funktion ist differenzierbar, falls der Grenzwert $f'(x_0)$ existiert:
+
+\begin{equation*}
+f'(x_0) := \lim_{x\to x_0}\frac{f(x) - f(x_0)}{x-x_0}
+\end{equation*}
+\subsubsection*{Tangente}
+Sei $f: \Omega \to \mathbb{R}$ an der Stelle $x_0 \in \Omega$ diffbar. Dann ist die Tangente im Punkt $x_0$
+\[ t(x; x_0)=f(x_0)+f'(x_0)(x-x_0) \]
+
+\subsection{Umkehrsatz}
+
+\begin{equation*}
+(f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}
+\end{equation*}
+
+\subsection{Mittelwertsatz}
+
+\begin{equation*}
+f'(c) = \frac{f(b) - f(a)}{b - a}
+\end{equation*}
+
+\subsection{Taylorpolynom}
+
+Das Taylorpolynom $m$-ter Ordnung von $f(x)$ an der Stelle $x=a$
+\begin{equation*}
+P^a_m(x) := f(a) + f'(a)(x-a) + \frac{1}{2}f''(a)(x-a)^2 + ... + \frac{1}{m!} f^{(m)}(a)(x-a)^m
+\end{equation*}
+
+mit dem Fehlerterm $R^a_m(x)$, wobei $\xi$ zwischen $a$ und $b$ liegt:
+\begin{equation*}
+R^a_m(x) = \frac{f^{(m+1)}(\xi)}{(m+1)!}(x+a)^{m+1},\ \text{wobei}\ f(x) = P^a_m(x) + R^a_m(x)
+\end{equation*}

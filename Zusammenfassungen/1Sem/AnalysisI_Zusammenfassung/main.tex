@@ -1,0 +1,79 @@
+
+\documentclass[11pt]{article}
+\usepackage[left=4mm, right=4mm, top=3mm, bottom=7mm,paperwidth=140mm, paperheight=297mm]{geometry}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, amsfonts, amsmath}
+\usepackage{xcolor}
+\usepackage[e]{esvect}
+\usepackage{floatrow} % allows to insert pictures into proofs and theorems
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage[english,german]{babel} 
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{multicol}
+
+% Style Sheet
+\input{style/style.sty}
+
+
+%%%%%
+\begin{document}
+	
+\setcounter{page}{1}
+\setcounter{tocdepth}{2}
+
+\title{Analysis I, ETH, D-INFK}
+\author{Miles Strässle}
+\date{\today}
+\maketitle
+%\tableofcontents
+
+
+% Use compiler for 3x1 Format on A4 Page, ask Author
+% include the individual chapters
+% \input{kap<n>.tex}
+%\clearpage
+
+%% Multiline-Comment
+% \ifx true false
+% ...
+% \fi
+
+
+\part{Zusammenfassung}
+\input{src/Folgen.tex}
+\input{src/Reihen.tex}
+\input{src/Stetige_Funktionen.tex} % (ZWS, MINMAX, Umkehrabb, Konvergenz)
+\input{src/Grenzwert.tex}
+\input{src/Differenzierbarkeit.tex}
+%\input{src/Taylor_Approx.tex}
+\input{src/Riemann_Integral.tex}
+\input{src/Differnzialrechnung.tex}
+\input{src/Komplexe_Zahlen.tex}
+
+\part{Tables}
+\input{src/Tables.tex}
+
+%\part{TEMP}
+%\input{_temp_/formeltafel.tex}
+%\input{_temp_/reihen_tabellen.tex}
+
+\part{Generelles}
+\input{src/Trigonometrisches_Rechnen.tex}
+\input{src/induktion.tex}
+\input{src/Generelles.tex}
+
+
+\end{document}
+
+

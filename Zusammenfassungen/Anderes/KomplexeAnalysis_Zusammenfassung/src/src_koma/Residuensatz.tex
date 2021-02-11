@@ -1,0 +1,104 @@
+
+\section{Der Residuensatz}
+\subsection{Residuensatz}
+Sei $U \subseteq \mathbb{C} $ eine offene wegzusammenh"angende Teilmenge und sei $\gamma : [0, 1] \rightarrow U$ eine positiv orientierte einfache geschlossene Kurve. \\
+Seien $z_1, ..., z_n$ im Innere von $\gamma$ enthalten und sei $f : U$ \textbackslash $ \{z_1 , ..., z_n \} \rightarrow \mathbb{C}$ holomorph. Dann gilt:
+	
+	
+
+\(\displaystyle \oint\limits_{\partial \Omega} f(z) dz =
+2\pi i \sum\limits_{z_i \in \Omega} \text{Res}\big(f \big\vert z_i\big) \cdot n(\gamma(t), z_i)\)\\
+( \( n\left(\gamma (t), z_i\right) \text{ normalerweise} = \pm 1 \) )
+
+\subsection{Residuenberechnung}
+\begin{enumerate}
+	\item	\eqbox{ \text{Res}\big(f \big\vert z_0\big) = \lim\limits_{z \to z_0}(z-z_0)f(z)}\\
+	falls \(z_0\) ein \textbf{Pol erster Ordnung} ist.
+	\item	\eqbox{ \text{Res}\big(f \big\vert z_0\big) = \lim\limits_{z \to z_0} \dfrac{1}{(m-1)!}\left(\dfrac{d}{dz}\right)^{m-1}
+		\Big[(z-z_0)^m f(z)\Big]}\\
+	falls \(z_0\) \textbf{Pol \(m\)-ter Ordnung}\\
+	\item	\eqbox{ \text{Res}\big(f \big\vert z_0\big) = \dfrac{p(z_0)}{q'(z_0)}} \qquad falls \(f(z) = \dfrac{p(z)}{q(z)}\)\\
+	und \(q(z)\) in \(z_0\) eine \textbf{einfache Nullstelle} hat.\\
+	(\( p(z) \) und \( q(z) \) analytisch, aber nicht unbedingt Polynome!)
+	\item	\( \text{Res}\big(f \big\vert z_0\big) = \) Koeffizienten von \(z^{-1}\) der innersten Laurentreihe
+	um den Punkt \(z_0\). (=\(a_{-1}\))
+	\item	\( \text{Res}\big(f \big\vert z_0\big) = \dfrac{1}{2\pi i} \oint\limits_{\partial B} f(z) dz \) \qquad
+	mit \(\partial B = \partial B(z_0,r)\)
+	\item	\( \text{Res}\big(f \big\vert z_0\big) = 0\)\\
+	falls \(z_0 = 0\) und  \(f(z)\) gerade (Laurentreihe hat nur gerade Koeff.)
+\end{enumerate}
+
+\subsection{Integralabsch"atzungen}
+\( \lim\limits_{R \to \infty} \left( \left\vert \int\limits_{S_R} f(z) dz \right\vert \right) \leqslant
+\lim\limits_{R \to \infty} \pi \cdot R \cdot \max \left( \left\vert f(z) \right\vert \right) \)\\
+wobei \(S_R =\) Halbkreis, \(R \to \infty\)
+
+\( \displaystyle \lim_{\epsilon \to 0} \int_{\vert z-z_0 \vert = \epsilon, \text{Im}(z) > 0} f(z) dz
+= \pi \cdot i \cdot \text{Res}\big(f \big\vert z_0\big) \)\\
+(Halbkreis um Singularit"at)
+
+
+\subsection{G"angster-Lemma}
+
+Sei $\gamma_R (t) := Re^{ıt}$ f"ur $t \in [0, \pi].$ Seien p und q Polynome mit der
+folgenden Eigenschaften:
+\begin{enumerate}
+	\item $deg(p) ≤ deg(q) − 2$;
+	\item $q(x)$ besitzt keine Nullstellen auf der x-Achse.
+\end{enumerate}
+Sei $f(z) := \frac{p(z)}{q(z)} \cdot h(z)$, wobei $\vert h(z) \vert$ auf der Menge $\{  z \in \mathbb{C} : Im(z) \geq 0\}$ beschränkt ist. Dann gilt: $\lim_{R \rightarrow \infty} \int_{\gamma_R} f(z) dz = 0$
+
+
+
+
+\subsection{Einige Anwendungen des Residuensatzes}
+\begin{enumerate}
+	\item \(\displaystyle \int\limits_0^{2\pi} f(\cos(\varphi),\sin(\varphi)) d\varphi
+	= \dfrac{1}{i} \int\limits_{\vert z \vert = 1} \dfrac{1}{z} f \left(\dfrac{z+z^{-1}}{2}, \dfrac{z-z^{-1}}{2i}\right) dz \)\\
+	\hspace*{1cm} \(\displaystyle = 2\pi \sum\limits_{z_i \in \partial B(0,1)}
+	\text{Res}\big( \dfrac{1}{z} f\left(\dfrac{z+z^{-1}}{2}, \dfrac{z-z^{-1}}{2i}\right) \Big\vert z_i) \)
+	
+	\item	\( \displaystyle \int\limits_{-\infty}^\infty f(x) dx = \begin{cases}
+	\displaystyle 2\pi i \sum\limits_{z_i \in H^+} \text{Res}\big(f \big\vert z_i\big)
+	+ \pi i \sum\limits_{z_i \in \mathbb{R}} \text{Res}\big(f \big\vert z_i\big)	\\
+	\displaystyle -2\pi i \sum\limits_{z_i \in H^-} \text{Res}\big(f \big\vert z_i\big)
+	- \pi i \sum\limits_{z_i \in \mathbb{R}} \text{Res}\big(f \big\vert z_i\big)
+	\end{cases}\)
+	
+	falls \( f(z) = \dfrac{p(z)}{q(z)}\) und \( \deg(p) \leqslant \deg(q) - 2 \)
+	
+	\item	\( \displaystyle \int\limits_{-\infty}^\infty f(x) e^{i\alpha x}dx = \begin{cases}
+	\displaystyle 2\pi i \sum\limits_{z_i \in H^+} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big)	&	\alpha \geqslant 0\\
+	\displaystyle -2\pi i \sum_{z_i \in H^-} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big)		&	\alpha \leqslant 0\\
+	\end{cases} \)
+	
+	falls \( f(z) = \dfrac{p(z)}{q(z)} \) und \( q(z) \neq 0\)  \(\forall z \in \mathbb{R}\) und \( \deg(p) \leqslant \deg(q) - 2 \)
+	
+	\item	\( \displaystyle \int\limits_{-\infty}^\infty f(x) \cos(\alpha x)dx = \begin{cases}
+	\displaystyle -2\pi\cdot \text{Im}\left(\sum_{z_i \in H^+} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big) \right)
+	&	\alpha \geqslant 0\\
+	\displaystyle 2\pi\cdot \text{Im}\left(\sum_{z_i \in H^-} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big) \right)
+	&	\alpha \leqslant 0\\
+	\end{cases} \)
+	
+	\(\to\) \emph{gleiche Bedingungen wie bei 3.}
+	
+	\item	\( \displaystyle \int\limits_{-\infty}^\infty f(x) \sin(\alpha x)dx = \begin{cases}
+	\displaystyle 2\pi\cdot \text{Re}\left(\sum_{z_i \in H^+} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big) \right)
+	&	\alpha \geqslant 0\\
+	\displaystyle -2\pi\cdot \text{Re}\left(\sum_{z_i \in H^-} \text{Res}\big(f(z)e^{i\alpha z} \big\vert z_i\big) \right)
+	&	\alpha \leqslant 0\\
+	\end{cases} \)
+	
+	\(\to\) \emph{gleiche Bedingungen wie bei 3.}
+\end{enumerate}
+
+Dabei ist mit $H^+$ die obere Halbebene, und mit $H^-$ die untere Halbebene gemeint. Also folgt:\\
+\(z \in H^+\): Singularit"aten liegen auf der \textbf{oberen Halbebene}\\
+\(z \in H^-\): Singularit"aten liegen auf der \textbf{unteren Halbebene}\\
+\(z \in \mathbb{R}\): Singularit"aten liegen auf der \textbf{reellen Achse}\\
+
+
+
+
+

@@ -1,0 +1,279 @@
+\section{Diskrete Verteilungen}
+
+\subsection{Bernoulli-Verteilung}
+Verteilung eines Experiments mit zwei Ausgängen (Erfolg, Misserfolg) mit Erfolgsparameter $p$.
+
+\vspace{10pt}
+
+Notation:
+\[
+X \sim Be(p)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=p^x\cdot (1-p)^{1-x}
+\]
+
+Erwartungswert:
+\[
+E[X]=p
+\]
+
+Varianz:
+\[
+Var[X]=p(1-p)
+\]
+
+\textbf{Beispiel (Münzwurf):} Ein fairer Münzwurf ist bernoulliverteilt mit Parameter $p=\frac{1}{2}$. Für einen Parameter $p\neq\frac{1}{2}$ wäre der Münzwurf unfair.
+
+\subsection{Binomial-Verteilung}
+Beschreibt die Anzahl der Erfolge in einer Serie von \emph{gleichartigen} und \emph{unabhängigen} Versuchen, die jeweils genau zwei mögliche Ergebnisse haben (''Erfolg'' oder ''Misserfolg''). $n$ ist die Anzahl der Versuche bzw. Wiederholungen, $p$ ist die Wahrscheinlichkeit für einen "Erfolg".
+
+\vspace{10pt}
+
+Notation:
+\[
+X \sim Bin(n,p)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=
+\left(
+	\begin{array}{c}
+		n \\
+		x
+	\end{array}
+\right)
+p^x(1-p)^{n-x}
+\]
+
+Verteilungsfunktion:
+\[
+F(x)=P[X \leq x]=\sum \limits_{k=0}^x 
+\left(
+	\begin{array}{c}
+		n \\
+		k
+	\end{array}
+\right)
+p^k(1-p)^{n-k}
+\]
+
+Erwartungswert:
+\[
+E[X]=np
+\]
+
+Varianz:
+\[
+Var[X]=np(1-p)
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Die Binomialverteilung $Bin(n,p)$ darf für grosse $n$ und kleine $p$ näherungsweise durch die Poisson-Verteilung mit Parameter $\lambda = np$ ersetzt werden (Faustregel: $np<10$ und $n>1500p$).
+\end{itemize}
+
+\textbf{Beispiel:} Geburtstagsproblem, Anzahl der Köpfe beim 10-maligen Münzwurf.
+
+\subsection{Geometrische Verteilung}
+Wartezeit auf ersten Erfolg bei einer Folge von 0-1-Experimenten mit Erfolgsparameter $p$. $X$ ist die Nummer des ersten erfolgreichen Experiments.
+
+\vspace{10pt}
+
+Notation:
+\[
+X \sim Geom(p)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=p(1-p)^{x-1}
+\]
+
+Verteilungsfunktion:
+\[
+F(x)=P[X \leq x]=1-(1-p)^{x}
+\]
+
+Erwartungswert:
+\[
+E[X]=\frac{1}{p}
+\]
+
+Varianz:
+\[
+Var[X]=\frac{1-p}{p^2}
+\]
+
+\textbf{Beispiel:} Wartezeit auf Kopf bei wiederholtem Münzwurf
+
+\subsection{Poisson-Verteilung}
+Ereignet sich in einem Intervall (z.B. in einer gewissen Zeit, auf einer gewissen Fläche, in einem gewissen Volumen, usw.) ein völlig zufällig auftretendes Ereignis im Schnitt $\mu$ mal (Erwartungswert), dann ist die Zufallsgrösse, welche die Häufigkeit des Ereignisses in diesem Intervall angibt, poissonverteilt mit Parameter $\lambda=\mu$.
+
+\vspace{10pt}
+
+Notation:
+\[
+X \sim P(\lambda), X \sim Pois(\lambda)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=e^{-\lambda}\frac{\lambda^{x}}{x!}
+\]
+
+Verteilungsfunktion:
+\[
+F(x)=P[X \leq x]=e^{-\lambda}\sum \limits_{k=0}^x \frac{\lambda^{k}}{k!}
+\]
+
+Erwartungswert:
+\[
+E[X]=\lambda
+\]
+
+Varianz:
+\[
+Var[X]=\lambda
+\]
+
+\textbf{Bemerkungen}
+\begin{itemize}
+\item Falls $Z=X+Y$ und $X\sim Pois(\lambda)$, $Y\sim Pois(\mu)$ dann gilt $Z\sim Pois(\lambda+\mu)$.
+\end{itemize}
+
+\textbf{Beispiel:} Anzahl eingehender Druckaufträge in $n=3600$ Sekunden mit einer Jobwahrscheinlichkeit von $p=1\%$ pro Sekunde, wenn pro Sekunde maximal ein Job eintreffen kann.
+
+\subsection{Negativbinomiale Verteilung}
+Wartezeit auf den $r$-ten Erfolg bei einer Folge von unabhängigen 0-1-Experimenten mit Erfolgsparameter $p$.
+
+Notation:
+\[
+X \sim NB(r,p)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=\left(
+	\begin{array}{c}
+		x-1 \\
+		r-1
+	\end{array}
+\right)p^{r}(1-p)^{x-r}
+\]
+
+Verteilungsfunktion:
+\[
+F(x)=P[X \leq x]=\sum \limits_{i=r}^x
+\left(
+	\begin{array}{c}
+		i-1 \\
+		r-1
+	\end{array}
+\right)p^{r}(1-p)^{i-r}
+\]
+
+Erwartungswert:
+\[
+E[X]=\frac{r}{p}
+\]
+
+Varianz:
+\[
+Var[X]=\frac{r(1-p)}{p^2}
+\]
+
+\textbf{Beispiel:} Wartezeit auf dritten Kopf beim wiederholten Münzwurf
+
+\subsection{Hypergeometrische Verteilung}
+Urnenmodell für Ziehen ohne Zurücklegen. In einer Urne befinden sich $n$ Gegenstände. Davon sind $r$ Gegenstände vom Typ A und $n-r$ Gegenstände vom Typ B. Es werden $m$ Gegenstände ohne Zurücklegen gezogen. $X$ beschreibt die Wahrscheinlichkeitsverteilung für die Anzahl $k$ der Gegenstände vom Typ A in der Stichprobe.
+
+\vspace{10pt}
+
+Notation:
+\[
+X \sim HypGeom(n,m,r)
+\]
+
+Gewichtsfunktion:
+\[
+f(x)=P[X=x]=\frac{
+\left(
+	\begin{array}{c}
+		r \\ x
+	\end{array}
+\right)
+\left(
+	\begin{array}{c}
+		n-r \\ m-x
+	\end{array}
+\right)
+}{
+\left(
+	\begin{array}{c}
+		n \\ m
+	\end{array}
+\right)
+}
+\]
+
+Verteilungsfunktion:
+\[
+F(x)=P[X \leq x]=
+\sum \limits_{k=max(0,m-n)}^x \frac{
+\left(
+	\begin{array}{c}
+		r \\ k
+	\end{array}
+\right)
+\left(
+	\begin{array}{c}
+		n \\ m-k
+	\end{array}
+\right)
+}{
+\left(
+	\begin{array}{c}
+		r+n \\ m
+	\end{array}
+\right)
+}
+\]
+
+Erwartungswert:
+\[
+E[X]=\frac{mr}{n}
+\]
+
+Varianz:
+\[
+Var[X]=\frac{mr}{n^2(n-1)}(n-r)(n-m)
+\]
+
+\textbf{Beispiel (Lotto):} Anzahl Zahlen $n=45$, richtige Zahlen $r=6$, meine Zahlen $m=6$. Die Wahrscheinlichkeit für $4$ Richtige ist
+\[
+f(4)=\frac{
+	\left(
+	\begin{array}{c}
+		6 \\
+		4 \\
+	\end{array}
+	\right)
+	\left(
+	\begin{array}{c}
+		39 \\
+		2 \\
+	\end{array}
+	\right)
+}{
+	\left(
+	\begin{array}{c}
+		35 \\
+		6 \\
+	\end{array}
+	\right)
+}\approx 0.00136
+\]

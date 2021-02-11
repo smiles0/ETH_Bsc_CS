@@ -1,0 +1,140 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% FUNKTIONEN VON ZUFALLSVARIABLEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Funktionen von Zufallsvariablen}
+
+% ------------------------------------------------------------------------------------------------ %
+% TRANSFORMATION
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Transformationen}
+
+\begin{theorem}
+	Sei \(X\) eine stetige Zufallsvariable mit Dichte \(f_X\) und \(f_X(t) = 0\) für \(t \notin I \subseteq \R\). Sei \(g:\R\rightarrow\R\) stetig differenzierbar und streng monoton auf \(I\) mit Umkehrfunktion \(g^{-1}\). Dann hat die Zufallsvariable \(Y := g(X)\) die Dichte
+	\[
+		f_Y =
+		\left\{\begin{array}{ll}
+			f_X (g^{-1}(t)) \lvert\frac{\d}{\d t} g^{-1}(t)\rvert & \text{für } t \in \{g(x) \mid x \in I\} \\[1ex]
+			0                                                     & \text{sonst}
+		\end{array}\right.
+	\]
+\end{theorem}
+
+\begin{example}[Lineare Transformation] Aus \(Y := aX+b\) mit \(a>0,b \in\R\) folgt
+	\[ \textstyle
+		F_Y(t) =
+		\P[aX+b \leq t] =
+		\P\left[X \leq \frac{t-b}{a}\right] =
+		F_X\left(\frac{t-b}{a}\right)
+	\]
+	\[ \textstyle
+		\Rightarrow f_Y(t) = \frac{\d}{\d t}F_Y(t) = \frac{1}{a} f_X\left(\frac{t-b}{a}\right).
+	\]
+\end{example}
+
+\begin{example}[Nichtlineare Transformation] \(Y := X^2\)
+	\[ \textstyle
+		F_Y(t) =
+		\P[X^2 \leq t] =
+		\P\bigl[-\sqrt{t} \leq X \leq \sqrt{t}\bigr] =
+		F_X\bigl(\sqrt{t}\bigr)-F_X\bigl(-\sqrt{t}\bigr)
+	\]
+	\[\textstyle
+		\Rightarrow f_Y(t) = \frac{\d}{\d t}F_Y(t) =
+		\frac{f_X\bigl(\sqrt{t}\bigr)+f_X\bigl(-\sqrt{t}\bigr)}{2\sqrt{t}}
+	\]
+\end{example}
+
+% ------------------------------------------------------------------------------------------------ %
+% SIMULATION VON VERTEILUNGEN
+% ------------------------------------------------------------------------------------------------ %
+
+\subsubsection{Simulation von Verteilungen}
+
+\begin{theorem}
+	Sei \(F\) eine stetige und streng monoton wachsende Verteilungsfunktion mit Umkehrfunktion \(F^{-1}\). Ist \(X \sim \mathcal{U}(0,1)\) und \(Y := F^{-1}(X)\), so hat \(Y\) die Verteilungsfunktion \(F\).
+\end{theorem}
+
+\begin{example} Um die Verteilung \(Exp(\lambda)\) zu simulieren bestimmt man zu der Verteilungsfunktion \(F(t) = 1-e^{-\lambda t}\) für \(t \geq 0\) die Inverse \(F^{-1}(t) = -\frac{\log(1-t)}{\lambda}\). Mit \(U \sim \mathcal{U}(0,1)\) erhält man
+	\[
+		X := F^{-1}(U) = -\frac{\log(1-U)}{\lambda} \sim Exp(\lambda).
+	\]
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Funktionen
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Funktionen}
+
+Ausgehend von der Zufallsvariablen \(X = (X_1,\ldots,X_n)\) kann mit einer Funktion \(g:\R^n\rightarrow\R\)
+eine neue Zufallsvariable \(Y = g(X_1,\ldots,X_n)\) bilden. Für die Verteilung \(\mu_Y\) bedeutet dies:
+\[	\mu_Y(B) = \mu_X(\{ \vec{x} \in \R^n \mid g(\vec{x} ) \in B \}) \]
+
+Danach versuchen wir die rechte Seite auszurechnen,
+indem wir die genauere Struktur der Transformation \(g\) ausnutzen:
+\newpage
+\begin{example}[Summe]
+	Für die stetige/diskrete Dichte  der Summe \(Z = X + Y\) zweier Zufallsvariablen \(X,Y\) gilt somit:
+
+	\begin{multicols}{2}
+		\noindent
+		\begin{eqnarray*}
+			\begin{split}
+				&p_Z(z)	\\
+				&= \mu_Z (\{ z \}) \\
+				&= \mu_{X,Y}(\{(x,y) \mid x+y=z\}) \\
+				&= \textstyle \sum_{\underset{ y_i=z-x_i}{(x_i,y_i)}} p_{X,Y}(x_i,y_i) \\
+				&= \textstyle \sum_{x_i} p_{X,Y}(x_i,z-x_i) \\
+			\end{split}
+		\end{eqnarray*}
+
+		\columnbreak
+
+		\noindent
+		\begin{eqnarray*}
+			\begin{split}
+				&F_Z(z)	 \\
+				&= \mu_Z (\{ Z \leq z \}) \\
+				&= \mu_{X,Y}(\{(x,y) \mid x+y \leq z\}) \\
+				&= \textstyle \int_{-\infty}^\infty \int_{-\infty}^{z-x} f(x,y) \d y \d x \\
+				&\stackrel{v=x+y}{=} \textstyle \int_{-\infty}^z \int_{-\infty}^\infty f(x,v-x) \d x \d v \\
+			\end{split}
+		\end{eqnarray*}
+
+	\end{multicols}
+
+	\[ \Rightarrow f_Z(z) = \frac{\d}{\d z} F_Z(z) = \int_{-\infty}^\infty f(x,z-x) \d x.	\]
+
+
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% SPEZIELLE FUNKTIONEN VON ZUFALLSVARIABLEN
+% ------------------------------------------------------------------------------------------------ %
+
+\subsubsection{Spezielle Funktionen}
+
+Wichtige Spezialfälle sind die Summe \(S_n = \sum_{i=1}^n X_i\) und das arithmetische Mittel
+\(\overline{X}_n = \frac{S_n}{n}\) für \(X_i\) unabhängig.
+\begin{compactenum}
+	\item Wenn \(X_i \sim Be(p)\), dann ist \(S_n \sim Bin(n,p)\).
+	\item Wenn \(X_i \sim Bin(n_i,p)\), dann ist \(S_n \sim Bin(\sum n_i,p)\).
+	\item Wenn \(X_i \sim \mathcal{P}(\lambda_i)\), dann ist \(S_n \sim \mathcal{P}(\sum \lambda_i)\).
+	\item Wenn \(X_i \sim \Stdev(\mu_i,\sigma_i^2)\), dann ist \(S_n \sim \Stdev(\sum \mu_i, \sum \sigma_i^2 )\).
+	\item Wenn \(X_i \sim Ga(\alpha_i,\lambda)\), dann ist \(S_n \sim Ga(\sum \alpha_i, \lambda)\)
+\end{compactenum}
+
+Für den Erwartungswert und die Varianz gilt allgemein
+\[
+	\E[S_n] = n\E[X_i]
+	\qquad
+	\var[S_n] = n\var[X_i]
+\]
+

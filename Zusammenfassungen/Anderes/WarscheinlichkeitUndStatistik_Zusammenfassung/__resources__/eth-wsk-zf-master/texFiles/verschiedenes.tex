@@ -1,0 +1,96 @@
+\section{Verschiedenes}
+\textbf{Binomialkoeffizient} \\
+Der Binomialkoeffizient
+\[
+\left(
+\begin{array}{c}
+	n \\
+	k
+\end{array}
+\right)
+\]
+gibt für $n,k\in\mathbb{N}$ an, \textbf{wie viele Möglichkeiten es gibt, $k$ Objekte aus $n$ Objekten auszuwählen}. Damit gibt der Binomialkoeffizient an, wie viele $k$-elementige Teilmengen aus einer $n$-elementigen Menge gebildet werden können (gesprochen: ''k aus n'' oder ''k tief n'').
+
+\vspace{10pt}
+
+Für $k=0$ ist der Binomialkoeffizient $1$:
+\[
+\left(
+\begin{array}{c}
+	n \\
+	0
+\end{array}
+\right)=1
+\]
+
+Für $k=1$ ist der Binomialkoeffizient $n$:
+\[
+\left(
+\begin{array}{c}
+	n \\
+	1
+\end{array}
+\right)=n
+\]
+
+Für $k>n$ ist der Binomialkoeffizient stets $0$.
+
+\vspace{10pt}
+
+\textbf{Gammafunktion}
+\[
+\Gamma(x) = \int\limits_{0}^{\infty}t^{x-1}e^{-t}dt=(x-1)!
+\]
+
+\vspace{10pt}
+
+\textbf{Diverse Summenformeln}
+\[
+\sum\limits_{k=0}^{\infty}\frac{1}{k!}=e
+\]
+\[
+\sum\limits_{k=0}^{\infty}\frac{\lambda^k}{k!}=e^{\lambda}
+\]
+\[
+\sum\limits_{k=1}^{\infty}\frac{\lambda^k}{k!}=e^{\lambda}-1
+\]
+\[
+\sum\limits_{i=0}^{n}i=\sum\limits_{i=1}^{n}i=\frac{n(n-1)}{2}
+\]
+\[
+\sum\limits_{i=1}^{n}i^2=\frac{n\cdot (n+1)\cdot (2n+1)}{6}
+\]
+\[
+\sum\limits_{i=0}^{\infty}a\cdot p^i=\sum\limits_{i=1}^{\infty}a\cdot p^{i-1}=\frac{a}{1-p}
+\]
+
+\vspace{10pt}
+
+\textbf{Mitternachtsformel} \\
+Formel zum Auflösen von allgemeinen quadratischen Gleichungen der Form $ax^2+bx+c=0$:
+\[
+x_{1,2} = \frac{-b\pm\sqrt{b^2-4ac}}{2a} 
+\]
+
+\textbf{Produkteformeln}
+\[
+\prod\limits_{k=m}^{n}a\cdot x_i = a^{n-m+1}\cdot\prod\limits_{k=m}^{n}x_i
+\]
+
+\vspace{10pt}
+
+\textbf{Logarithmenregeln}
+\[
+\begin{array}{rcl}
+	\log{(uv)} & = & \log{(u)}+\log{(v)} \\
+	\log{(\frac{u}{v})} & = & \log{(u)}-\log{(v)} \\
+	\log_b{(r)} & = & \frac{\log_a(r)}{\log_a{(b)}} \\
+	\log_a{(u^k)} & = & k\cdot\log_a{(u)} \\
+	\log_a{(\sqrt[n]{u})} & = & \log_a{(u^{\frac{1}{n}})}=\frac{1}{n}\cdot\log_a{(u)} \\
+	\log_a{(a^b)} & = & b \\ 
+	\log{1} & = & 0 \\
+	\log_a{(a)} & = & 1 \\	
+	\ln{e} & = & 1 \\
+		
+\end{array}
+\]

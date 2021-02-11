@@ -1,0 +1,42 @@
+
+\section{Laplacetransformation}
+\eqbox{ F(s) = \int\limits_0^{\infty} f(t)e^{-st} dt }
+mit \( \displaystyle f(t) = \dfrac{1}{2\pi i} \int\limits_{\sigma-i\infty}^{\sigma+i\infty} F(s)e^{st} \text{ d}s \)
+
+Wobei \( s = \sigma + i\omega \) und \( \sigma \) so gew"ahlt werden muss, dass die Integrale konvergieren.
+
+Hier (KomA) wird bei der Laplacetrafo \( f(t) \) immer = 0 gesetzt, wenn \( t<0 \) !
+
+Dies geschieht mit Hilfe der\\
+\textbf{Heavyside Sprungfunktion}\\
+\eqbox{H(T) = \begin{cases} 1 & t\geqslant 0 \\ 0 & t<0 \end{cases}}\\
+$H(T)$ wird auch $\mathcal{U}(T)$ geschrieben
+
+\subsection{DGl mit Laplace l"osen}
+\begin{itemize}
+\item	DGL Laplace transformieren (rechte und linke Seite) mit Hilfe der Tabellen.
+\item	Anfangswerte in transformierte DGL einsetzen.
+\item	DGL nach \(Y(s)\) aufl"osen.
+\item	Ergebnis wieder mit Tabellen r"ucktransformieren (ev. mit Partialbruchzerlegung, \dots).
+\end{itemize}
+
+\subsection{Wichtigste Identit"aten}
+\hspace*{1mm} \( (f*g)(t) =\int\limits_0^t f(t-\tau)g(\tau)\text{ d}\tau\) \hspace{2mm} \( \laplace \) \hspace{2mm} \( F(s)G(s) \)\\
+\begin{tabular}{lcl}
+\( f(at) \)		&	\( \laplace \)	&	\( \dfrac{1}{|a|}F(\dfrac{s}{a}) \)\\
+\( f(t)e^{at} \)	&	\( \laplace \)	&	\( F(s-a) \)\\
+\( f'(t) \)		&	\( \laplace \)	&	\( sF(s) - f(0^+) \)\\
+\( f''(t) \)		&	\( \laplace \)	&	\( s^2F(s) - s f(0^+) - f'(0^+) \)\\
+\( f'''(t) \)		&	\( \laplace \)	&	\( s^3F(s) - s^2f(0^+) - s f'(0^+) - f''(0^+) \)\\
+\(f(t-a)\)		&	\( \laplace \)	&	\(e^{-as}F(s)\)\\
+\(\left(\dfrac{\text{d}}{\text{d}t}\right)^n f(t)\)
+&	\( \laplace \)	&	\(s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-\dots\)\\
+&				&	\(-sf^{(n-2)}(0)-f^{(n-1)}(0)\)\\
+\(\displaystyle\int\limits_0^t f(\tau) \text{ d}\tau\)
+&	\( \laplace \)	&	\(\dfrac{1}{s}F(s)\)\\
+\(t^nf(t)\)		&	\( \laplace \)	&	\((-1)^n\left(\dfrac{\text{d}}{\text{d}s}\right)^n F(s)\)\\
+\(\dfrac{f(t)}{t}\)	&	\( \laplace \)	&	\(\int\limits_s^\infty F(u) \text{ d}u\)\\
+\(f(t+T) = f(t)\)	&	\( \laplace \)	&	\(\dfrac{1}{1-e^{-sT}}\int\limits_0^Tf(t)e^{-st}\text{ d}t\)\\
+(\(f\) ist \(T\)-period.)	&			&	\(=\dfrac{1}{1-e^{-sT}}\mathcal{L}\{f(t)H(T-t)\}(s)\)
+\end{tabular}
+

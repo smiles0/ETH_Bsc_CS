@@ -1,0 +1,91 @@
+
+\documentclass[11pt]{article}
+\usepackage[left=1mm, right=1mm, top=1mm, bottom=1mm,paperwidth=140mm, paperheight=297mm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, amsfonts, amsmath}
+\usepackage{xcolor}
+\usepackage[e]{esvect}
+\usepackage{floatrow} % allows to insert pictures into proofs and theorems
+\usepackage{cancel}
+\usepackage{graphicx}
+%\usepackage{picins}
+\usepackage{tabularx}
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{booktabs}
+\colorlet{shadecolor}{orange!15}
+%\usepackage{multirow}
+%\usepackage{multicol}
+\columnsep24pt
+\columnseprule0.1pt
+\usepackage[english,german]{babel} 
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{booktabs}
+
+%%Neudefinition / Vereinfachungen
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand*\abs[1]{\vert #1 \vert}
+\newcommand*\floor[1]{\lfloor #1 \rfloor}
+\newcommand*\set[1]{\lbrace #1 \rbrace}
+\newcommand{\eqdef}{\xlongequal{\text{def}}}
+\newcommand{\lims}{\lim_{x \rightarrow x_0}}
+\newcommand*\seq[1]{(#1)_{n = 0}^{\infty}}
+\newcommand{\sinx}{sin(x)}
+\newcommand{\siny}{sin(y)}
+\newcommand{\cosx}{cos(x)}
+\newcommand{\cosy}{cos(y)}
+\newcommand{\tanx}{tan(x)}
+\newcommand{\tany}{tan(y)}
+
+\setlength{\parindent}{0px}
+\setlength{\parskip}{5px}
+\setlength{\parsep}{0px}
+
+\input{style/style.sty}
+
+
+%%%%%
+\begin{document}
+
+\title{Analysis I - D-INFK}
+\author{Miles Strässle}
+\date{\today}
+\maketitle
+
+\setcounter{tocdepth}{2}
+%\tableofcontents
+\setcounter{page}{1}
+
+% Use compiler for 3x1 Format on A4 Page, ask Author
+% include the individual chapters
+% \input{kap<n>.tex}
+%\clearpage
+
+
+\part{Zusammenfassung}
+\input{src/Folgen.tex}
+\input{src/Reihen.tex}
+\input{src/Stetige_Funktionen.tex} % (ZWS, MINMAX, Umkehrabb, Konvergenz)
+\input{src/Grenzwert.tex}
+\input{src/Differenzierbarkeit.tex}
+\input{src/Taylor_Approx.tex}
+\input{src/Riemann_Integral.tex}
+\input{src/Differnzialrechnung.tex}
+\input{src/Komplexe_Zahlen.tex}
+
+\part{Tables}
+\input{src/Tables.tex}
+
+\part{Generelles}
+\input{src/Trigonometrisches_Rechnen.tex}
+\input{src/induktion.tex}
+\input{src/Generelles.tex}
+
+
+\end{document}
+
+
