@@ -1,0 +1,82 @@
+
+\documentclass[11pt]{article}
+\usepackage[left=4mm, right=4mm, top=3mm, bottom=7mm,paperwidth=140mm, paperheight=297mm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, amsfonts, amsmath}
+\usepackage{xcolor}
+\usepackage[e]{esvect}
+\usepackage{floatrow} % allows to insert pictures into proofs and theorems
+
+\usepackage{cancel}
+
+\usepackage{graphicx}
+%\usepackage{picins}
+\usepackage{tabularx}
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{booktabs}
+\colorlet{shadecolor}{orange!15}
+
+\usepackage{multirow}
+\usepackage{multicol}
+\columnsep24pt
+\columnseprule0.1pt
+
+\input{style/style.sty}
+
+\usepackage[english,german]{babel} 
+\begin{document}
+
+
+%\author{Miles Str"assle}
+%\title{Zusammenfassung Wahrscheinlichkeit \& Statistik}
+%\date{\today}
+%\maketitle
+
+\setcounter{tocdepth}{2}
+%\tableofcontents
+
+%\thispagestyle{empty}
+%\newpage
+%\setcounter{page}{1}
+
+%\begin{multicols}{2}
+
+% include the individual chapters
+
+
+\part{TEMP}
+\input{src/TEMP.tex}
+
+
+\part{Wahrscheinlichkeitstheorie}
+\input{src/kap1.tex}
+\input{src/kap2.tex}
+\input{src/kap3.tex} % Disk.Vert.
+\input{src/kap4.tex}
+\input{src/kap5.tex}
+
+\part{Statistik}
+
+\input{src/kap6.tex}
+\input{src/kap7.tex}
+\input{src/kap8.tex}
+\input{src/kap9.tex}
+
+
+\part{Rest}
+\input{src/rest.tex}
+%\input{src/Lineare_Regression.tex}
+
+
+
+% fill the page
+%\clearpage
+
+%\end{multicols}
+
+
+\end{document}
+
+

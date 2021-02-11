@@ -1,0 +1,87 @@
+
+\subsection{Hauptsatz der Differential- und Integralrechnung}
+
+\begin{equation*}
+f(x)=\int^{m(x)}_lg(t)dt
+\end{equation*}
+\begin{equation*}
+f'(x)=g(m(x))\cdot\frac{d}{dx}m(x)
+\end{equation*}
+wobei $m(x)$ der Form $ax^b$ ist mit $l\in \mathbb{R}$\\\\
+\underline{Differenzial / Jaccobi-Matrix}
+\begin{equation*}
+df = 
+\begin{pmatrix}
+\frac{\partial f_1}{\partial x_1} & ... & \frac{\partial f_1}{\partial x_n} \\
+... & ... & ... \\
+\frac{\partial f_m}{\partial x_1} & ... & \frac{\partial f_m}{\partial x_n}
+\end{pmatrix}
+\end{equation*}
+$\rightarrow$ enth{\"a}lt die $n$ part. Ableit. aller m Komponenten von $f$\\
+\subsubsection*{Taylorentwicklung mit mehreren Variabeln} 
+\begin{tabular}{ll}
+	$f(x,y) =  $ & $f(x_0,y_0) + \frac{\partial f}{\partial x} \Delta x + \frac{\partial f}{\partial y} \Delta y$ \\
+	& $ + \frac{1}{2!} \bigg{(}
+	\frac{\partial^2 f}{\partial x^2} (\Delta x)^2	
+	+ 2\frac{\partial^2 f}{\partial x \partial y} \Delta x \Delta y 
+	+ \frac{\partial^2 f}{\partial y^2} (\Delta y)^2	
+	\bigg{)} $ \\
+	& $ + \frac{1}{3!} \bigg{(}
+	\frac{\partial^3 f}{\partial x^3} (\Delta x)^3
+	+ 3\frac{\partial^3 f}{\partial x^2 \partial y} (\Delta x)^2 \Delta y$ \\
+	&			\qquad  $+ 3\frac{\partial^3 f}{\partial x \partial y^2} \Delta x (\Delta y)^2 
+	+ \frac{\partial^3 f}{\partial y^3} (\Delta y)^3
+	\bigg{)} $ \\
+	& 			$+ \cdots$			
+	
+\end{tabular}
+
+\section{Integration}
+
+
+\subsection{Regeln}
+
+\begin{equation*}
+\begin{split}
+\textbf{Direkter Integral}\quad & \int f(g(x))g'(x)\ dx = F(g(x)) \\
+\textbf{Partielle Integration}\quad & \int f' \cdot g\ dx = f \cdot g - \int f \cdot g'\ dx \\
+\textbf{mit Polynomen}\quad & \int\frac{p(x)}{q(x)}\ dx \Rightarrow\ \text{Partialbruchzerlegung} \\
+\textbf{Substitution}\quad & \int_a^b f(\varphi(t))\varphi'(t)\ dt = \int_{\varphi(a)}^{\varphi(b)} f(x)\ dx\ \text{mit}\ x = \varphi(t)
+\end{split}
+\end{equation*}
+
+\subsection{Tipps}
+
+\begin{equation*}
+\begin{split}
+\int\tan x\ dx & = \int\frac{\sin x}{\cos x}\ dx = -\log|\cos(x)| \\
+\int \frac{1}{x - \alpha}\ dx & = \log(x-\alpha) \\
+\int\frac{\frac{1}{\alpha}}{1+(\frac{x}{\alpha})^2}\ dx & = \arctan(x) \\
+\int \sin^2(x)\ dx & = \frac{1}{2}(x - \sin(x)\cos(x)) + C \\
+\int \cos^2(x)\ dx & = \frac{1}{2}(x + \sin(x)\cos(x)) + C \\
+\int \sqrt{x^2+1}\ dx & = \sinh(x) + C
+\end{split}
+\end{equation*}
+
+\subsection{Uneigentliche Integrale}
+
+\begin{equation*}
+\begin{split}
+\int_0^\infty f(x)\ dx = \lim_{R \to \infty} \int_0^R f(x)\ dx \\
+\int_{-\infty}^\infty f(x)\ dx = \lim_{R \to -\infty} \int_R^k f(x)\ dx + \lim_{R \to \infty} \int_k^R f(x)\ dx
+\end{split}
+\end{equation*}
+
+Gibt es eine Unstetigkeitstelle $c$ in dem Integrationsgebiet, so geht man wie folgt vor:
+\begin{equation*}
+\int_a^b f(x)\ dx = \lim_{\varepsilon \to 0} \int_a^{c-\varepsilon} f(x)\ dx + \lim_{\varepsilon \to 0} \int_{c+\varepsilon}^b f(x)\ dx
+\end{equation*}
+
+\subsection{Beweis bijektiver Funktionen}
+
+Zu beweisen sind folgende Eigenschaften:
+\begin{description}[labelindent=16pt,style=multiline,leftmargin=3cm, noitemsep]
+	\item[injektiv:] Zeig, dass $f$ \textbf{strickt monoton w{\"a}chst oder f{\"a}llt} und\textbf{stetig} ist
+	\item[surjektiv:] Zeig, dass alle Werte im Bildbereich angenommen werden (vl. mit Zwischenwertsatz)
+\end{description}
+Daraus folgt dann, dass $f$ bijektiv ist.

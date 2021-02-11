@@ -1,0 +1,241 @@
+\section{Komplexwertige Funktionen}
+\textbf{Begriffe aus der Topologie}\\
+\textbf{Umgebung}: (Beliebig kleine) Kreisscheibe um einen Punkt $z$.\\
+\textbf{innerer Punkt}: Der Punkt $z$ befindet sich in einer Menge und ber"uhrt den Rand nicht (Umgebung um $z$ existiert in Menge).\\
+\textbf{Randpunkt}: $z$ befindet sich auf dem Rand einer Menge.\\
+\textbf{Ber"uhrungspunkt}: $z$ sitzt in oder auf dem Rand einer Menge.\\
+\textbf{offene Teilmenge}: Teilmenge ohne Rand / nur innere Punkte\\
+\textbf{abgeschlossene Teilmenge}: Teilmenge mit Rand / alle Ber"uhrungspunkte sind enthalten\\
+\textbf{beschr"ankte Teilmenge}: F"ur jeden Punkt $z$ einer Teilmenge $S$ gilt: $\vert z \vert$ ist kleiner
+als eine Konstante $M$.\\
+\textbf{kompakte Teilmenge}: abgeschlossen und beschr"ankt.\\
+\textbf{zusammenh"angende Teilmenge}: Jeder Punkt der Teilmenge kann mit jedem anderen Punkt der Menge nur "uber
+andere Punkte der Menge verbunden werden (keine \"Inseln\").\\
+\textbf{Gebiet}: zusammenh"angende offene Teilmenge.\\
+
+\textbf{Komplexe Funktionen}\\
+$f: \mathbb{R} \to \mathbb{C} $ oder $f: \mathbb{C} \to \mathbb{C} $\\
+$f(z)$ ist das \textbf{Bild} von $z$ und $z$ ist das \textbf{Urbild} (nicht immer eindeutig) von $w = f(z)$.
+
+\textbf{Hauptwert der $n$-ten Wurzel} (principal value, kurz: \textbf{pv}):\\
+\fcolorbox{black}{formula}{
+	\begin{tabular}{rl}
+		pv $\sqrt[n]{w}$:
+		& $\mathbb{C}^{-*} \to S = \lbrace z \in \mathbb{C}^* \vert -\frac{\pi}{n} < \text{Arg } z < \frac{\pi}{n} \rbrace$\\
+		& $w \mapsto \sqrt[n]{\vert w \vert} e^{i\frac{\text{Arg } w}{n}}$
+\end{tabular}}
+
+\textbf{Komplexe Exponentialfunktion}\\
+\eqbox{\text{exp }: \mathbb{C} \to \mathbb{C} \text{ , } z \mapsto w = \text{exp } z = \sum \limits_{k=0}^\infty \frac{1}{k!} z^k}\\
+Es gelten folgende Umformungen:\\
+\fcolorbox{black}{formula}{
+	\begin{tabular}{l}
+		$\text{exp}(z+z') = \text{exp }z \cdot \text{exp }z'$ mit $z,z' \in \mathbb{C}$\\
+		$e^z = \text{exp }z$\\
+		$e^{i\varphi} = \cos{\varphi} + i \sin{\varphi}$ f"ur reelle $\varphi$\\
+		\emph{Aus letzterem folgt insbesondere}:\\
+		$e^{2\pi i} = 1$ und\\
+		$\text{exp}(z + 2\pi i) = \text{exp }z \cdot \text{exp}(2 \pi i) = \text{exp }z$
+\end{tabular}}\\
+$z ^\alpha = e^{\alpha log(z)}$\\					
+\textbf{Logarithmus}\\
+Da die Exponentialfunktion im komplexen periodisch ist, ist der komplexe Logarithmus als \textbf{Menge} definiert:\\
+\eqbox{\log{w} = \lbrace z \in \mathbb{C} \text{ } \vert \text{ } e^z = w \rbrace \subseteq \mathbb{C}} \hspace{1cm} $\log(w) = \ln\vert w \vert + i \arg(w) $\\
+Auch hier will man mit einem konkreten Wert rechnen k"onnen. Deshalb ist der \textbf{Hauptwert des Logarithmus} wie
+folgt definiert:\\
+\eqbox{\text{Log }: \mathbb{C}^{-* }\to \mathbb{C} \text{ , } w \mapsto \ln{\vert w \vert} + i \text{ Arg }w}\\
+Hier ist Log nun injektiv und der \emph{eindeutig bestimmte Repr"asentant} von $\log w$ im Streifen
+$S = \lbrace z=x+iy \vert - \pi < y < \pi \rbrace = \lbrace z \in \mathbb{C} \vert \text{ } \vert \text{Im }z \vert < \pi \rbrace $ 
+
+\textbf{Potenz}\\
+F"ur alle $a \in \mathbb{C}^{-*}$ (\underline{nur} f"ur diese!) ist der \textbf{Hauptwert der Potenz}:\\
+\eqbox{\text{pv } a^z = \exp(z \text{Log } a)} und es gilt: \eqbox{\textbf{pv } a^{z+z'} = \textbf{pv }a^z \cdot \textbf{pv }a^{z'}}
+%\newpage
+
+\section{Die Cauchy-Riemannschen Differentialgleichungen}
+Im folgenden untersuchen wir Real- und Imagin"arteil von \emph{analytischen} Funktionen ($f: \Omega \to \mathbb{C}$):\\
+$ f = u(x,y) + i v(x,y) $ ($x+iy \in \Omega$)
+
+Obige Funktion hat \emph{stetige partielle Ableitungen} nach $x$ und $y$ zwischen denen die \textbf{Cauchy-Riemannschen
+	Differentialgleichungen} gelten:\\
+\fcolorbox{black}{formula}{
+	\begin{tabular}{c}
+		$ u_x (x,y) = v_y (x,y) $\\
+		$ v_x (x,y) = -u_y (x,y) $
+\end{tabular}}
+($x+iy \in \Omega$))\\
+
+\textbf{Anwendung der CR-Differentialgleichungen}\\
+Die CR-Differentialgleichungen in Polarkoordinaten sind:\\
+\begin{tabular}{ccc}
+	&\eqbox{u_r = \frac{1}{r} v_\varphi}	&	\eqbox{v_r = \frac{-1}{r} u_\varphi}\\
+	\\
+	&\eqbox{x = r \cos{\varphi}}		&	\eqbox{y = r \sin{\varphi}}\\
+\end{tabular}
+
+Zur Info: $holomorphie \Longrightarrow glattheit$\\
+\fcolorbox{black}{formula}{
+	\begin{tabular}{c}
+		$u_x, u_y$ und $v_x, v_y$ existieren und erf"ullen\\
+		die \emph{CR-Differentialgleichungen}\\
+		$\Longleftrightarrow$\\
+		$f(x+iy) = u(x,y) + iv(x,y)$ analytisch\\
+		bzw. holomorph auf $\Omega$\\
+		$\Longleftrightarrow$\\
+		$ f' = f_x = u_x + iv_x $\\
+		$ f' = -i f_y = v_y - i u_y $\\
+		\(\GDW\)\\
+		\(f\) komplex differenzierbar\\
+		\(\GDW\)\\
+		\(f\) \(\infty\)-mal komplex differenzierbar
+\end{tabular}}					
+
+
+\textbf{Beispiele}
+\begin{itemize}
+	\item $f(z) = \overline{z}$ ist \emph{nicht} differenzierbar, da die CR-Gleichungen nicht erf"ullt sind.
+	\item \eqbox{f(z) = \vert z \vert^2 \text{ ist \textbf{keine analytische Funktion} im Ursprung}}.
+	(Die Ableitung von $f$ existiert nur im Ursprung.) Eine Funktion heisst analytisch in $z_0$, falls sie in einer
+	\emph{ganzen Umgebung} von $z_0$ analytisch ist.
+	\item $\text{Log } z = \ln{\vert z \vert} + i \text{Arg }z$ ($z \in \mathbb{C}^{-*}$) ist analytisch auf $\mathbb{C}^{-*}$.
+\end{itemize}
+
+\section{Die Integralformel von Cauchy}
+\subsection{Theorie "Ubung}
+\textbf{Integral reeller Variablen ("'\(dx\)"' ist hier reell)}\\
+\(g: \mathbb{R} \to \mathbb{C}\), dann:\\
+\(\int\limits_a^b g(x) \text{ d}x = \text{"'Wie im reellen"'}
+= \int\limits_a^b \text{Re}(g(x))\text{ d}x + i \int\limits_a^b \text{Im}(g(x))\text{ d}x\)
+
+Regeln:\\
+\(\left\vert \int\limits_a^b f(x) \text{ d}x \right\vert \leqslant \int\limits_a^b\vert f(x) \vert \text{ d}x\)
+und \(\overline{\int\limits_a^bf(x)\text{ d}x} 	= \int\limits_a^b \overline{f(x)} \text{ d}x\)
+
+\textbf{Eine Kurve / ein Weg}\\
+\(\gamma: [a,b] \to \mathbb{C}\) stetig und st"uckweise glatt
+
+Spur von \(\gamma\): \(\text{sp}(\gamma)=\{\text{Menge aller Bildpunkte von }\gamma\}\)
+
+\textbf{L"ange der Kurve}: \eqbox{= \int\limits_a^b \vert \dot \gamma(t) \vert \text{ d}t}
+
+\textbf{Komplexes Linienintegral der Funktion \(f\) "uber der Kurve \(\gamma\)}\\
+\(f: \mathbb{C} \to \mathbb{C}\), Parametrisierung \(\gamma: [a,b] \to \mathbb{C}\); dann gilt:\\
+\eqbox{\int\limits_\gamma f(z) \text{ d}z = \int\limits_a^b f(\gamma(t))\cdot \dot \gamma(t) \text{ d}t}
+wobei \(\text{d}t\) wieder reell ist.
+
+Es gilt: \eqbox{\int\limits_{-\gamma} f(z) \text{ d}z = -\int\limits_\gamma f(z) \text{ d}z}
+
+\textbf{Parametrisierungen}\\
+(k"onnen auch AUFGETEILT werden: \(\gamma = \gamma_1 + \gamma_2\))\\
+\emph{Gerader / direkter Weg} von \(a\) nach \(b\):\\
+\eqbox{\gamma(t) = a(1-t)+bt=a+t(b-a) \quad 0\leqslant t<1 \quad \dot \gamma(t) = b-a}
+
+Kreis \textbf{gegen} den Uhrzeigersinn mit Radius \(r\) um Mittelpunkt \(a\):\\
+\eqbox{\gamma(t) = a+re^{it} \quad 0 \leqslant t < 2\pi \quad \dot \gamma(t) = ire^{it}}
+
+Einheitskreis \textbf{im} Uhrzeigersinn um den Ursprung \((a=0)\):\\
+\eqbox{\gamma(t) = 1\cdot e^{-it} \quad 0 \leqslant t < 2\pi \quad \dot \gamma(t) = -ie^{-it}}
+
+Funktion \(y=f(x)\):\\
+\eqbox{\gamma(t)=f(t)}
+
+\textbf{Satz von Cauchy}\\
+Sei \(\Omega\) ein \emph{einfach zusammenh"angendes} Gebiet (= offen, keine L"ocher) und \(f: \Omega \to \mathbb{C}\)
+\emph{analytisch}. Dann gilt f"ur jede geschlossene Kurve ("'Zyklus"')" \(\gamma\) mit \(a=b\):
+\eqbox{\oint\limits_\gamma f(z) \text{ d}z = 0}
+
+und deshalb folgt f"ur alle Kurven \(\gamma_1\) und \(\gamma_2\) mit demselben Anfangspunkt \(a\) und Endpunkt \(b\):\\
+\eqbox{\int\limits_{\gamma_1} f(z) \text{ d}z = \int\limits_{\gamma_2} f(z) \text{ d}z}\\
+\(\implies\) Der Wert des Integrals ist \textbf{WEGUNABH"ANGIG}!
+
+
+\textbf{Integralsatz von Cauchy}\\
+\(f: \Omega \to \mathbb{C}\) analytisch, \(\Omega\) einfach zusammenh"angend, \(\gamma\) ein beliebiger Zyklus welcher
+den Punkt \(a\in\Omega\backslash \text{sp}(\gamma)\) \(n(\gamma,a)\)-mal \emph{gegen den Uhrzeigersinn} uml"auft:\\
+\eqbox{\int\limits_{\gamma} \dfrac{f(z)}{z-a} \text{ d}z = 2 \pi i \cdot n(\gamma,a) \cdot f(a)}
+
+\textbf{Integralsatz von Cauchy f"ur h"ohere Ableitungen}\\
+Sei \(f\) analytisch auf ganz \(\Omega\) und \(K\) eine Kreisscheibe innerhalb von \(\Omega\) mit Rand \(\partial K\) (hier wird
+im Gegenuhrzeigersinn dar"uber integriert!).
+Dann gilt f"ur alle \(n\geqslant 0\):\\
+\eqbox{f^{(n)}(a)\cdot n(\gamma,a) = \dfrac{n!}{2 \pi i} \int\limits_{\partial K} \dfrac{f(z)}{(z-a)^{n+1}} \text{ d}z}
+
+Analog:\\
+\eqbox{\dfrac{2 \pi i}{n!} f^{(n)}(a)\cdot n(\gamma,a) = \int\limits_{\partial K} \dfrac{f(z)}{(z-a)^{n+1}} \text{ d}z}
+%\newpage
+\subsection{Mittelwertsatz}
+Seien $ U ⊂ \mathbb{C}$ eine offene Menge und $f : U \rightarrow \mathbb{C}$ eine holomorphe Funktion. Seien $z_0 \in U$ und $r > 0$ so dass $B(z_0, r) \subseteq U$ . Dann gilt:\\
+\eqbox{f(z_0) = \int\limits_0^1 f(z_0 + r exp(2 \pi it)) dt}\\
+d.h. $f(z_0)$ ist der Mittelwert von f auf dem Kreis mit Zentrum $z_0$ und Radius r
+
+\subsection{Maximum Modulus Prinzip}
+Sei f holomorph und nicht konstant auf einer wegzusammenha"ngenden Menge U. Dann besitzt $|f (z)|$ kein Maximum
+auf U . Anders gesagt, gibt es keinen Punkt $z_0 \in U$ mit $|f (z)| ≤ |f (z_0 )|.$
+
+
+\section{Reihen}
+\subsection{Gew"ohnliche Reihen und Potenzreihen}
+\begin{tabular}{ll}
+	\textbf{Gew"ohnliche Reihe}			&	\textbf{Potenzreihe} (mit Entwicklungspunkt \(z_0\))\\
+	\(\sum\limits_{k=0}^\infty a_k\)			&	\(\sum\limits_{k=0}^\infty b_k (z-z_0)^k\)
+\end{tabular}
+
+\textbf{"Uberf"uhren der beiden verschiedenen Reihen}\\
+Wir k"onnen immer \(z_0=0\) annehmen oder \(w=z-z_0\) substituieren und erhalten dann:\\
+\eqbox{\sum\limits_{k=0}^\infty a_k = \sum\limits_{k=0}^\infty b_k z^k} mit \(a_k = b_k z^k\)
+
+\subsection{Konvergenzradius (f"ur alle Reihen)}
+Der Index (\(k=\dots\)) ist f"ur den Konvergenzradius \textbf{nicht relevant}! (Kann z.B. auch \(k=2\) sein.)
+
+\emph{Quotientenkriterium}:\\
+\(\lim\limits_{n\to \infty} \dfrac{a_{n+1}}{a_n} = q \in \mathbb{C}\)\\
+\(\implies \begin{cases}
+\sum\limits_{n=0}^\infty a_n \text{konvergiert absolut, falls }\vert q \vert < 1\\
+\sum\limits_{n=0}^\infty a_n \text{divergiert, falls }\vert q \vert > 1\\
+\end{cases}\)
+
+\emph{Wurzelkriterium}:\\
+\(q=\lim\limits_{n\to\infty} \sqrt[n]{\vert a_n \vert}\)\\
+und die Reihe konvergiert f"ur \(q<1\) und divergiert f"ur \(q>1\).
+
+\subsection{Potenzreihen}
+\textbf{Form} \eqbox{ f(z) = \sum_{k=0}^{\infty} a_k (z-z_0)^k }
+
+\textbf{Ableitung}\\
+\eqbox{f^{(n)}(z) = \sum_{k=n}^{\infty} k(k-1)\cdots (k-n+1)\cdot a_k (z-z_0)^{k-n}}
+
+\subsection{Konvergenzradius (Potenzreihen)}
+Potenzreihen konvergieren auf Kreisscheiben mit Konvergenzradius $\rho$:
+
+\begin{tabular}{ll}
+	\emph{Quotientenkriterium}							&	\emph{Wurzelkriterium}\\
+	\eqbox{\rho = \lim_{k \rightarrow \infty} \frac{|a_k|}{|a_{k+1}|}}	&
+	\eqbox{\rho = \frac{1}{\limsup\limits_{k \rightarrow \infty} \sqrt[k]{|a_k|}}}
+\end{tabular}
+
+Am Rand der Konvergenzkreisscheibe verhalten sich die Reihen unterschiedlich.
+
+
+
+\subsection{isolierte Singularit"at (\(z_0\))}
+\begin{enumerate}
+	\item	\(z_0\) ist hebbar: \( \lim\limits_{z \to z_0} f(z) = \lambda \neq \pm \infty \)\\
+	\(\to\) Hauptteil der Laurentreihe \emph{um} \(z_0\) ist null.\\
+	(f analytisch fortsetzbar)\\
+	falls $f(z)$ beschr"ankt in $\Omega \Rightarrow z$ ist eine hebb. Sing.
+	\item	\(z_0\) ist Polstelle \(k\)-ter Ordnung:\\
+	\( \lim\limits_{z \to z_0} (z-z_0)^k f(z) = \lambda \neq \pm \infty \text{ und } \neq 0
+	\Longleftrightarrow k \geq \) Ordnung des Pols.\\
+	\( \to \) Hauptteil der zugeh"origen Laurentreihe ist endlich lang\\
+	\(k\) ist zu hoch gew"ahlt, falls der Grenzwert \(= 0\) ist und zu niedrig, falls der Grenzwert unendlich ist
+	oder nicht existiert. Die tiefste Ordnung des Hauptteils entspricht \(k\).\\
+	\textbf{Trick zur Bestimmung der Ordnung}: Die Ordnung ist gleich dem ersten \(k\) f"ur das gilt:
+	\(f^{(k)}(z_0) \neq 0\).\\
+	Falls $\lim\limits_{z \rightarrow z_0} |f(z)| = \infty \Rightarrow z_0$ ist eine Polstelle
+	\item	\(z_0\) ist eine wesentliche Singularit"at:\\
+	\( \lim\limits_{z \to z_0} (z-z_0)^k f(z)\) existiert f"ur kein \(k\). Funktion verh"alt sich chaotisch im Punkt \(z_0\).
+	Der Hauptteil der Laurentreihe um \(z_0\) hat unendlich viele Elemente. Bsp.: \(\sum_{k=-\infty}^{-1} a_k (z-z_0)^k\)
+\end{enumerate}
+
+\subsection{nicht isolierte Singularit"at}
+Hat keinen Typ. Bsp: \(z_0 = 0\) bei \(\dfrac{1}{\sin(\frac{1}{z})}\)

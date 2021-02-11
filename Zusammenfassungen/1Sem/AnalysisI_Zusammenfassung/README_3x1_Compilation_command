@@ -1,0 +1,7 @@
+PLEASE READ LICENSE FILE FOR USAGE TERMS
+
+
+To make it a 3x1-A4-Document, do the following under Linux:
+
+pdfjam --nup 3x1 main.pdf --landscape --a4paper --outfile AnalysisI_Zusammenfassung_3x1.pdf
+

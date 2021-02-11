@@ -1,0 +1,147 @@
+\section{Vektoranalysis}
+\begin{definition}[Vektorfeld]
+Die Abbildung $\vec{v}(\vec{r}): \R^n \to \R^n$ ist ein Vektorfeld. Es weist jedem
+Vektor $\vec{r}$ einen Vektor $\vec{v}(\vec{r})$ zu.
+\end{definition}
+
+\begin{definition}[Skalarfeld]
+Ist eine Abbildung der Form $f: \R^n \to \R$. Es existiert wenn das Vektorfeld wirbelfrei/konservativ ist. Ergibt ein geschlossener Weg im Vektorfeld nicht null so existiert kein skalares Feld (jedoch nicht umbedingt umgekehrt).
+\end{definition}
+
+\begin{definition}[Gradient]
+Ist $f: \R^n \to \R$ (Skalarfeld), so ist der Gradient von $f$ der Vektor
+$\vec{v} = \grad f = \nabla f$. (Im Fall $f: \R^3 \to \R$:   $\grad f = (f_x, f_y, f_z) =
+\left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)$). ) 
+Der Gradient $\nabla f$ von einer Funktion $f : \R^2 \to \R$ beschreibt die Richtung 
+und den Betrag des steilsten Anstiegs des Graphen von $f$.
+\end{definition}
+
+\begin{definition}[Potential]
+Ist $\vec{v} = \grad f$ der Gradient von $f$, so ist $f$ das Potential oder Stammfunktion zu $\vec{v}$.
+Existiert wenn $\rot \vec{f} = \vec{0}$ und der Definitionsbereich zusamenhängend ist.
+\end{definition}
+
+\begin{definition}[1-Form des Differential]
+%% von http://www.math.purdue.edu/~dvb/preprints/diffforms.pdf
+Das Differential in der 1-Form für die Funktion $f : \R^2 \to \R$ ist $df =  \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy$.
+\end{definition}
+
+\begin{definition}[Gradientenfeld / Potentialfeld]
+Ist $\vec{v} = \grad f$ der Gradient von $f$, so ist das Vektorfeld $\vec{v}$
+ein Gradientenfeld / Potentialfeld. Es besitzt dabei die folgenden
+Eigenschaften:
+\begin{itemize}
+	\item Der Wert des Kurvenintegrals entlang eines beliebigen Weges innerhalb des
+	Feldes ist unabhängig vom Weg selbst, sondern nur vom Anfangs- und Endpunkt
+	\item Ein Kurvenintegral mit einem Weg bei dem Anfangs- und Endpunkt der
+	gleiche Punkt sind, hat den Wert 0.
+	\item Ist immer wirbelfrei: $\rot \vec{v} = \rot(\grad f) = \vec{0}$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Rotor / Rotation]
+Ist $\vec{v}$ ein Vektorfeld im $\R^3$, so ist die Rotation von $\vec{v} = (P, Q, R)^T$ das Vektorfeld
+$\vec{w} = \rot \vec{v} = \begin{pmatrix}
+R_y - Q_z\\
+P_z - R_x\\
+Q_x - P_y
+\end{pmatrix}$
+\end{definition}
+
+\begin{definition}[Vektorpotential]
+Ein Vektorfeld $\vec{v}$ heisst Vektorpotential zu $\vec{w}$, falls $\vec{w} = \rot \vec{v}$.
+\end{definition}
+
+\begin{definition}[Wirbelfrei / konservativ]
+Ist $\vec{v}$ ein Vektorfeld mit $\rot \vec{v} = 0$, so nennt man $\vec{v}$ wirbelfrei. Auch: Das Vektorfeld ist \emph{konservativ}.
+\end{definition}
+
+\begin{definition}[Divergenz]
+Die Divergenz eines Vektorfelds $\operatorname{div} \vec{K}(x,y,z)$ ist definiert durch:
+$\operatorname{div} \vec{K}(x,y,z) := \frac{\partial
+K_1}{\partial x} + \frac{\partial K_2}{\partial y} + \frac{\partial
+K_3}{\partial z}$
+\end{definition}
+
+\begin{lemma}[Geschlossener Weg]
+Wenn $F = grad \phi$, respektive $\rot \vec{F} =\vec{0}$ und der Definitionsbereich zusammenhängend ist,
+sowie $\gamma$ geschlossen ist, so folgt $\int_\gamma F = 0$.
+\end{lemma}
+
+
+\subsection{Bestimmung eines Potentials durch Raten}
+In den Nachfolgenden Kapitel beschriebener Vorgang ist teilweise nicht nötig. In gewissen Fällen kann das Potential $f$ erraten werden in dem wir das Vektorfeld $\vec{v}$ partielle Integrieren und dann eine Funktion $f$ erraten, so dass $\nabla f$ wieder $\vec{v}$ ergibt.
+
+\subsection{Bestimmung eines Potentials $\R^2$}
+Sei $\vec{v} = \begin{pmatrix}
+P(x,y)\\
+Q(x,y)
+\end{pmatrix}$.
+
+Um schnell zu prüfen, ob man überhaupt den folgenden Algorithmus anwenden muss,
+kann man prüfen ob gilt: $P_y = Q_x$, wenn nicht, so hat $\vec{v}$ kein Potential $f$.
+
+\begin{enumerate}[itemsep=1em]
+	\item $f(x,y) = \int P(x,y)\;dx + C(y)$ berechnen (Integral berechnen)
+	\item Die berechnete Gleichung $f(x,y)$ nun nach $y$ ableiten:
+	$\frac{\partial}{\partial y} f(x,y) = \frac{\partial}{\partial y}\int P(x,y)\;dx + C'(y)$
+	(berechnetes Integral nach $y$ ableiten)
+	\item $\frac{\partial}{\partial y} f(x,y) = Q(x,y)$ setzen und $C'(y)$ berechnen durch umformen
+	und integrieren
+	\item Berechnetes $C(y)$ in die Gleichung im 1. Punkt einsetzen. Fertig. Achtung: Im Grunde hat
+	$C(y)$ durch integrieren (aufleiten) noch einen konstanten Wert, der beliebigen Wert haben kann.
+	Dieser taucht im Grunde auch in der fertigen $f(x,y)$ Funktion auf.
+\end{enumerate}
+
+\subsection{Bestimmung eines Potentials $\R^3$}
+Sei $\vec{v} = \begin{pmatrix}
+P(x,y,z)\\
+Q(x,y,z)\\
+R(x,y,z)
+\end{pmatrix}$.
+
+Um zu prüfen, ob man überhaupt ein Potential finden kann für $\vec{v}$ hat $\rot \vec{v} = 0$
+zu sein, also wirbelfrei zu sein. Dazu muss gelten (zu zeigen mit $\rot \vec{v} = 0$): $P_y = Q_x, P_z = R_x, Q_z = R_y$.
+
+\begin{enumerate}[itemsep=1em]
+	\item $f(x,y,z) = \int P(x,y,z)\;dx + C(y,z)$ lösen (Integral berechnen)
+	\item Nun die berechnete Gleichung $f(x,y,z)$ nach $y$ ableiten $\Rightarrow f_y(x,y,z)$.
+	\item Die abgeleitete Gleichung $f_y$ mit $Q(x,y,z)$ gleichsetzen: $f_y(x,y,z) = Q(x,y,z)$
+	und damit $C_y(y,z)$ bestimmen.
+	\item Durch Integration von $C_y(y,z)$ nach $y$ ($\int C_y(y,z)\;dy$) wird $C(y,z)$ bestimmt
+	bis auf eine Konstante $D(z)$, die von $z$ abhängt. $C(y,z)$ hat also die Form:
+	$C(y,z) = \int C_y(y,z)\; dy + D(z)$.
+	\item Dieses $C(y,z)$ setzt man nun in die Gleichung $f(x,y,z)$ ein, die im 1. Punkt steht.
+	\item Nun wird die daraus erzeugte
+	$f(x,y,z) = \int P(x,y,z)\;dx + C(y,z) = \int P(x,y,z)\;dx + \int C_y(y,z)\; dy + D(z)$
+	Gleichung nach $z$ abgeleitet.
+	\item Durch Gleichsetzen von $f_z(x,y,z) = R(x,y,z)$ lässt sich $D_z(z)$ bestimmen.
+	\item $D_z(z)$ wird wiederrum durch Integration zu $D(z) = \int D_z(z)\; dz + c, \quad c \in \R$
+	\item Das berechnete $D(z)$ in die $f(x,y,z)$ Gleichung aus Punkt 6 einsetzen, fertig.
+\end{enumerate}
+
+\subsection{Geometrisches Verständniss}
+Sei B ein drei dimensionaler Körper (beschrieben durch Punkte in $\R^3$ mit der Funktion $f$) so sei $\nabla f$ senkrecht dazu.
+
+\subsubsection{Beispiel}
+%aus analysis 2 (2012) serie 11 mc 3
+Gib einen Vektoren der ein nach aussen gerichteter Normalenvektor
+(nicht notwendigerweise normiert) auf dem Rand des Ellipsoids ist \[
+B := 
+\left\{ 
+	\begin{pmatrix} x\\ y\\ z \end{pmatrix} \in \R^3  
+	\middle\vert
+	f\begin{pmatrix} x\\ y\\ z \end{pmatrix} 
+		= \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} \leq 1
+\right\}
+\]
+
+Der Vektor $\begin{pmatrix} 2x/a^2\\ 2y/b^2\\ 2z/c^2 \end{pmatrix}$ ist gleich $\nabla f$ und steht somit 
+senkrecht auf der Niveaufläche $f=1$. Da er vom Ursprung weg orientiert ist, liefert er die richtige Antwort.\\
+Der Vektor $\begin{pmatrix} yz(1/b^2-1/c^2)\\ xz(1/c^2-1/a^2)\\ xy(1/a^2-1/b^2) \end{pmatrix}$ ist tangential 
+zum Rand $\partial B$
+
+\subsection{Fläche unter Kurve}
+Sei eine Kurve in der Parameterdarstellung (z.B.: $x(t) =sin(2t)$ und $y(t)=cos(3t)$ über $0\leq t \leq \pi$) gegeben. So ist die Fläche $A = \int_0^\pi y\dot{x} \, dt$.
+
+

@@ -1,0 +1,70 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% DESKRIPTIVE STATISTIK
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Deskriptive Statistik}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% HISTOGRAMM
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Histogramm}
+
+Bei grossem Stichprobenumfang \(n\) werden benachbarte Werte zu einer Klasse zusammengefasst. Der Wertebereich der Daten wird dadurch in disjunkte Intervalle (die Klassen) unterteilt.
+\begin{compactenum}[i)]
+	\item Die Anzahl der Klassen sollte von der Grössenordnung \(\sqrt{n}\) sein.
+	\item Die Klassenbreite sollte für alle Klassen gleich sein; als Ausnahme können die Klassen am linken und rechten Rand grösser sein (Ausreisser).
+\end{compactenum}
+
+\begin{figure}[htb]
+	\begin{center}
+		\scalebox{0.6}[0.6]{
+			\includegraphics{figures/hist.eps}}
+	\end{center}
+	\vspace{-2em}
+	\caption{Histogramm einer standard-norvmalverteilten Zufallsvariable.}
+\end{figure}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BOXPLOT
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Boxplot}
+
+Aus einem Boxplot lässt sich folgendes ablesen:
+\begin{compactenum}[a:]
+	\item empirischer Median
+	\item empirisches \(0.25\)-Quantil
+	\item empirisches \(0.75\)-Quantil
+	\item kleinster Datenwert \(x_i\) mit \(b-x_i < 1.5 (c-b)\)
+	\item grösster Datenwert \(x_i\) mit \(x_i - c < 1.5 (c-b)\)
+	\item Ausreisser
+\end{compactenum}
+
+\begin{figure}[htb]
+	\begin{center}
+		\scalebox{0.6}[0.6]{
+			\includegraphics{figures/boxplot.eps}}
+	\end{center}
+	\vspace{-3em}
+	\caption{Boxplot}
+\end{figure}
+%a: empirischer Median, b: empirisches \(0.25\)-Quantil, c: empirisches \(0.75\)-Quantil, d: kleinster Datenwert \(x_i\) mit \(b-x_i < 1.5 (c-b)\), e: grösster Datenwert \(x_i\) mit \(x_i - c < 1.5 (c-b)\).
+
+
+% ------------------------------------------------------------------------------------------------ %
+% QQ-PLOT
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{QQ-Plot}
+
+Mit einem \emph{QQ-Plot} (Quantil-Quantil) kann man die Abweichung der Daten von einer gewählten Modell-Verteilung \(F\) graphisch überprüfen.
+
+Es werden die empirischen Quantile auf der \(y\)-Achse gegenüber den theoretischen Quantilen auf der \(x\)-Achse geplottet.

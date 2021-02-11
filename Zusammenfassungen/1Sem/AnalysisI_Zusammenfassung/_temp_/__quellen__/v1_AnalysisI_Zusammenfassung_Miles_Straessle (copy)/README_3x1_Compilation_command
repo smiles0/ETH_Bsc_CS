@@ -1,0 +1,1 @@
+pdfjam --nup 3x1 main_ana1.pdf --landscape --a4paper --outfile three3x1.pdf

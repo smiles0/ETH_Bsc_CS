@@ -1,0 +1,419 @@
+
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Wichtige Verteilungen}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% DISKRETE VERTEILUNGEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Diskrete Verteilungen}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% DISKRETE GLEICHVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Diskrete Gleichverteilung}
+
+Eine diskret gleichverteilte Zufallsvariable \(X \sim \mathcal{U}_{T}\) nimmt alle Werte im Wertebereich \(\mathcal{W}(X) = \{x_1,\ldots,x_n\} := T\) mit gleicher Wahrscheinlichkeit an:
+\[
+	p_X(x_i) = \frac{1}{n}
+	\quad
+	\text{für } i \in \{1,\ldots,n\}
+\]
+
+\begin{example}[Würfeln]
+	Die Zufallsvariable \(X\) gibt die Augenzahl bei einem \\Würfelwurf an.
+	\(\mathcal{W} = \{1,2,3,4,5,6\}\), \(n=6\).
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BERNOULLI VERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Bernoulli-Verteilung}
+
+Eine bernoulli-verteilte Zufallsvariable \(X \sim Be(p)\) mit \(p \in [0,1]\) nimmt die Werte \(0\) und \(1\) mit Wahrscheinlichkeiten
+\[
+	p_X(1) = p
+	\quad\text{und}\quad
+	p_X(0) = 1-p
+\]
+an. Eine alternative Schreibweise ist
+\[
+	p_X(x) =
+	\left\{\begin{array}{ll}
+		p^x (1-p)^{1-x} & x \in \{0,1\} \\
+		0               & \text{sonst}.
+	\end{array}\right.
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(p\)      \\
+		Varianz        & \(p(1-p)\)
+	\end{tabular}
+\end{highlight}
+
+\begin{example}[Münzwurf] Ein fairer Münzwurf ist bernoulli-verteilt mit Parameter \(p=\frac{1}{2}\). Für einen Parameter \(p \neq \frac{1}{2}\) wäre der Münzwurf unfair.
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BINOMIALVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Binomialverteilung}
+
+Die Gewichtsfunktion \(p_X\) einer binomial-verteilten Zufallsvariable \(X \sim Bin(n,p)\) mit Parameter \(n \in \N\) und \(p \in [0,1]\) ist
+\[
+	p_x(k) = {n \choose k} p^k (1-p)^{n-k}
+	\quad
+	\text{für } k \in \{0,\ldots,n\}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(np\)      \\
+		Varianz        & \(np(1-p)\)
+	\end{tabular}
+\end{highlight}
+
+\(X\) ist die Anzahl der Erfolge \(k\) bei \(n\) unabhängigen Wiederholungen eines Bernoulli-Experiments.
+
+
+% ------------------------------------------------------------------------------------------------ %
+% GEOMETRISCHE VERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Geometrische Verteilung}
+
+Die Gewichtsfunktion \(p_X\) einer geometrisch-gleichverteilten Zufallsvariable \(X \sim Geom(p)\)  mit Parameter \(p \in [0,1]\) ist
+\[
+	p_X(k) = p(1-p)^{k-1}
+	\quad
+	\text{für } k \in \{1,2,\ldots\}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\frac{1}{p}\)        \\
+		Varianz        & \(\frac{1}{p^2}(1-p)\)
+	\end{tabular}
+\end{highlight}
+
+\begin{example}[Wartezeit]
+	Die Geometrische Verteilung ist die Wahrscheinlichkeitsverteilung der Anzahl \(X\) Bernoulli-Versuche,
+	die notwendig sind, um den ersten Erfolg zu erzielen.
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% NEGATIVBINOMIALE VERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Negativbinomiale Verteilung}
+
+Die Gewichtsfunktion \(p_X\) einer negativ-binomial-verteilten Zufallsvariable \(X\) mit Parameter \(r \in \N\) und \(p \in [0,1]\) ist
+\[
+	p_X(k) = {{k-1} \choose {r-1}}p^r(1-p)^{k-r}
+	\quad
+	\text{für } k \in \{r,r+1,\ldots\}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\frac{r}{p}\)        \\
+		Varianz        & \(\frac{r}{p^2}(1-p)\)
+	\end{tabular}
+\end{highlight}
+
+\(X\) entspricht der Wartezeit auf den \(r\)-ten Erfolg. Es gibt \({{k-1} \choose {r-1}}\) möglichkeiten für \(r-1\) Erfolge bei \(k-1\) Versuchen; der \(r\)-te Erfolg tritt ja beim \(k\)-ten Versuch ein.
+
+
+% ------------------------------------------------------------------------------------------------ %
+% HYPERGEOMETRISCHE VERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Hypergeometrische Verteilung}
+
+Die Gewichtsfunktion \(p_X\) einer hypergeometrisch-verteilten Zufallsvariable \(X\) mit Parameter \(r,n,m \in \N\), wobei \(r,m \leq n\), ist
+\[
+	p_X(k) = \frac{{r \choose k}{{n-r} \choose {m-k}}}{{n \choose m}}
+	\quad
+	\text{für } k \in \{0,\ldots,\min\{r,m\}\}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(m\frac{r}{n}\)                               \\
+		Varianz        & \(m\frac{r}{n}(1-\frac{r}{n})\frac{n-m}{n-1}\)
+	\end{tabular}
+\end{highlight}
+
+In einer Urne befinden sich \(n\) Gegenstände. Davon sind \(r\) Gegenstände vom Typ A und \(n-r\) vom Typ B. Es werden \(m\) Gegenstände ohne Zurücklegen gezogen. \(X\) beschreibt die Wahrscheinlichkeitsverteilung für die Anzahl \(k\) der Gegenstände vom Typ A in der Stichprobe.
+
+\begin{example}[Lotto]
+	Anzahl Zahlen \(n=45\), richtige Zahlen \(r=6\), meine Zahlen \(m=6\). Die Wahrscheinlichkeit für \(4\) Richtige ist
+	\(		p_X(4) \approx 0.00136.	\)
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% POISSONVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Poisson Verteilung}
+Die Gewichtsfunktion \(p_X\) einer Poisson-verteilten Zufallsvariable \(X \sim \mathcal{P}(\lambda)\) mit Parameter \(\lambda\) ist gegeben durch
+\[
+	p_X(k) = e^{-\lambda}\frac{\lambda^k}{k!}
+	\quad
+	\text{für } k \in \{0,1,\ldots\}
+\]
+
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\lambda\) \\
+		Varianz        & \(\lambda\)
+	\end{tabular}
+\end{highlight}
+
+
+Die Poisson-Verteilung eignet sich zur Modellierung von seltenen Ereignissen, wie z.B. Versicherungsschäden.
+
+\begin{highlight}
+	\begin{definition}[Faustregel]
+		Ab \(np^2 \leq 0.05\) ist \(Bin(n,p) \stackrel{\text{approx.}}{ \approx } \mathcal{P}(\lambda), \lambda = np\)
+	\end{definition}
+\end{highlight}
+
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% STETIGE VERTEILUNGEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Stetige Verteilungen}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% STETIGE GLEICHVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Stetige Gleichverteilung}
+Die Dichte \(f_X\) und Verteilungsfunktion \(F_X\) einer stetigen und gleichverteilten Zufallsvariable \(X \sim \mathcal{U}(a,b)\) mit Parameter \(a,b \in \R\) wobei \(a < b\) sind gegeben durch
+\[
+	\begin{array}{rcl}
+		f_X(t) & = & \frac{1}{b-a} \1_{t \in [a,b]}
+
+
+		\\[1.5em]
+		F_X(t) & = &
+		\left\{\begin{array}{ll}
+			\frac{t-a}{b-a} & \1_{t \in [a,b]}  \\[1ex]
+			1               & \text{für } t > b
+		\end{array}\right.
+	\end{array}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\frac{1}{2}(a+b)\)    \\
+		Varianz        & \(\frac{1}{12}(a-b)^2\)
+	\end{tabular}
+\end{highlight}
+
+\begin{example}
+	Zufällige Wahl eines Punktes aus \([a,b]\)
+\end{example}
+
+% ------------------------------------------------------------------------------------------------ %
+% EXPONENTIALVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Exponentialverteilung}
+
+Die Dichte \(f_X\) und Verteilungsfunktion \(F_X\) einer exponential-verteilten Zufallsvariable \(X \sim Exp(\lambda)\) mit Parameter \(\lambda > 0\) sind
+\[
+	\begin{array}{rcl}
+
+		f_X(t) & = & \lambda e^{-\lambda t} \1_{t \geq 0}
+
+		\\[1.5em]
+
+		F_X(t) & = & 1 - e^{-\lambda t} \1_{t \geq 0}
+	\end{array}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\frac{1}{\lambda}\)   \\
+		Varianz        & \(\frac{1}{\lambda^2}\)
+	\end{tabular}
+\end{highlight}
+
+\begin{example}[Lebensdauer]
+	Die Exponentialverteilung ist eine typische Lebensdauerverteilung.
+	So ist beispielsweise die Lebensdauer von elektronischen Bauelementen häufig annähernd exponentialverteilt.
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Normalverteilung
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Normalverteilung}
+
+Die Dichte \(f_X\) einer normalverteilten Zufallsvariable \(X \sim \Stdev(\mu,\sigma^2)\) mit Parameter \(\mu \in \R\) und \(\sigma^2 > 0\) ist gegeben durch
+\[
+	f_X(t) =
+	\frac{1}{\sigma\sqrt{2\pi}} \, e^{-\frac{(t-\mu)^2}{2\sigma^2}}
+\]
+
+Für die Verteilungsfunktion \(F_X\) existiert kein geschlossener Ausdruck.
+Deshalb werden die Werte der Verteilungsfunktion \(\Phi(t)\) der \emph{Standard-Normalverteilung} \(\Stdev(0,1)\) tabelliert.
+
+Für allgemeine Normalverteilungen berechnet man dann
+\[
+	F_X(t) = \P[X \leq t] = \P\left[\frac{X-\mu}{\sigma}\leq\frac{t-\mu}{\sigma}\right] = \Phi\left(\frac{t-\mu}{\sigma}\right).
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\mu\)      \\
+		Varianz        & \(\sigma^2\)
+	\end{tabular}
+\end{highlight}
+
+\begin{example}
+	Streuung von Messwerten um den Mittelwert.
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Gamma Verteilung
+% ------------------------------------------------------------------------------------------------ %
+\subsubsection{Gamma-Verteilung}
+Die Dichte \(f_Z\) einer Zufallsvariablen \(Z \sim Ga(\alpha,\lambda)\)
+mit \(\alpha > 0, \lambda >0\) ist gegeben durch
+
+\[
+	f(z) = \frac{1}{\Gamma(\alpha)} \lambda^{\alpha} z^{\alpha-1} e^{-\lambda z} \cdot \1_{x>0}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(\frac{\alpha}{\lambda}\)   \\
+		Varianz        & \(\frac{\alpha}{\lambda^2}\)
+	\end{tabular}
+\end{highlight}
+
+\begin{definition}[Gammafunktion]
+	\(\Gamma(z)\) ist die Erweiterung der Fakultät auf reele und komplexe Argumente
+	\(\Gamma(z+1) = z \cdot \Gamma(z), \quad \Gamma(1)=1\)
+
+	\[
+		\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \d t, \qquad \text{für } z \in \C, Re(z) > 0
+	\]
+
+	Speziell gilt für \(\Gamma(n)=(n-1)!\) für \(n \in \N\) und \(\Gamma(1/2)=\sqrt{\pi}\)
+\end{definition}
+
+\begin{note}
+	Die Gamma-Verteilung ist eine Verallgemeinerung der Exponentialverteilung:
+	\(Ga(1,\lambda) \Leftrightarrow Exp(\lambda)\)
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Chiquadrat Verteilung
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsubsection{Chiquadrat-Verteilung}
+Die Dichte \(f_Y\) einer \(\ChiSq\)-verteilten Zufallsvariablen \(Y \sim \ChiSq\)
+mit n Freiheitsgraden, ist gegeben durch
+\[
+	f_Y(y) =
+	\frac{1}{ 2^{ \frac{n}{2} } \Gamma( \frac{n}{2} )}
+	y^{ \frac{n}{2} - 1}
+	e^{ -\frac{1}{2} y}
+	\cdot \1_{x \geq 0}
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(n\)  \\
+		Varianz        & \(2n\)
+	\end{tabular}
+\end{highlight}
+
+Die \(\ChiSq\)-Verteilung mit n Freiheitsgraden beschreibt die Verteilung der Summe
+\(Y = \sum_{i=0}^n X_i^2\), für \(X_i \iid \Stdev(0,1)\)
+
+\begin{note}
+	Die \(\ChiSq\)-Verteilung ist ein Spezialfall der Gamma-Verteilung:\\
+	\(Ga(\frac{n}{2},\frac{1}{2}) \Leftrightarrow \ChiSq\) und somit auch
+	\(\chi_2^2 \Leftrightarrow Exp(\frac{1}{2})\)
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% t-Verteilung
+% ------------------------------------------------------------------------------------------------ %
+
+\subsubsection{t-Verteilung}
+Die Dichte \(f_Z\) einer \(t_n\)-verteilten Zufallsvariablen \(Z \sim t_n\)
+mit \(n > 0\) Freiheitsgraden, ist gegeben durch:
+\[
+	f_Z(z) =
+	\frac{ \Gamma ( \frac{n+1}{2} ) }
+	{ \sqrt{n\pi} \Gamma ( \frac{n}{2} ) }
+	\left( 1 + \frac{ z^2 }{ n } \right) ^ {- \frac{ n+1 }{ 2 } }
+\]
+
+\begin{highlight}
+	\begin{tabular}{l@{ : }l}
+		Erwartungswert & \(0\)  				\qquad für \(n>1\)            \\
+		Varianz        & \(\frac{n}{n-1}\) 	\qquad für \(n>2\)
+	\end{tabular}
+\end{highlight}
+
+Die t-Verteilung mit n Freiheitsgraden beschreibt die Verteilung von
+\(Z = \frac{ X }{ \sqrt{ \frac{1}{n} Y } } \), für \(X \perp Y\), \(X \sim \Stdev(0,1)\) und \(Y \sim \ChiSq\)
+
+\begin{note}
+	Für n=1 ist die t-Verteilung eine \emph{Cauchy-Verteilung},
+	und für \(n \rightarrow \infty\) erhält man die \(\Stdev(0,1)\)-Verteilung
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% t-Verteilung
+% ------------------------------------------------------------------------------------------------ %
+\subsubsection{Cauchy-Verteilung}
+Die Cauchy-Verteilung ist die t-Verteilung mit einem Freiheitsgrad:
+Erwartungswert und Varianz sind nicht definiert.
+Für X,Y Cauchy-verteilt, ist \(\frac{X+Y}{2}\) auch Cauchy-verteilt.
+\[ f(x) = \frac{1}{\pi}\frac{1}{1+(x-\mu)^2} \]
+
+
+% ------------------------------------------------------------------------------------------------ %

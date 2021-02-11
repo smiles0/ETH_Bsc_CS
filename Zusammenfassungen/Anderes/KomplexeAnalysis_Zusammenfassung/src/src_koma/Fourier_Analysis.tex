@@ -1,0 +1,137 @@
+\section{Fourierreihe}
+\eqbox{ f(t) = \smashoperator{\sum\limits_{k = -\infty}^{\infty}} c_k e^{k\frac{2\pi i}{T}t}
+= \dfrac{a_0}{2} + \sum\limits_{k=1}^\infty a_k \cos\left(k\dfrac{2\pi}{T}t\right) + b_k \sin\left(k\dfrac{2\pi}{T}t\right) }\\
+mit \( c_k \in \mathbb{C} \) und \( a_k, b_k \in \mathbb{R} \)
+
+\subsection{Fourierkoeffizienten}
+
+\begin{minipage}{0.48\linewidth}
+
+
+\eqbox{ a_k = \dfrac{2}{T} \int\limits_{T_0}^{T_0 + T} f(t) \cos\left(k\dfrac{2\pi}{T}t\right)dt }
+
+\eqbox{b_k = \dfrac{2}{T} \int\limits_{T_0}^{T_0 + T} f(t) \sin\left(k\dfrac{2\pi}{T}t\right)dt }
+
+\eqbox{c_k = \dfrac{1}{T} \int_{T_0}^{T_0+T} f(t)e^{-k\frac{2\pi i}{T}t}dt }\\
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+\emph{Sonderf"alle}
+\begin{itemize}
+\item	\textbf{\(f\) gerade}: \( f(t) = f(-t) \)\\
+\eqbox{ b_k = 0} bzw. \(c_k = c_{-k}\) \(\forall k\)\\
+\hspace*{2.5cm} und \eqbox{a_k = \dfrac{4}{T} \int\limits_0^{\frac{T}{2}} f(t) \cos\left(k\dfrac{2\pi}{T}t\right) \text{ d}t}
+
+
+\item	\textbf{\(f\) ungerade}: \(f(t) = -f(-t)\)\\
+\eqbox{a_k = 0} bzw. \(c_k = -c_{-k}\) \(\forall k\)\\
+\hspace*{2.5cm} und \eqbox{b_k = \dfrac{4}{T} \int_0^{\frac{T}{2}} f(t) \sin\left(k\dfrac{2\pi}{T}t\right) \text{ d}t}
+\end{itemize}
+\end{minipage}
+\newpage
+\emph{Legende}\\
+\(T_0\): Beliebiger Startzeitpunkt, meistens \(=0\)\\
+\(T\): \textbf{Fundamentalperiode} (kleinst m"ogliche Periode)\\
+\(\dfrac{a_0}{2}\): \textbf{arithmetisches Mittel} von \(f(t)\)\\
+
+\emph{ACHTUNG}: \(c_0\) und \(a_0\) m"ussen \textbf{einzeln} berechnet werden f"ur \(k=0\)!
+
+
+\subsection{Koeffizientenumrechnung}
+\( c_k = \left\{\begin{array}{llcl}
+\dfrac{1}{2}(a_{(-k)} + ib_{(-k)}) & k<0 & \Big\vert & a_0 = 2\cdot c_0\\
+\dfrac{1}{2}(a_k - ib_k) & k>0 & \Bigg\vert & a_k = c_k + c_{(-k)}\\
+\dfrac{a_0}{2} & k = 0 & \Big\vert & b_k = i(c_k - c_{(-k)})
+\end{array}\right. \)
+
+\subsection{Fundamentalintegrale}
+\begin{tabular}{lll}
+\(\int\limits_0^{2\pi} \sin(kt) \text{ d}t = 0 \)		&	f"ur	&	\( k \in \mathbb{Z}\)\\
+\(\int\limits_0^{2\pi} \cos(kt) \text{ d}t = 0 \)		&	f"ur	&	\( k \neq 0 \) und \( k \in \mathbb{Z}\)\\
+\(\int\limits_0^{2\pi} e^{ikt} \text{ d}t = 0 \)		&	f"ur	&	\( k \neq 0 \) und \( k \in \mathbb{Z}\)\\
+\(\int\limits_{|z| = r} z^k \text{ d}z = 0 \)		&	f"ur	&	\( k \neq -1 \) und \( k \in \mathbb{Z}\)
+\end{tabular}
+
+\subsection{Wichtige Fourierintegrale}
+$\int sin(\omega t) \cdot sin(\omega kt) dt = \frac{k \cdot sin(\omega t)\cdot cos(\omega kt) - cos(\omega t) \cdot sin(\omega kt)}{\omega - k² \omega} + C$ \\
+
+$\int sin(\omega t) \cdot cos(\omega kt) dt = \frac{k \cdot sin(\omega t)\cdot sin(\omega kt) + cos(\omega t) \cdot cos(\omega kt)}{(k² - 1) \cdot  \omega} + C$ \\
+
+$\int cos(\omega t) \cdot cos(\omega kt) dt = \frac{k \cdot sin(\omega t)\cdot cos(\omega kt) - k \cdot cos(\omega t)sin(\omega kt)}{\omega - k² \omega} + C$ \\
+
+$\int cos(\omega t) \cdot sin(\omega kt) dt = \frac{sin(\omega t)\cdot sin(\omega kt) + k \cdot cos(\omega t)\cdot cos(\omega kt)}{\omega - k² \omega} + C$ \\
+
+
+
+\subsection{Satz von Parseval}
+
+\( \displaystyle \Vert f \Vert_2
+= \dfrac{1}{T} \int\limits_{T_0}^{T_0 + T} \vert f(t) \vert^2 \text{ d}t = \sum\limits_{k=-\infty}^\infty \vert c_k \vert^2 \) = $\frac{a_0^2}{4} + \frac{1}{2} \sum\limits_{k=1}^\infty |a_k|^2 + |b_k|^2$
+\subsection{Satz von Plancherel}
+$\int_{-\infty}^{\infty} \vert f(t) \vert^2 dt = \int_{-\infty}^{\infty} \vert \hat{f}(s) \vert^2 ds$
+
+
+\subsection{Skalarprodukt}
+\begin{tabular}{ll}
+\( \langle f,g \rangle = \dfrac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\overline{g(t)} \text{ d}t \)
+&	falls \(f, g\) \(2\pi\)-periodisch\\
+\( \langle f,g \rangle = \int\limits_{-\infty}^\infty f(t) \overline{g(t)} dt \)
+&	sonst
+\end{tabular}
+
+\subsection{Faltung}
+\begin{tabular}{ll}
+\( \displaystyle (f*g)(t) = \dfrac{1}{2\pi} \int\limits_{-\pi}^\pi f(\tau)g(t-\tau) \text{ d}\tau \)
+&	falls \(f, g\) \(2\pi\)-periodisch\\
+\( \displaystyle (f*g)(t) = \int\limits_{-\infty}^\infty f(\tau)g(t-\tau) \text{ d}\tau \)
+&	sonst
+\end{tabular}
+%\newpage
+\section{Fouriertransformation}
+\eqbox{ \displaystyle \widehat{f}(\omega) = \mathcal{F}\{f(x)\}(\omega) = \int\limits_{-\infty}^\infty f(t)e^{-i\omega t} \text{ d}t }
+\quad falls \( \int\limits_{-\infty}^\infty \vert f(t) \vert \text{ d}t < \infty \)
+
+\textbf{R"ucktransformation}\\
+\eqbox{f(t)=\mathcal{F}\{\widehat{f}(\omega)\}(x)=\dfrac{1}{2\pi}\int\limits_{-\infty}^\infty\widehat{f}(w) e^{i\omega t} \text{d}w}
+falls \( \int\limits_{-\infty}^\infty \vert \widehat{f}(w) \vert \text{d}w < \infty \)
+
+\emph{Sonderf"alle}\\
+\textbf{\(f\) gerade}: \( f(t) = f(-t) \implies \widehat{f}(\omega) = \widehat{f}(-\omega) \)\\
+\textbf{\(f\) ungerade}: \( f(t) = -f(-t) \implies \widehat{f}(\omega) = -\widehat{f}(-\omega) \)
+
+\textbf{Beispiele}\\
+\(f(x)=\begin{cases} 1 & -a\leqslant x \leqslant a \\ 0 & sonst \end{cases} \Longleftrightarrow
+\hat{f}(\omega) = \dfrac{2\sin(\omega a)}{\omega}\)
+
+\(f(x) = e^{-ax^2} \quad a>0 \Longleftrightarrow \hat{f}(\omega) = \sqrt{\dfrac{\pi}{a}} e^{-\frac{\omega^2}{4a}}\)
+
+\(f(x) = \dfrac{1}{k^2+x^2} \quad k>0 \Longleftrightarrow \hat{f}(\omega) = \dfrac{\pi}{k} e^{-k\vert\omega\vert}\)
+
+\textbf{Rechenregeln}\\
+\begin{tabular}{ccl}
+\emph{Funktion}			&	\emph{Fourier-Transformierte}		&	\emph{Erkl"arung}\\ \hline
+\( f(x) \)					&	\( \hat{f}(\omega) \)				&	Transformation \\
+\( a\cdot f(x) + b\cdot g(x) \)	&	\( a\cdot \hat{f}(\omega) + b\cdot \hat{g}(\omega) \)
+										&	Linearit"at \\
+\( f(x-a) \)					&	\( e^{-i\omega a} \hat{f}(\omega) \)	&	Verschiebung im Zeitbereich \\
+\( f(ax) \)					&	\( \dfrac{1}{\vert a\vert} \hat{f}(\dfrac{\omega}{a}) \)
+										&	Streckung im Zeitbereich \\
+\( e^{ibx}f(x) \)				&	\( \hat{f}(\omega-b) \)				&	Verschiebung im Frequenzbereich \\
+\( \left(\dfrac{\text{d}}{\text{d}x}\right)^n f(x) \)&	\( (i\omega)^n \hat{f}(\omega) \)	
+										&	Zeitliche Ableitung \\
+\( x^nf(x) \)				&	\( i^n \left(\dfrac{\text{d}}{\text{d}\omega}\right)^n \hat{f}(\omega) \)
+										&	Ableitung im Frequenzbereich \\
+\( (f * g)(x) \)				&	\( \hat{f}(\omega)\cdot \hat{g}(\omega) \)
+										&	Faltung im Zeitbereich \\
+\( f(x)\cdot g(x) \)			&	\( \dfrac{1}{2\pi}(\hat{f} * \hat{g})(\omega) \)
+										&	Faltung im Frequenzbereich \\
+\( \hat{f}(x) \)				&	\( 2\pi f(-\omega) \)				&	Dualit"at
+\end{tabular}
+\subsection{Dualität der Fouriertransformation}
+Die folgenden Korrespondenzen sind äquivalent.\\
+\begin{tabular}{lcl}
+	\( x(t) \)		&	\( \laplace \)	&	\( \hat{x}(f) \)\\
+	\( \hat{x}(t) \)		&	\( \laplace \)	&	\( x(-f) \)\\
+	\( \hat{x}(-t) \)		&	\( \laplace \)	&	\( x(f) \)\\
+\end{tabular}
+

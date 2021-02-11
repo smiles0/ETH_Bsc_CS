@@ -1,0 +1,35 @@
+\section{Vollständige Induktion}\index{Induktion}
+Grundlägende Struktur um die Aussage $A(n)$ zu beweisen:
+\begin{enumerate}
+	\item \textbf{Induktionsanfang/Verankerung:} Die Aussage wird für $n = A$ bewiesen.
+	$A$ ist dabei meistens der erste Wert für die gegebene Eingabemenge.
+	Der Beweis wird meist durch direktes ausrechnen gemacht.
+	\item \textbf{Annahme/Induktionsvoraussetzung:} Hier schreibt man,
+	dass man davon ausgeht die Aussage sei gültig (damit man sie im nächsten Schritt)
+	einsetzen kann. Man kopiert also im Grunde, was man zu beweisen hat mit einigen Zierwörter.
+	\item \textbf{Induktionsschritt:} Für jedes $n \geq A$ wird unter Benutzung der Aussage $A(n)$
+	die Aussage $A(n+1)$ bewiesen. Dazu wird die Induktionsannahme verwendet.
+\end{enumerate}
+
+\subsection{Beispiel}
+		Es ist zu beweisen, dass für jedes $n \in \N$ folgendes gilt: $1 + 2 + 3 + \ldots + n = \frac{n(n + 1)}{2}$		
+		
+		Lemma: $\forall \in \N. 1 + 2 + 3 + \ldots + n = \frac{n(n + 1)}{2}$ \\
+		
+	Beweis: \\
+		  Sei $P(n) \equiv 1 + 2 + 3 + \ldots + n = \frac{n(n + 1)}{2}$. \\
+		  Wir zeigen $\forall \in \N. P(n)$ mit vollständiger Induktion.\\
+		
+		Induktionsanfang: Zeige $P(0)$. \\
+		 $$0 =  \frac{0(0 + 1)}{2}$$
+		
+		  Induktionsschritt: \\
+		    Sei $n \in N$ beliebig und nehmen wir $P(n)$ an (Induktionsvoraussetzung).  \\
+		    Zeige $P(n+1)$ (Induktionsbehauptung).\\
+		  \begin{align}
+		      1 + 2 + 3 + \ldots + n + (n + 1) =\\
+		      = \frac{n(n + 1)}{2} + (n+1)       & \text{ — P(n) Induktionsvor. }\\
+		      = \frac{n(n + 1)}{2} + \frac{2(n + 1)}{2}  & \text{—arith}\\
+		      = \frac{(n+1)*((n+1)+1)}{2}        & \text{—arith}
+		\end{align}
+		qed.

@@ -1,0 +1,43 @@
+\section{Grenzwertsätze}
+In vielen Situationen taucht die Summe von \emph{vielen gleichartigen Zufallsvariablen} auf. Wir möchten wissen, wie sich diese Summe etwa verhält, und untersuchen deshalb ihre Asymptotik, wenn die Anzahl der Summanden gegen unendlich geht.
+
+Für die folgenden Sätze definieren wir einige Grössen:\\
+$S_n=\sum\limits_{i=1}^{n}X_i$ und $\overline{X}_n=\frac{S_n}{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_i$
+
+\subsection{Schwaches Gesetz der grossen Zahlen}
+Seien $X_1,X_2,...,X_n$ \emph{unabhängige} oder \emph{paarweise unkorrelierte} Zufallsvariablen mit gleichem Erwartungswert $E[X_i]=\mu$ und gleicher Varianz $Var[X_i]=\sigma^2$. Sei $\overline{X}_n=\frac{1}{n}\sum\nolimits_{i=1}^{n}X_i$. Dann gilt:
+\[
+\forall\epsilon>0:\lim_{n\to\infty}P\left[|\overline{X}_n-\mu|>\epsilon\right]=0
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Für hinreichend grosse $n$ konvergiert der Mittelwert $\overline{X}_n$ gegen den Erwartungswert $\mu$.
+\item Der Satz funktioniert nicht, falls der Erwartungswert oder die Varianz nicht definiert sind.
+\end{itemize}
+
+\subsection{Starkes Gesetz der grossen Zahlen}
+Seien $X_1,...,X_n$ \emph{unabhängige} Zufallsvariablen mit \emph{gleicher Verteilung} (i.i.d) und Erwartungswert $E[X_i]=\mu$. Sei $\overline{X}_n=\frac{1}{n}\sum\nolimits_{i=1}^{n}X_i$. Dann gilt:
+\[
+P\left[\lim_{n\to\infty}\overline{X}_n=\mu\right]=1
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Für hinreichend grosse $n$ konvergiert der Mittelwert $\overline{X}_n$ gegen den Erwartungswert $\mu$.
+\end{itemize}
+
+\subsection{Zentraler Grenzwertsatz}
+$X_1,X_2,X_3,...,X_n,...$ seien \emph{stochastisch unabhängige} Zufallsvariablen, die alle der \emph{gleichen} Verteilungsfunktion mit Erwartungswert $\mu$ und Varianz $\sigma^2$ genügen. Dann konvergiert die Verteilungsfunktion $F_Z(u)$ der standardisierten Zufallsvariablen
+\[
+Z_n=\frac{(X_1+X_2+...+X_n)-n\mu}{\sqrt{n}\sigma}
+\]
+im Grenzfall $n\rightarrow\infty$ gegen die Verteilungsfunktion $\Phi(t)$ der Standardnormalverteilung:
+\[
+\lim_{n\to\infty}F_Z(u)=\Phi(u)=\frac{1}{\sqrt{2\pi}}\cdot\int\limits_{0}^{u}e^{-\frac{t^2}{2}}dt
+\]
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+\item Für ein hinreichend grosses $n$ ist $Z_n=X_1+X_2+...+X_n$ annähernd \emph{normalverteilt} mit Erwartungswert $E[Z_n]=n\mu$ und Varianz $Var[Z_n]=n\sigma^2$.
+\end{itemize}

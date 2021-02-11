@@ -1,0 +1,104 @@
+
+\documentclass[11pt]{article}
+\usepackage[left=4mm, right=4mm, top=3mm, bottom=7mm,paperwidth=140mm, paperheight=297mm]{geometry}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, amsfonts, amsmath, esint}
+\usepackage{xcolor}
+\usepackage[e]{esvect}
+\usepackage{floatrow} % allows to insert pictures into proofs and theorems
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage[english,german,swissgerman]{babel} 
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{multicol}
+%%From KomAZSF
+\usepackage{amscd, amsmath, amssymb, blindtext, empheq, enumitem, multicol, parskip, esint}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array} %for bigger tabular spacings
+\usepackage{extarrows} % for arrows with text under and over them
+\usepackage{mathrsfs} % for different math letters
+\usepackage{xfrac} % for nice number fractions
+\usepackage{trfsigns} % for laplace sign
+\usepackage{pdfpages}
+
+
+
+
+
+% Style Sheet
+\input{style/style.sty}
+
+
+%%%%%
+\begin{document}
+	
+\setcounter{page}{1}
+\setcounter{tocdepth}{2}
+
+
+\title{Komplexe Analysis Zusammenfassung, ETH, D-INFK}
+\author{Miles Strässle, Prof. A. Iozzi}
+%\author{Simon Menzi, Prof. A. Iozzi}
+\date{\today}
+\maketitle
+%\tableofcontents
+
+
+% Use compiler for 3x1 Format on A4 Page, ask Author
+% include the individual chapters
+% \input{kap<n>.tex}
+%\clearpage
+
+%% Multiline-Comment
+% \ifx true false
+% ...
+% \fi
+
+
+
+\part{Zusammenfassung}
+\input{src/src_koma/_TEMP_.tex}
+\input{src/src_koma/Komplexe_Zahlen.tex}
+\input{src/src_koma/Komplexwertige_Funktionen.tex}
+\input{src/src_koma/Residuensatz.tex}
+\input{src/src_koma/Taylor_Laurentreihen.tex}
+\input{src/src_koma/Fourier_Analysis.tex}\newpage
+\input{src/src_koma/Laplace_Transformation.tex}
+\includegraphics[width=0.98\textwidth]{images/img_koma/laplace_table1.png}\newline
+\includegraphics[width=1\textwidth]{images/img_koma/laplace_table2.png}
+
+
+%\ifx true false
+\part{Trigonometrie}
+\setcounter{section}{0}
+\input{src/Trigonometrisches_Rechnen.tex}
+%\input{src/Koord.Sys_Rot_Drehmatrix.tex} %additional Koordinatensysteme und Drehmatrixen inkl. Herleitung
+\part{Differenzialrechnung}
+\setcounter{section}{0}
+\input{src/Differnzialrechnung.tex}
+
+%\ifx true false
+\part{Tables}
+\setcounter{section}{1}
+\input{src/Tables.tex}
+\part{Beispiele}
+\setcounter{section}{1}
+\input{src/src_koma/Beispiele.tex}
+%\fi
+
+
+\end{document}
+
+

@@ -1,0 +1,53 @@
+\section{Taylorreihe}
+\eqbox{f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0)}{k!}(z-z_0)^k }\(\qquad \forall z \in B(z_0, \rho)\)
+
+\subsection{Wichtige Potenzreihen}
+\emph{geometrische Reihe}:\\
+$\displaystyle \dfrac{1}{1-\left(\dfrac{z}{c}\right)^d} = \sum_{k=0}^\infty \left(\dfrac{z}{c}\right)^{d \cdot k}
+\Longleftrightarrow \left\vert\dfrac{z}{c}\right\vert<1$ \qquad mit \(\rho = 1\)
+
+$\displaystyle \dfrac{1}{c\left(1-\dfrac{z}{c}\right)^2} = \sum_{k=1}^\infty \dfrac{k}{c}\left(\dfrac{z}{c}\right)^{k-1}
+\Longleftrightarrow \left\vert\dfrac{z}{c}\right\vert<1$ \qquad mit \(\rho = c\)
+
+\emph{Wichtige Umformung f"ur geom. Reihe}:\\
+\(\dfrac{1}{2-z} = \dfrac{1}{2-z+1-1}=\dfrac{1}{1-(z-1)} = \sum\limits_{k=0}^\infty (z-1)^k\) f"ur \(\vert z-1\vert < 1\) 
+
+$\displaystyle e^z = \text{exp}(z) = \sum_{k=0}^\infty \dfrac{z^k}{k!} =
+1 + z + \dfrac{z^2}{2} + \dfrac{z^3}{6} + \dfrac{z^4}{24}$ \qquad mit \(\rho = \infty\)
+
+$\displaystyle \text{L}og(z) = \text{Log}(z_0) - \sum_{k=1}^\infty \dfrac{(-1)^k(z-z_0)^k}{k\cdot {z_0}^k}$
+
+$\displaystyle \sin(z) = \sum_{k=0}^\infty \dfrac{(-1)^k \cdot z^{2k+1}}{(2k+1)!} = 
+z - \frac{z^3}{6} + \frac{z^5}{120} - \frac{z^7}{5400} +- \dots$
+
+$\displaystyle \cos(z) = \sum_{k=0}^\infty \dfrac{(-1)^k \cdot z^{2k}}{(2k)!} =
+1 - \frac{z^2}{2} + \frac{z^4}{24} - \frac{z^6}{720} +- \dots$
+
+\(e^{iz} = \exp(iz) = \cos(z) + i\sin(z) = 1 + ix + \dfrac{(ix)^2}{2} + \dfrac{(ix)^3}{6} + \dfrac{(ix)^4}{24} + \dots\)\\
+\hspace*{4mm} \(= 1 + ix - \dfrac{x^2}{2} - \dfrac{ix^3}{6} + \dfrac{x^4}{24} + \dfrac{ix^5}{120} \mp \dots\)\\
+\hspace*{4mm} \(= 1 - \dfrac{x^2}{2} + \dfrac{x^4}{24} \mp \dots + i\left(x - \dfrac{x^3}{6} + \dfrac{x^5}{120} \mp \dots \right)\)
+
+
+\subsection{Umrechnung}
+\(\displaystyle \frac{1}{z+a} = \frac{1}{a+z_0} \frac{1}{1-\left(-\left(\frac{z-z_0}{a+z_0}\right)\right)}
+= \frac{1}{a + z_0} \sum_{k=0}^{\infty}\left(-\frac{z-z_0}{a+z_0}\right)^k\)
+
+Wenn \(\displaystyle f(z) = \sum_{k=0}^\infty a_k(z-z_0)^k\) f"ur \(\vert z-z_0 \vert < \rho\)\\
+Dann \(\displaystyle f(z) = -\sum_{k=-\infty}^{-1} a_k(z-z_0)^k\) f"ur \(\vert z-z_0 \vert > \rho\)\\
+(Begr"undung hinschreiben!)
+%\newpage
+\section{Laurentreihen}
+\eqbox{\text{Entwicklung m"oglich } \Longleftrightarrow \text{\textbf{KEINE Singularit"at} im Kreisring!}}
+
+\eqbox{ f(z) = \sum_{k=-\infty}^\infty a_k (z-z_0)^k} \( \Longleftrightarrow \)
+\begin{tabular}{l} \(f(z)\) analytisch auf einem\\ Kreisring \( a < \vert z-z_0 \vert < b\) \end{tabular}
+
+\begin{tabular}{ll}
+	\textbf{Hauptteil}							&	\textbf{Nebenteil}\\
+	\(\displaystyle \sum_{k=-\infty}^{-1} a_k (z-z_0)^k\)	&	\(\displaystyle \sum_{k=0}^{\infty} a_k (z-z_0)^k\)\\
+\end{tabular}
+
+\textbf{Koeffizienten} (wobei gilt: \(\partial B = \partial B(z_0,r)\)!)\\
+\(\displaystyle a_k = \dfrac{1}{2\pi i}  \oint\limits_{\partial B} \dfrac{f(z)}{(z-z_0)^{k+1}}dz\)\\
+\(\rotatebox[origin=c]{180}{$\Lsh$}\) eigentlich NIE so berechnen, ist nur n"utzlich f"ur Residuensatz und um Integrale
+zu bestimmen!

@@ -1,0 +1,1054 @@
+\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{polynom}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{titling}
+\usepackage{textcomp}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\cfoot{\pagemark}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+\setkomafont{disposition}{\normalfont\bfseries}
+
+\newcommand{\logand}{\wedge}
+\newcommand{\logor}{\vee}
+\newcommand{\limi}{\lim\limits_{n\rightarrow \infty}}
+\newcommand{\limn}{\lim\limits_{h\rightarrow 0}}
+\newcommand{\qed}{$\hfill \square$ }
+\newcommand{\abc}{\textbf{(\alph*)}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Sin}{\operatorname{Sin}}
+\newcommand{\Cos}{\operatorname{Cos}}
+\newcommand{\es}{\varnothing}
+\newcommand{\diff}{\ \mathrm{d}}
+\newcommand{\artanh}{ \mathrm{artanh}}
+\newcommand{\arsinh}{ \mathrm{arsinh}}
+\newcommand{\rang}{ \mathrm{Rang}}
+
+\title{Analysis I/II Zusammenfassung}
+\author{\textbf{Oliver Blaser}}
+\date{8. August 2016}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak 
+\section{Funktionen}
+Funktionen sind im folgenden gegeben als Abbildung von einem \textbf{Definitionsbereich} $X$ auf einen \textbf{Wertebereich} $Y$ unter der \textbf{Abbildungsvorschrift} $x\mapsto f(x)$. \\
+Die \textbf{Komposition} (assoziativ) von $f: X\to Y, \ x \mapsto f(x)$ und $f: Y\to Z, \ x \mapsto g(x)$ ist gegeben durch $F:= g\circ f: X \to Z, x\mapsto g(f(x))$. \\\\
+Eine Funktion $f: X\to Y$ heisst
+\begin{enumerate}[label = $\circ$]
+	\item \textbf{surjektiv}, falls jedes $y\in Y$ mindestens ein Urbild hat, also falls 
+	\begin{equation}
+		\forall y\in Y\ \exists x \in X:\ f(x)=y	
+	\end{equation}
+	\item \textbf{injektiv}, falls jedes $y\in Y$ höchstens ein Urbild hat, also falls
+	\begin{equation}
+		\forall x_1,x_2 \in X : \ f(x_1) = f(x_2) \implies x_1=x_2
+	\end{equation}
+	\item \textbf{bijektiv}, falls jedes $y\in Y$ genau ein Urbild hat, d.h. falls $f$ injektiv und surjektiv ist. In genau diesem Fall hat die Abbildung eine eindeutige Umkehrfunktion $f^{-1}$.\\
+	Bijektivität kann gezeigt werden, in dem zuerst Surjektivität mittels Zwischenwertsatz (\ref{Zwischenwertsatz}) gezeigt wird und dann Injektivität mittels strenger Monotonie ($f'(x) < 0$ oder $f'(x)> 0$).
+\end{enumerate}
+
+\section{Zahlen und Vektoren}
+\subsection{Die reellen Zahlen}
+Die \textbf{reellen Zahlen} $\mathbb{R}$ sind bezüglich der Addition und der Multiplikation assoziativ, kommutativ und es existiert ein neutrales und ein inverses Element. Ausserdem gilt das Distributivgesetz. Die reellen Zahlen sind bezüglich $\leq$ reflexiv, transitiv und total geordnet. Sie sind ordnungsvollständig, das heisst, es gibt für all e zwei Zahlen $x,y\in \mathbb{R}, \ x \neq y$ eine Zahl $c$ die dazwischen liegt. \\
+Für die reellen Zahlen gilt die \textbf{Dreiecksungleichung}: 
+\begin{equation}
+	\forall x,y\in \mathbb{R}: |x+y|\leq |x| + |y|
+\end{equation}
+Und für $x,y\in \mathbb{R}, \varepsilon>0$ gilt die \textbf{Young-Ungleichung}:
+\begin{equation}
+	2|x\cdot y| \leq \varepsilon x^2  + \frac{1}{\varepsilon} y^2
+\end{equation}
+Für jede reelle Zahl $x\geq -1$ und jedes $n\in\mathbb{N}$ gilt die folgende \textbf{Bernoulli'sche-Ungleichung}: \\
+\begin{equation}
+(1+x)^{n}\geq 1+nx
+\end{equation}
+Der \textbf{Binomische Lehrsatz} besagt für $x,y\in\mathbb{C}$:
+\begin{equation}
+\displaystyle (x+y)^{n}=\sum _{k=0}^{n}{\binom {n}{k}}x^{n-k}y^{k}
+\end{equation}
+Dabei ist der \textbf{Binomialkoeffizient} definiert als: 
+\begin{equation} 
+{\binom {n}{k}}={\frac {n!}{k!\cdot (n-k)!}}
+\end{equation}
+
+\subsection{Infimum und Supremum}
+Jede nichtleere, nach oben (unten) beschränkte Menge $A\subset \mathbb{R}$ besitzt eine kleinste (grösste) obere (untere) Schranke, die \textbf{Supremum} (\textbf{Infimum}) von $A$ heisst. Ist das Supremum (Infimum) ein Element der Menge $A$, dann ist es zusätzlich ein Maximum (Minimum). Durch die Existenz eines Infimums und eines Maximums muss es für jede Zahl $x\in\mathbb{R}$ eine natürliche Zahl $n\in \mathbb{N}$ geben, sodass $x<n$ (Archimedisches Prinzip).
+\subsection{Kardinalität und Abzählbarkeit}
+Die \textbf{Kardinalität} einer endlichen Menge ist gegeben durch die Anzahl Elemente. Zwei unendliche Mengen sind genau dann \textbf{gleichmächtig}, falls es eine bijektive Abbildung zwischen den beiden gibt. Jede abzählbar unendliche Menge hat eine bijektive Abbildung zu $\mathbb{N}$. Eine Menge, die keine bijektive Abbildung zu $\mathbb{N}$ hat, heisst überabzählbar.
+\subsection{Skalarprodukt und Norm}
+Das \textbf{euklidische Skalarprodukt} zweier Vektoren $x,y\in \mathbb{R}^n$ ist gegeben durch: $x\cdot y = \sum_{i=1}^{n} x_iy_i$.\\
+Es gilt Symmetrie ($x\cdot y = y\cdot x$) und Bilinearität ($x\cdot (y+z)=x\cdot y + x \cdot z$ und $x\cdot (\alpha y) = \alpha (x\cdot y)$).\\
+Ist das Skalarprodukt zweier Vektoren 0, so stehen sie senkrecht aufeinander: $x\cdot y= 0 \Leftrightarrow x\bot y$.\\
+Die \textbf{euklidische Norm} eines Vektors $x\in \mathbb{R}^n$ ist definiert durch:  $\|x\|=\sqrt{x\cdot x} = \sqrt{\sum_{i=1}^{n} x_i^2}$. \\\\
+Für die Norm und das Skalarprodukt gilt folgendes:
+\begin{enumerate}[label= $\circ$]
+	\item \textbf{Cauchy-Schwarz-Ungleichung}: $\forall x,y \in \mathbb{R}^n: |x\cdot y| \leq \|x\| \cdot \|y\|$ 
+	\item Definitheit: $\forall x \in \mathbb{R}^n: \|x\|\geq 0,\ \|x\|=0\Rightarrow x=0$
+	\item Positive Homogenität: $\forall x\in \mathbb{R}^n, \ \alpha \in \mathbb{R} : \|\alpha x\| = |\alpha|\cdot \|x\|$
+	\item \textbf{Dreiecksungleichung}: $\forall x,y\in \mathbb{R}^n : \|x+y\| \leq \|x\|+\|y\|$ 
+\end{enumerate}
+Mit dem \textbf{Kosinussatzes} kann man den Winkel $\varphi$ zwischen zwei Vektoren bestimmen: $\cos(\varphi)={\frac {\langle a,b\rangle }{\|a\|\,\|b\|}}$
+\subsection{Komplexe Zahlen}
+Jede komplexe Zahl lässt sich schreiben in der Form $z = x + iy$, wobei $x,y\in \mathbb{R}$ und $i:=\sqrt{-1}$.\\
+Dabei wird $x=Re(z)$ als \textbf{Realteil} und $y=Im(z)$ als \textbf{Imaginärteil} bezeichnet.
+Die \textbf{Konjugation} ist definiert als $\overline{z} = \overline{x+iy} = x -iy$. \\
+Für komplexe Zahlen $z_j = x_j+iy_j \in \mathbb{C}$ gilt: 
+\begin{enumerate}[label=$\circ$]
+	\item $z\cdot \overline{z} = \|z\|^2$
+	\item $\overline{z_1+z_2} = \overline{z_1} + \overline{z_2}\quad$ und $\quad  \overline{z_1\cdot z_2} = \overline{z_1} \cdot \overline{z_2}$
+	\item falls $z\neq 0$: $z^{-1} = \frac{\overline{z}}{\|z\|^2}$
+	\item $\|z_1z_2\| = \|z_1\|\ \|z_2\|$
+\end{enumerate}
+Ausserdem lässt sich jede komplexe Zahl in \textbf{Polarform} darstellen. Dabei ist $r$ der Radius und $\phi$ der Winkel zur reellen Achse. 
+Es gilt: 
+\begin{equation}
+	r = |z|, \quad x= r\cos (\phi), \quad y = r\sin(\phi) \Rightarrow 
+	z = r(\cos(\phi) + i\sin(\phi)) = re^{i\phi}
+\end{equation}
+Die Multiplikation ist dann einfach gegeben durch: $z_1\cdot z_2 = r_1e^{i\phi_1}\cdot r_2e^{i\phi_2} = r_1r_2e^{i(\phi_1 + \phi_2)}$.\\
+Zum \textbf{Umrechnen} von kartesischen Koordinaten in Polarkoordinaten ist:
+\begin{equation*}
+	r=|z|, \qquad 
+	\varphi =\arg(z)=
+			\begin{cases}
+				+\arccos\frac{x}{|z|} & \text{ falls } y\geq 0\\
+				-\arccos\frac{x}{|z|} & \text{ falls } y<0
+			\end{cases}
+\end{equation*}
+Bei \textbf{Brüchen komplexer Zahlen} geht man in der Regel so vor, dass man den Bruch um das komplex konjugierte des Nenners erweitert. Somit fällt unten der imaginäre Teil weg. \\
+Die allgemeinen $q$-ten \textbf{Wurzeln} einer komplexen Zahl sind gegeben durch:\\
+\begin{equation}
+\sqrt[q]{z}= \sqrt{re^{i\phi}} = \sqrt[q]{r} e^{i\frac{\phi + 2k\pi}{q}} \text{, mit } k=1\dots q
+\end{equation}
+
+\section{Folgen}
+Sei $(a_n)_{n\in \mathbb{N}}$ eine Folge. Die Folge \textbf{konvergiert} für $n\to \infty$ genau dann gegen $a$, wenn gilt: 
+\begin{equation*}
+	\forall \varepsilon>0\ \exists n_0=n_0(\varepsilon) \in \mathbb{N} \ \forall n\geq n_0 : |a_n-a|<\varepsilon 
+\end{equation*}
+Wichtige Folgen sind zum Beispiel:
+\begin{enumerate}[label=$\circ$]
+	\item \textbf{Fibonacci-Folge}: $a_0=1, a_1=1, a_n=a_{n-1}+a_{n-2}$ bzw. explizit: 
+	$ (a_{n})_{n\in \mathbb{N}}={\frac {1}{\sqrt {5}}}\left[\left({\frac {1+{\sqrt {5}}}{2}}\right)^{n}-\left({\frac {1-{\sqrt {5}}}{2}}\right)^{n}\right] $
+	\item \textbf{Zinsfaktorfolge}: $a_n = \left( 1+\frac{1}{n} \right)^n, \ n \in \mathbb{N}$ mit Grenzwert $e$ für $n\to \infty$
+	\item $\sqrt[n]{n} \to 1 \ (n\to \infty)$ 
+	\item Für jedes $p\in \mathbb{N}$, $q\in \mathbb{R}$, wobei $0<q<1$ gilt: $\limi n^pq^n=0$, das heisst, die Exponentialfunktion wächst schneller als jede Potenz. 
+\end{enumerate}
+\subsection{Konvergenzkriterien für Folgen}
+\textbf{Monotone Konvergenz}: Sei $(a_n)_{n\in\mathbb{N}}\subset \mathbb{R}$ eine nach oben begrenzte und monoton wachsende Folge. Dann ist $(a_n)$ konvergent und es gilt: $\limi a_n = \sup\limits_{n\in\mathbb{N}} a_n$. \\\\
+Seien die Folgen $(a_n)_{n\in\mathbb{N}}$ und $(b_n)_{n\in\mathbb{N}}$ konvergent mit $\limi (a_n)= a$ und $\limi (b_n)=b$. Dann gilt: 
+\begin{enumerate}[label=$\circ$]
+	\item $(a_n+b_n)_{n\in\mathbb{N}}$ und $(a_n\cdot b_n)_{n\in\mathbb{N}}$ konvergieren. 
+	\item $\limi (a_n+b_n)_{n\in\mathbb{N}} = a+b = \limi (a_n) + \limi (b_n)$
+	\item $\limi (a_n\cdot b_n)_{n\in\mathbb{N}} = a\cdot b = \limi (a_n) \cdot \limi (b_n)$
+	\item Falls $\forall n\in \mathbb{N}: b\neq 0 \neq b_n$, dann gilt: $\limi \frac{a_n}{b_n} = \frac{a}{b}$
+	\item Falls $\forall n\in \mathbb{N}: a_n \leq b_n$, dann gilt: $a\leq b$
+\end{enumerate}
+Wenn eine Folge als Polynombruch gegeben ist, kann man Nenner und Zähler um das Inverse der höchsten Potenz erweitern und kommt schnell aufs Resultat. \\\\
+\textbf{Sandwich-Theorem}: Seien $(x_n)$ und $(y_n)$ reelle Folgen mit $x_{n}\rightarrow a$ , $y_{n}\rightarrow a$  und $ x_{n}\leq y_{n}$  für alle $n$. Ist $w_{n}$  eine weitere Folge mit $x_{n}\leq w_{n}\leq y_{n}$  für alle $n$, so konvergiert $w_{n}$ , und zwar ebenfalls gegen $a$.\\\\
+\textbf{Cauchy-Kriterium}: Eine Folge konvergiert genau dann, wenn sie eine Cauchy-Folge ist. Eine Folge $(a_n)_{n\in\mathbb{N}}$ heisst \textbf{Cauchy-Folge}, falls gilt: 
+\begin{equation*}
+	\forall \varepsilon>0\ \exists n_0(\varepsilon) \in \mathbb{N} \ \forall n,l \geq n_0 : |a_n-a_l|<\varepsilon
+\end{equation*}
+Das bedeutet, es gibt ein Folgeglied $n_0$ (das von $\varepsilon$ abhängen kann), ab dem für alle weiteren Folgeglieder gilt, dass sie sich um weniger als $\varepsilon$ voneinander unterscheiden. Im Gegensatz zur Definition oben wird kein Grenzwert benötigt. Die harmonische Reihe $\left(a_n = \sum_{k=1}^{n} \frac{1}{k}\right)$ ist divergent, da $a_{2n}-a_n=\frac{1}{n+1}+\dots+\frac{1}{2n} \geq \frac{n}{2n}= 0.5, \ \forall n\in\mathbb{N}$. 
+\subsection{Teilfolgen und Häufungspunkte}
+\textbf{Teilfolge}: Die Folge $(b_n)$ ist genau dann eine Teilfolge von $(a_n)$, wenn sie unendlich ist und alle Folgenglieder von $(b_n)$ in $(a_n)$ vorkommen. Eine Teilfolge von $(a_n)$ entsteht also, wenn man (ggf. unendlich) Folgenglieder entfernt und die Folge dann noch unendlich viele Glieder hat. \\\\
+\textbf{Häufungspunkt}: Ein Punkt $a\in \mathbb{R}$ heisst Häufungspunkt von $(a_n)$, falls $(a_n)$ eine gegen $a$ konvergente Teilfolge hat. \\\\
+\textbf{Limes inferior und superior}: Sei $(a_n)$ eine auf beide Seiten beschränkte Folge. Dann existieren Folgen $c_n$ und $b_n$ deren Grenzwerte sich von oben bzw. von unten an die Folge $(a_n)$ annähern. Diese Folgen werden als Limes inferior bzw superior von $(a_n)$ definiert, also: \\
+\begin{equation}
+	\limsup\limits_{n\to \infty} a_n := \limi b_n = b \quad \text{ und } \quad
+	\liminf\limits_{n\to \infty} a_n := \limi c_n = c
+\end{equation}
+Diese beiden Punkte sind Häufungspunkte von $(a_n)$. Sie sind insbesondere der kleinste und der grösste Häufungspunkt. Wenn $b=c$ ist, so konvergiert $(a_n)$ nach $b=c$. Umgekehrt konvergiert jede Teilfolge von einer konvergenten Folge $(a_n)$ zum gleichen Grenzwert $a$. Damit folgt auch direkt der folgende Satz: \\\\
+\textbf{Bolzano-Weierstrass}: Jede beschränkte Folge $(a_n)_{n\in \mathbb{N}}$ in $\mathbb{R}^d$ besitzt eine konvergente Teilfolge, also somit auch mindestens einen Häufungspunkt.\\\\
+\textbf{Folgen in $\mathbb{R}^d$}: Eine Folge im $\mathbb{R}^d$ konvergiert genau dann, wenn die Folge in jede Dimension einzeln konvergiert, also $\forall i\in \{1,\dots,d\}: a_n^i \to a^i\ (n\to \infty)$. Analog gelten Cauchy-Kriterium und Bolzano-Weierstrass. 
+\pagebreak 
+\section{Reihen}
+\subsection{Einige wichtige Reihen}
+Einige wichtige Reihen: 
+
+\begin{multicols}{2}
+	\begin{enumerate}[label=$\circ$]
+		\item \textbf{Geometrische Reihe}\\ Mit $|q|<1$:\ $S_n:=\sum_{k=0}^{n} q^k = \frac{1-q^{n+1}}{1-q}$. Sie konvergiert somit mit $n\to \infty$ gegen $\frac{1}{1-q}$. 
+		\item \textbf{Harmonische Reihe}\\ $\sum_{k=1}^{\infty} \frac{1}{k}$ ist divergent (siehe bei Cauchy-Kriterium oben, wieso).
+		\item \textbf{Die Exponentialreihe}\\ $\Exp(z):=\sum_{k=0}^{\infty} \frac{z^k}{k!}$ konvergiert für jedes $z\in\mathbb{C}$ (Quotientenkriterium).
+		\columnbreak
+		\item \textbf{Logarithmusreihe}\\ $\sum_{k=0}^{\infty} (-1)^k \ \frac{x^{k+1}}{k+1} = \log(1+x)$ für $x\in(-1,1]$
+		\item \textbf{Sinusreihe}\\ $\sum_{k=0}^{\infty} (-1)^k \frac{x^{2k+1}}{(2k+1)!} = \sin(x)$
+		\item \textbf{Kosinusreihe}\\ $\sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} = \cos(x)$
+		\item \textbf{Alternierende harmonische Reihe}: $\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \log(2)$
+		\item \textbf{Leibnizreihe}\\ 
+		$\sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = \frac{\pi}{4}$
+	\end{enumerate}
+\end{multicols}
+\subsection{Konvergenzkriterien für Reihen}
+\subsubsection{Cauchy-Kriterium}
+Eine Reihe $\sum_{k=0}^{\infty} a_k$ ist genau dann konvergent, wenn gilt: $\displaystyle \left| \sum_{k=l}^{n} a_k \right| \to 0 \ \ (n\geq l, l\to \infty)$
+\subsubsection{Quotientenkriterium}
+Sei $a_k\neq 0, k\in \mathbb{N}$. Es gilt: 
+\begin{enumerate}[label=$\circ$]
+	\item Falls $\displaystyle \limsup\limits_{k\to\infty}\left| \frac{a_{k+1}}{a_k} \right| <1$, dann ist $\sum_{k=1}^{\infty} a_k$ absolut konvergent.
+	\item Falls $\displaystyle \liminf\limits_{k\to\infty}\left| \frac{a_{k+1}}{a_k} \right| >1$, dann ist $\sum_{k=1}^{\infty} a_k$ divergent.
+\end{enumerate}
+Das Quotientenkriterium versagt, wenn unendlich viele $a_k$ verschwinden oder falls die Folge der Quotienten $\frac{a_{k+1}}{a_k}$ stark oszilliert. Dafür gibts das glorreiche Wurzelkriterium.
+\subsubsection{Wurzelkriterium}
+Sei $(a_k)_{k\in\mathbb{N}}$ eine Folge in $\mathbb{R}$ oder $\mathbb{C}$. Dann gilt: 
+\begin{enumerate} [label=$\circ$]
+	\item Falls $\displaystyle \limsup\limits_ {k\to \infty} \sqrt[k]{|a_k|}<1$, so konvergiert $\sum_{k=1}^{\infty} a_k$ absolut
+	\item Falls $\displaystyle \limsup\limits_ {k\to \infty} \sqrt[k]{|a_k|}>1$, so divergiert $\sum_{k=1}^{\infty} a_k$
+\end{enumerate}
+\subsubsection{Konvergenzkreisradius einer Potenzreihe}
+Die Potenzreihe $p(z)=\sum_{k=0}^{\infty} c_kz^k$ ist konvergent für alle $z\in\mathbb{C}$ mit 
+$\displaystyle |z|<\rho:=\frac{1}{\limsup\limits_{k\to \infty} \sqrt[k]{|c_k|}}\in [0,\infty)$
+und divergiert für alle $|z|>\rho$, wobei $\rho$ als Konvergenzkreisradius bezeichnet wird.\\
+\textbf{Achtung!} Beim bestimmen des Konvergenzkreisradius wird keine Aussage über den Rand des Kreises gemacht, den muss man also immer noch zusätzlich betrachten. \\
+Ausserdem gilt, dass Potenzreihen im Innern des Konvergenzkreisradius \textbf{stetig} sind.\\\\
+Wenn ab einem bestimmten Index alle  $a_{n}$ von 0 verschieden sind und der folgende Limes existiert, dann kann der Konvergenzradius einfacher durch
+$r=\lim _{{n\rightarrow \infty }}{\bigg |}{\frac  {a_{{n}}}{a_{{n+1}}}}{\bigg |}$
+berechnet werden. Diese Formel ist aber leider nicht immer anwendbar. Es kann sein, dass diese Formel eine Divergenz vorhersagt, es aber trotzdem konvergiert. 
+\subsubsection{Integralkriterium}
+Sei $f:[1,\infty[ \to \mathbb{R}_+$ monoton fallend. Dann konvergiert die Reihe $\sum_{k=p}^{\infty} f(k)$ genau dann, wenn $\int_{p}^{\infty} f\diff x$ konvergiert und es gilt in diesem Fall: 
+\begin{equation}
+	\sum_{n=p+1}^\infty f(n) \leq \int_p^\infty f(x) \diff x \leq \sum_{n=p}^\infty f(n)
+\end{equation}
+\subsection{Absolute Konvergenz}
+Eine Reihe $\sum_{k=1}^{\infty} a_k$ \textbf{konvergiert absolut}, falls 
+\begin{equation}
+\sum_{k=1}^{\infty} |a_k|
+\end{equation} konvergiert. \\
+Quotienten- und Wurzelkriterium sind Kriterien für absolute Konvergenz. \\
+Bei Reihen die absolut konvergieren ist es egal, in welcher Reihenfolge die Folgenglieder aufaddiert werden. Es gilt somit für eine bijektive Funktion $\varphi:\mathbb{N}\to \mathbb{N}$ und eine absolut konvergente Reihe $\sum_{k=1}^{\infty}a_k$ der folgende \textbf{Satz der absoluten Konvergenz}:
+\begin{equation}
+	 \sum_{k=1}^{\infty}a_k = 
+	 \sum_{k=1}^{\infty}a_{\varphi(k)} 
+\end{equation}
+Absolut konvergente Reihen haben den Vorteil, dass die Summanden in anderer Reihenfolge aufgeschrieben werden können, um so den Wert einfacher zu bestimmen. \\
+Wegen der Definition von absoluter Konvergenz folgt direkt: Seien $(a_n)$ und $(b_n)$ Folgen in $\mathbb{R}$ und $\sum_{k=1}^{\infty} a_k$ und $\sum_{k=1}^{\infty} b_k$ absolut konvergent. Dann gilt: 
+\begin{equation}
+	\sum_{k,l=1}^{\infty} a_kb_l = 
+	\sum_{k=1}^{\infty} a_k \cdot
+	\sum_{l=1}^{\infty} b_l
+\end{equation}
+
+\section{Stetigkeit}
+\subsection{Grenzwerte von Funktionen}
+Es gibt Funktionen (z.B. $\frac{x^2-1}{x-1}$), die an gewissen Punkten nicht definiert sind (in diesem Fall $x=1$), aber trotzdem stetig ergänzbar sind (mit $f(1)=2$). \\
+Der \textbf{Abschluss} eines Gebiets $\Omega\subset \mathbb{R}^d$ ist die Menge
+\begin{equation}
+	\overline{\Omega} = \{ x\in\mathbb{R}^d; \ \exists (x_k)_{k\in\mathbb{N}} \subset \Omega: x_k\to x (k\to \infty) \}
+\end{equation}
+Also die Menge aller Punkte, die Grenzwerte für Folgen über $\Omega$ sind. Es gilt logischerweise $\Omega \subset \overline{\Omega}$.\\
+Es gilt $\overline{\mathbb{R}\backslash \{1\}}=\mathbb{R},\quad \overline{]0,1[}= [0,1],\quad \overline{\mathbb{Q}} = \mathbb{R}, \quad \overline{\mathbb{R}\backslash \mathbb{Q}}=\mathbb{R}$.\\\\
+Eine Funktion $f(x)$ hat an der Stelle $x_0$ den \textbf{Grenzwert} $a$, falls für jede Folge $(x_k)_{l\in\mathbb{N}}$ in $\Omega$ mit $x_k\to x_0 (k\to \infty) $ gilt: $f(x_k)\to a (k\to \infty)$. \\
+\subsubsection{Stetigkeit}
+Eine Funktion $f:\mathbb{R}^d \supset \Omega \to \mathbb{R}^n$ heisst in dem Punkt $x_0\in\Omega$ \textbf{stetig}, falls $a=\lim\limits_{x\to x_0} f(x) = f(x_0)$ existiert. Die Funktion heisst an der Stelle $x_0\in\overline{\Omega}\backslash \Omega$ \textbf{stetig ergänzbar}, falls der Grenzwert an diesem Randpunkt existiert. 
+\subsubsection{Stetigkeitskriterien}
+Folgendes sind Kriterien für Stetigkeit reeller Funktionen $f:\Omega\to\mathbb{R}$ mit $\Omega\subset \mathbb{R}$:
+\begin{enumerate}[label=$\circ$]
+	\item \textbf{Epsilon-Delta-Kriterium}:\\
+	$f$ ist stetig in $x_0$ $\Leftrightarrow \forall \varepsilon>0 \ \exists \delta > 0 \ \forall x \in \Omega: |x-x_0|<\delta \rightarrow	|f(x)-f(x_0)|<\varepsilon$ 
+	\item \textbf{Folgenkriterium}: 
+	Die Funktion$f\colon \Omega\to \mathbb {R} $  ist stetig in $x_0 \in \Omega$ , wenn für jede Folge $ (x_{k})_{k\in \mathbb {N} }$  mit Elementen $x_{k}\in \Omega$ , die gegen $x_0$  konvergiert, die Folge ${\bigl (}f(x_{k}){\bigr )}_{k\in \mathbb {N} }$  gegen $f(x_0 )$ konvergiert. Anders gesagt: $\lim\limits_{k\to \infty} x_k=x_0 \Rightarrow \lim\limits_{k\to \infty} f(x_k)=f(x_0)$.
+	\item \textbf{Limeskriterium}: $f$ ist genau dann stetig in $x_0$, wenn $\lim\limits_{x\to x_0} f(x) = f(x_0)$ oder wenn $x_0$ ein isolierter Punkt ist.\\
+	Ausserdem gilt: $f$ ist stetig $\Leftrightarrow \lim g(x_0) = g(\lim x_0)$ 
+	\item \textbf{Topologisches Kriterium}: $f$ ist genau dann stetig in $x_0\in \Omega$, wenn für jede Umgebung $U$ von $f(x_0)$ das Urbild $f^{-1}(U)$ eine Umgebung von $x_0$ ist.\\
+	Anderes topologisches Kriterium: $f:\Omega\to \mathbb{R}^n$ ist in jedem Punkt stetig  $\Leftrightarrow$ Das Urbild $U=f^{-1}(V)$ jeder offenen Menge $V\subset \mathbb{R}^n$ ist relativ offen $\Leftrightarrow$ Das Urbild $A=f^{-1}(B)$ jeder abgeschlossenen Menge $B \subset \mathbb{R}^n$ ist relativ abgeschlossen (siehe Begriffsdefinitionen unten).
+\end{enumerate}
+Seien $f$ und $g$ stetig. Dann sind auch $f\circ g$, $f+g$ und $\alpha f$ stetig (auf passenden Definitions- und Wertebereichen). \\
+\subsubsection{Lipschitzstetigkeit}
+Eine Funktion $f:\Omega \subset \mathbb{R}^d \to \mathbb{R}^n$ heisst \textbf{Lipschitz stetig} mit Lipschitzkonstante $L$, falls gilt: 
+\begin{equation}
+	\|f(x)-f(y)\|\leq L \|x-y\|, \ \ \forall x,y\in \Omega
+\end{equation}
+Eine Funktion heisst \textbf{lokal Lipschitz stetig}, falls die Funktion in jedem Punkt $x_0\in\Omega$ auf eine Umgebung $U = B_r(x_0) \cap \Omega$ eingeschränkt Lipschitz stetig ist.\\
+Es gilt: $f$ Lipschitz stetig $\underset{\nLeftarrow}{\Longrightarrow}$  $f$ stetig in jedem Punkt $\Longleftrightarrow$ $f$ stetig. Ausserdem sind alle Funktionen $f\in C^1(\Omega)$ auf einer offenen Menge $\Omega$ lokal Lipschitz stetig. 
+\subsubsection{Gleichmässige Stetigkeit}
+Eine Funktion $f:\Omega \to \mathbb{R}^n$ heisst \textbf{gleichmässig stetig}, falls gilt: 
+\begin{equation}
+	\forall \varepsilon >0 \ \exists \delta >0 \ \forall x,y\in\Omega: \|x-y\|<\delta \Rightarrow \|f(x)-f(y)\|<\varepsilon
+\end{equation}
+Im Unterschied zur normalen Stetigkeit kann hier $\delta$ nur von $\varepsilon$ und nicht von $x$ abhängen.\\
+Sei $\Omega\subset \mathbb{R}^d$ beschränkt, $f:\Omega \to \mathbb{R}^n$ stetig und auf $\overline{\Omega}$ stetig ergänzbar. Dann ist $f$ gleichmässig stetig.
+
+\subsubsection{Kompaktheit}
+Eine Menge $K\subset \mathbb{R}^d$ heisst \textbf{kompakt}, falls jede Folge über dieser Menge einen Häufungspunkt in der Menge hat. \\
+Wenn die Menge $K\subset \mathbb{R}$ kompakt ist, dann ist sie beschränkt und es existiert ein Maximum und Minimum in $K$. \\
+Stetige Funktionen $f$ deren Definitionsbereich eine kompakte Menge ist, bilden auf eine kompakte Menge ab und es folgt direkt, dass sie ihr Supremum (= Maximum) und Infimum (= Minimum) annehmen. \\
+Eine Menge ist ausserdem genau dann kompakt, wenn sie beschränkt und abgeschlossen ist (siehe Teil über Topologie).
+\subsection{Ein bisschen Topologie}
+\subsubsection{Definitionen}
+Ein \textbf{offener Ball} um einen Punkt $x_0\in\mathbb{R}^d$ ist definiert als Menge $B_r(x_0)=\{ x\in\mathbb{R}^d; |x-x_0|<r \}$.\\
+Ein Punkt $x_0\in\Omega$ heisst \textbf{innerer Punkt}, falls es einen Ball mit Radius $r>0$ gibt, der komplett in $\Omega$ liegt. Es bedeutet also einfach, dass $x_0$ nicht auf dem Rand liegt. Somit ist eine Menge $\Omega$ \textbf{offen}, wenn alle Punkte $x_0\in\Omega$ innere Punkte sind. Der Rand ist also nicht Teil des Bereichs.
+Eine Menge heisst \textbf{abgeschlossen}, falls $\mathbb{R}^d\backslash \Omega$ offen ist. \\
+Es gilt folgendes: 
+\begin{enumerate} [label=$\circ$]
+	\item Die leere Menge $\emptyset$ und $\mathbb{R}^d$ sind offen und abgeschlossen
+	\item $\Omega_1, \Omega_2 \subset \mathbb{R}^d$ offen $\implies \Omega_1\cap \Omega_2 $ offen \qquad 
+	$\Omega_1, \Omega_2 \subset \mathbb{R}^d$ abgeschlossen $\implies \Omega_1\cup \Omega_2 $ abgeschlossen. 
+	\item $\Omega_i\subset \mathbb{R}^d$ offen $i\in I \implies \bigcup\limits_{i\in I} \Omega_i$ offen \qquad
+	$\Omega_i\subset \mathbb{R}^d$ abgeschlossen $i\in I \implies \bigcap\limits_{i\in I} \Omega_i$ abgeschlossen.
+\end{enumerate}
+Die Menge aller inneren Punkte von $\Omega$ nennt sich \textbf{offener Kern} oder schlicht \textbf{das Innere} und wird definiert durch: $\Omega^\circ:= int(\Omega) = \bigcup\limits_{U\subset \Omega,\ U \text{ offen}} U$.\\
+Der \textbf{Abschluss} einer Menge $\Omega$ enthält alle Punkte der Menge und alle Punkte, die Grenzwerte von Folgen auf $\Omega$ sein können. Anders gesagt: $clos(\Omega)= \bigcap\limits_{A\supset\Omega \text{ abgeschl.}}A$.\\
+Der \textbf{Rand} einer Menge $\Omega$ ist: $\partial \Omega = clos(\Omega)\backslash int(\Omega) = \overline{\Omega}\backslash \Omega^\circ = \overline{\Omega} \cap (\mathbb{R}^n\backslash\Omega^\circ)$. \\
+Beispiel: Der Rand der Menge der rationalen Zahlen ist: $\partial \mathbb{Q}= clos(\mathbb{Q})\backslash int(\mathbb{Q}) = \mathbb{R}\backslash \emptyset=\mathbb{R}$\\\\
+$U\subset \Omega$ heisst \textbf{Umgebung} von $x_0$ in $\Omega$, falls: $\exists r>0: B_r(x_0)\cap \Omega \subset U$\\
+Die Umgebung $U$ heisst dann \textbf{relativ offen}, wenn $U$ eine Umgebung jedes Punktes in $x_0\in U$ ist, bzw. \textbf{relativ abgeschlossen}, falls $\Omega \backslash U$ relativ offen ist. 
+\subsubsection{Normen}
+Eine Norm auf $\mathbb{R}^d$ ist eine Abbildung von $\mathbb{R}^d$ auf $\mathbb{R}$ mit den Eigenschaften für alle $x,y\in \mathbb{R}^d, \ \alpha \in \mathbb{R}$: 
+\begin{enumerate}[label=$\circ$]
+	\item Definitheit: $\|x\|\geq 0, \ \|x\|=0\Leftrightarrow x=0$
+	\item Positive Homogenität: $\|\alpha x\| = |\alpha|\ \|x\|$
+	\item Dreiecksungleichung: $\|x+y\|=\leq \|x\|+\|y\|$
+\end{enumerate}
+Die $p$-Norm und die $\infty$-Norm über $\mathbb{R}^d$ sind definiert als: 
+\begin{equation*}
+	\|x\|_p = \sqrt[p]{\sum_{i=1}^{d}|x_i|^p}, \qquad
+	\|x\|_\infty\max\limits_{1\leq i\leq d} |x_i|, \qquad 
+	\text{ mit }
+	x=(x^1, \dots, x^d)\in \mathbb{R}^d
+\end{equation*}
+Zwei Normen $\|\cdot\|^{(1)}$ und $\|\cdot \|^{(2)}$ heissen \textbf{äquivalent}, falls $\exists C>0\ \forall x\in \mathbb{R}: \frac{1}{C} \|x\|^{(1)}\leq \|x\|^{(2)} \leq C\|x\|^{(1)}$
+\subsection{Zwischenwertsatz und Folgerungen}\label{Zwischenwertsatz}
+Der \textbf{Zwischenwertsatz} besagt: Seien $-\infty<a<b<\infty$ und $f:[a,b]\to \mathbb{R}$ stetig, $f(a)\leq f(b)$, dann:
+\begin{equation}
+	\forall y \in\left[f(a), f(b)\right] \exists x\in[a,b]: f(x)=y
+\end{equation}
+Insbesondere folgt daraus folgendes Kriterium für die Existenz einer Nullstelle:
+\begin{equation}
+	f(a)\cdot f(b)<0\implies \exists x_0 \in[a,b]:f(x_0)=0
+\end{equation}
+Die \textbf{Supremumsnorm} einer auf $\overline{\Omega}$ stetig ergänzbaren Funktion $f:\Omega\to \mathbb{R}^n $ ist definiert als: 
+\begin{equation}
+	\|f\|_{C^0} := \sup\limits_{x\in\Omega} \|f(x)\| < \infty
+\end{equation}
+\subsection{Punktweise und gleichmässige Konvergenz von Funktionenfolgen}
+Eine Funktionenfolge $(f_k)_{k\in\mathbb{N}}$ \textbf{konvergiert punktweise} gegen die Grenzfunktion $f$, falls gilt: 
+\begin{equation}
+	f_k(x)\to f(x) \ (k\to \infty), \ \ \forall x\in \Omega, 
+\end{equation}
+das heisst: $\forall x\in\Omega\ \forall \varepsilon >0\ \exists K(\varepsilon,x)>0\ \forall k>K(\varepsilon,x): |f_k(x)-f(x)|<\varepsilon$. In Worten: Es gibt für jeden Punkt eine Schranke $K$, ab der der Unterschied vom Folgenglied $f_k$ ($k>K$) zur Grenzfunktion $f$ beliebig klein werden kann.\\\\
+Eine Funktionenfolge $(f_k)_{k\in\mathbb{N}}$ \textbf{konvergiert gleichmässig} gegen die Grenzfunktion $f$, falls gilt: 
+\begin{equation}
+	\sup_{x\in\Omega} |f_k(x)-f(x)| \to 0 \ \ (k\to \infty),
+\end{equation}
+das heisst: $\forall \varepsilon >0 \ \exists K(\varepsilon) \ \forall k>K(\varepsilon)\ \forall x\in\Omega: \|f_k(x)-f(x)\|<\varepsilon$. Im Gegensatz zu vorhin darf das $K$ nun nicht mehr von $x$ abhängen, es muss also für jedes $x$ die gleiche sein (in Abh. von $\varepsilon$).\\
+\textbf{Satz}: Sei $f_k:\Omega\subset \mathbb{R}^d\to \mathbb{R}^n$ stetig ($k\in \mathbb{N}$) und $f_k\underset{k\to\infty}{\overset{\text{glm.}}{\to}} f$. Dann ist $f$ stetig.\\
+\textbf{Satz}: Sei $f_k$ eine Folge in $C^1(\Omega)$ und  $f_k\overset{\text{glm.}}{\to} f, \ f_k' \overset{\text{glm.}}{\to} g \ (k\to \infty)$. Dann ist $f$ differenzierbar und $f'=g$ ist stetig. \\\\
+\textbf{Satz von Weierstrass}: Sei $f\in C^0([a,b])$. Dann gibt es Polynome $p_k$, sodass: $p_k\overset{\text{glm.}}{\to} f \ \ (k\to \infty)$.
+\subsubsection{Vertauschen von Integral und Summen}
+Sei $f_n$ eine Reihe auf $[a,b]$ integrierbarer Funktionen. Die gliedweise Integration über endliche Summen ist immer möglich. Bei unendlichen Integralen muss die Funktionenreihe aber \textbf{gleichmässig} gegen eine Grenzfunktion konvergieren. Dann gilt kann man Integral und Summe vertauschen: 
+\begin{equation}
+	\int_{a}^{b}\left( \sum_{k=1}^{\infty} f_n (x) \right)\diff x = 
+	\sum_{k=1}^{\infty} \left( \int_{a}^{b} f_n(x) \diff x \right)
+\end{equation}
+\section{Differentialrechnung in auf $\mathbb{R}$}
+\subsection{Definition und Differentiationsregeln}
+Eine Funktion $f:\Omega \subset \mathbb{R}\to \mathbb{R}$ heisst \textbf{differenzierbar} an der Stelle $x_0$, wenn folgender Grenzwert existiert: 
+\begin{equation}
+	\lim\limits_{x\to x_0, \ x\neq x_0} \frac{f(x)-f(x_0)}{x-x_0} =: f'(x_0) = \frac{\diff f}{\diff x} (x_0)
+\end{equation}
+Eine Funktion $f$ ist \textbf{von der Klasse $\boldsymbol{C^m(\Omega)}$}, falls $f$ $m$-mal differenzierbar ist und falls die Funktionen $f^{(i)}, \ i\in\{0,m\}$ stetig sind.   
+\subsubsection{Differentiationsregeln}\label{DiffRegeln}
+Seien $f,g:\Omega\to \mathbb{R}$ an der Stelle $x_0$ differenzierbar. Dann gilt: 
+\begin{enumerate}[label=$\circ$]
+	\item $(f+g)'(x_0)=f'(x_0)+g'(x_0)$
+	\item $(fg)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$
+	\item Falls $g(x_0)\neq 0$: $\left(\frac{f}{g}\right)'(x_0)= \frac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g^2(x_0)}$
+	\item Kettenregel: $(g\circ f)'(x_0)=(g(f(x_0)))' = g'(f(x_0))f'(x_0)$
+\end{enumerate}
+Eine \textbf{Potenzreihe} $f(x)=\sum_{k=0}^{\infty} a_kx^k$ ist im Innern des Konvergenzkreises differenzierbar und es gilt: $f'(x)= \sum_{k=0}^{\infty}ka_kx^{k-1}$
+\subsubsection{Mittelwertsatz}
+Seien $-\infty <a<b<\infty$ und $f:[a,b]\to\mathbb{R}$ stetig und differenzierbar in $]a,b[$. Dann existiert $x_0\in ]a,b[$ mit:
+\begin{equation}
+	f(b)=f(a)+f'(x_0)(b-a) \Leftrightarrow 
+	f'(x_0)=\frac{f(b)-f(a)}{b-a}
+\end{equation}
+Das bedeutet, es gibt einen Punkt zwischen $a$ und $b$ dessen Steigung genau der Steigung der Sekante durch $a$ und $b$ entspricht. \\
+Aus dem Mittelwertsatz folgt: $\circ \ f'\equiv 0 \Rightarrow f$ konstant, $\circ \ f'\geq0 \ (\text{bzw.}>0) \Rightarrow f$ (streng) monoton wachsend. 
+\subsubsection{Satz von Bernoulli-de l'Hôpital}
+Seien $f,g: \Omega\to\mathbb{R}$ differenzierbar und konvergieren im Punkt $x_0\in\Omega$ beide gegen 0 oder divergieren beide, dann gilt: 
+\begin{equation}
+	\lim\limits_{x\to x_0}\frac{f'(x)}{g'(x)} = c \Rightarrow
+	\lim\limits_{x\to x_0} \frac{f(x)}{g(x)}=c.
+\end{equation}
+Der Satz gilt auch für uneigentliche Intervallgrenzen $x_0=\pm\infty$. 
+
+\subsubsection{Umkehrsatz}
+Sei $f:]a,b[\to \mathbb{R}$ differenzierbar mit $f'>0$ auf $]a,b[$ und seien $c = \inf\limits_{a<x<b} f(x)< \sup\limits_{a<x<b} f(x)= d$. Dann ist $f:]a,b[\to ]c,d[$ bijektiv und es existiert eine Umkehrfunktion, deren Ableitung gegeben ist durch: 
+\begin{equation}
+	(f^{-1})'(y)=\frac{1}{f'(f^{-1}(y))},\ \ \forall y \in\ ]c,d[ 
+\end{equation}
+\subsubsection{Jensen-Ungleichung für konvexe Funktionen}
+Eine Funktion heisst genau dann \textbf{konvex}, wenn $f\in C^2(]a,b[)$ mit $f''\geq 0$. \\
+Sei $f:]a,b[\to \mathbb{R}$ konvex. Dann gilt für beliebige Punkte $x_1, \dots, x_n \in \ ]a,b[$ und Zahlen $0\leq t_1, \dots, t_n\leq 1$ mit $\sum_{i=1}^{n}t_i=1$ die Ungleichung
+\begin{equation}
+	f\left( \sum_{i=1}^{n} t_ix_i \right) \leq \sum_{i=1}^{n} t_if(x_i)
+\end{equation}
+\subsection{Taylor-Formel}
+Das $n$-te \textbf{Taylorpolynom} an der Entwicklungsstelle $a\in I$  ist definiert durch:
+\begin{equation}
+	T_{n}f(x;a)=\sum _{k=0}^{n}{\frac{f^{(k)}(a)}{k!}}(x-a)^{k}=f(a)+{\frac {f'(a)}{1!}}(x-a)+{\frac {f''(a)}{2!}}(x-a)^{2}+\ldots +{\frac {f^{(n)}(a)}{n!}}(x-a)^{n}
+\end{equation}
+Der \textbf{Restterm} $r_mf$ kann man folgendermassen abschätzen: 
+\begin{equation}
+	|r_mf(x;a)|\leq \sup_{a<\xi<x} \left| f^{m}(\xi)-f^{(m)}(a) \right|\frac{(x-a)^{m}}{m!}
+\end{equation}
+Und falls zusätzlich noch gilt, dass $f\in C^{(m+1)}$, gehts noch genauer: 
+\begin{equation}
+	|r_mf(x;a)|\leq \sup_{a<\xi<x} \left| f^{(m+1)}(\xi) \right|\frac{(x-a)^{m+1}}{(m+1)!}
+\end{equation}
+\section{Differentialgleichungen}
+\subsection{Gewöhnliche Differentialgleichungen}
+Eine \textbf{gewöhnliche Differentialgleichung} ist eine Gleichung, in der Funktionen in verschiedenen Ableitungen vorkommt. Allgemeine lineare Differentialgleichungen sind von der Form: 
+\begin{equation}
+y^{(n)}(x)=\sum _{k=1}^{n-1}a_{k}(x)y^{(k)}(x)+g(x)
+\end{equation}
+Die \textbf{homogene Gleichung} erhält man durch Weglassen des Summanden $g(x)$. 
+\subsubsection{Lösen von linearen Differentialgleichungen mit konstanten Koeffizienten}
+Man geht folgendermassen vor: 
+\begin{enumerate}
+	\item Aufstellen des charakteristischen Polynoms der homogenen Gleichung. 
+	\item Bestimmen der Nullstellen $\lambda_1,\dots,\lambda_n$ des charakteristischen Polynoms.
+	\item Bestimmen der Fundamentallösungen (FL) aus den Nullstellen: 
+		\subitem Wenn $\lambda=a$ einfache reelle Nullstelle ist: Fundamentallösung ist $e^{ax}$.
+		\subitem Wenn $\lambda_1=\dots=\lambda_m=a$ $m$-fache reelle Nullstelle ist: FL sind $e^{ax}, xe^{ax}, \dots, x^{m-1}e^{ax}$.
+		\subitem Wenn $\lambda=\alpha+i\beta$ ($\lambda'=\alpha-i\beta$) komplexe Nullstelle ist: FL ist $e^{ax}\sin(\beta x)$ ($e^{ax}\cos(\beta x)$)
+	\item Die allgemeine Lösung der homogenen Gleichung ist nun eine Linearkombination der Fundamentallösungen, also $y_{\text{homo}}=c_1\cdot \text{FL}_1 + \dots+ c_n\cdot \text{FL}_n$.
+	\item Erstelle einen Ansatz der linken Seite mittels folgender Tabelle:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline 
+			Störfunktion & Ansatz  \\ 
+			\hline 
+			$ae^{\mu x}$ & $be^{\mu x}$ \\ 
+			\hline 
+			$a\sin(\theta x)$ & $c\sin(\theta x) + d\cos(\theta x)$ \\ 
+			\hline
+			$b\cos(\theta x)$ &  $c\sin(\theta x) + d\cos(\theta x)$\\
+			\hline 
+			$ae^{\mu x}\sin(\theta x)$& $e^{\mu x}(c\sin(\theta x)+ d\cos(\theta x))$ \\ 
+			\hline
+			$be^{\mu x}\cos(\theta x)$& $e^{\mu x}(c\sin(\theta x)+ d\cos(\theta x))$ \\ 
+			\hline 
+			$P_n(x)e^{\mu x}$& $R_n(x)e^{\mu x}$  \\ 
+			\hline 
+			$P_n(x)e^{\mu x} \sin(\theta x)$& $e^{\mu x}(R_n(x) \sin(\theta x )+S_n(x)\sin(\theta x))$  \\ 
+			\hline
+			$P_n(x)e^{\mu x} \cos(\theta x)$& $e^{\mu x}(R_n(x) \sin(\theta x )+S_n(x)\sin(\theta x))$  \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\textit{\textbf{Achtung!}} Falls $\lambda = \mu + i\theta$ eine $m$-fache Nullstelle des charakteristischen Polynoms der rechten Seite ist, dann multipliziere den Ansatz mit Faktor $x$.
+	\item Bilde alle nötigen Ableitungen des Ansatzes und setze ihn dann in die ursprüngliche Differentialgleichung ein. 
+	\item Sortiere nach Potenzen von $x$ oder nach $\sin$-,$\cos$-Termen und finde eine partikuläre Lösung $y_{\text{part}}$ durch Koeffizientenvergleich. 
+	\item Die allgemeine Lösung der inhomogenen Differentialgleichung lautet nun: $y_{\text{all}} = y_{\text{homo}} + y_{\text{part}}$. 
+\end{enumerate}
+\subsection{Allgemeine Differentialgleichungen}
+\subsubsection{Trennung der Variablen}
+Gesucht sei die Lösung des Anfangswertproblems $y'(x)=f(y(x))g(x),\ y(x_{0})=y_{0}$. \\
+Schreibe dazu die Ableitung von $y(x)$ nach $x$ in der Form: $\frac{\diff y}{\diff x}$ und versuche, alle $x$ nach links und alle $y$ nach rechts zu bringen. Dann hat man einen Ausdruck mit $\diff x$ auf der einen Seite und $\diff y$ auf der anderen Seite. Setze bei beiden ein Integral davor und löse es. Man erhält eine Gleichung mit einer Konstanten, die man mit der Nebenbedingung noch bestimmen kann. 
+\subsection{Variation der Konstanten}
+Bei der Variation der Konstanten löst man eine inhomogene Differentialgleichung. Die allgemeine Lösung besteht wieder aus der allgemeinen homogenen Lösung und einer partikulären Lösung: $y_{all}= y_{homo}+y_{part}$. \\
+Zuerst wird die allgemeine Lösung der homogenen Gleichung $y_{homo}$ bestimmt, z.B. mittels Trennung der Variablen. Zum bestimmen einer partikulären Lösung wird $y_{part}=y_{homo}$  gesetzt und dann die Konstante zu einer Variablen umgewandelt, also $C=C(x)$. Dann bildet man die Ableitung $y_{part}'$ und setzt sie in die ursprüngliche Differentialgleichung ein. Die resultierende Formel formt man nun nach $C(x)$ um (evtl. mit Integrieren) und man erhält somit eine partikuläre Lösung. Beim Integrieren auftretende Konstanten können weggelassen werden, weil \textbf{eine} partikuläre Lösung gesucht ist. Die allgemeine Lösung der inhomogenen Differentialgleichung ist nun $y_{all}= y_{homo}+y_{part}$, wobei hier noch die Konstante der homogenen Lösung vorkommt. Diese kann bestimmt werden, wenn man eine Nebenbedingung hat. 
+\subsubsection{Satz von Picard-Lindelöf}
+Gesucht ist die Lösung der Differentialgleichung $u'=\frac{\diff u}{\diff t}= f(t,u(t)), \ 0<t<T$. \\
+Sei das Geschwindigkeitsfeld $f=f(t,u):\mathbb{R}\times\mathbb{R}^n \to \mathbb{R}^n$ stetig und bezüglich $u$ lokal Lipschitz stetig und lokal gleichmässig in $t$. Dann ist $t$ sozusagen der Parameter für die Zeit und $u$ der Parameter für den Ort im Raum. Dann gilt:
+\begin{enumerate}[label=\roman*)]
+	\item Zu jedem $u_0\in\mathbb{R}^n$ gibt es ein $T=T(u_0)> 0$ und genau eine Lösung $u(t,u_0)\in C^1([0,T],\mathbb{R}^n)$ von $u'=f(t,u(t))$ unter der Anfangsbedingung $u(0)=u_0$.
+	\item Die Lösung $u=u(t,u_0)$ hängt stetig von $u_0$ ab.
+\end{enumerate}
+\section{Integration}
+\subsection{Regeln zu Integralen}
+Seien im Folgenden $f,g\in C^0(]a,b[)$ mit Stammfunktionen $F,G\in C^1(]a,b[)$ und seien $\alpha,\beta\in\mathbb{R}$. \\\\
+\textbf{Hauptsatz der Differential- und Integralrechnung}: $\displaystyle \left(\int_{a}^{x} f(t)\diff t\right)' = f(x)$\\\\
+\textbf{Linearität}: $\displaystyle \int (\alpha f + \beta g) \diff x= \alpha \int f\diff x + \beta \int g\diff x$\\\\
+\textbf{Montonie}: Sei $f\leq g$ und $a<x_0<x_1<b$. Dann gilt: $\displaystyle \int_{x_0}^{x_1}f\diff x \leq \int_{x_0}^{x_1}g\diff x$\\\\
+\textbf{Gebietsadditivität}: Seien $a<x_0<x_1<x_2<b$. Dann gilt: 
+$\displaystyle \int_{x_0}^{x_1} f\diff x+ \int_{x_1}^{x_2} f \diff x = \int_{x_0}^{x_2}f \diff x$\\\\
+\textbf{Betragsungleichung}: Für $f\in C^0([a,b])$ gilt: $\displaystyle \left| \int_{a}^{b} f(x)\diff x \right| \leq \int_{a}^{b} |f(x)| \diff x \leq \|f(x)\|_{C^0}(b-a)$ \\\\
+\textbf{Potenzreihen}: Potenzreihen dürfen im Innern ihres Konvergenzkreises gliedweise integriert werden.
+\subsection{Lösungsansätze zum Lösen von Integralen}
+\subsubsection{Partielle Integration}
+Seien $u,v\in C^1(]a,b[)$ und es existiere eine Stammfunktion $F$ zu $f=uv'\in C^0(]a,b[)$. Dann besitzt die Funktion $u'v\in C^0(]a,b[)$ die Stammfunktion: 
+\begin{equation}
+	\int u'v \diff x = uv-\int uv' \diff x
+\end{equation}
+\textbf{Vorgehen:} Die zu integrierende Funktion wird in die Form $h(x)=f(x)\cdot g(x)$ gebracht. Dann macht man eine Tabelle mit $u'(x)=f(x)$ und $v(x)=g(x)$ und bestimmt $u(x)$ und $v'(x)$, also:
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		$u(x)= \int f(x)\diff x$ & $v(x)= g(x)$\\
+		\hline
+		$u'(x)=f(x)$ & $v'(x) = f'(x)$\\
+		\hline
+	\end{tabular}
+\end{center}
+Danach setze ein in $uv - \int uv'\diff x = \int fg\diff x$.
+\subsubsection{Substitutionsregel zum Integrieren}
+Seien $f,g \in C^1(]a,b[)$. Dann gilt für $a<x_0<x_1<b$: 
+\begin{equation}
+	\int_{x_0}^{x_1} f'(g(x))g'(x) \diff x = \Big[ f(g(x))\Big]_{x_0}^{x_1} = \int_{g(x_0)}^{g(x_1))} f'(y)\diff y
+\end{equation}
+\textbf{Vorgehen}: Es gibt grundsätzlich zwei Arten, wie man vorgehen kann: 
+\begin{enumerate}
+	\item Sei $g(x)$ der zu substituierende Teil. Substituiere $u:=g(x)$ und bilde $\frac{\diff u }{\diff x}= g'(x) \Longrightarrow dx = \frac{\diff u}{g'(x)}$. Sind nach substituieren noch $x$ übrig, dann löse $u=g(x)$ nach $x$ auf und ersetze die restlichen $x$.  Berechne das unbestimmte Integral in $u$. Ersetze im Ergebnis $u$ durch $g(x)$ und setze dann die Grenzen ein.
+	\item Sei $x:=h(u)$. Bilde $\frac{\diff x}{\diff u} = h'(u)$ und ersetze alle $x$ durch $h(u)$ und $\diff x = h(u)\diff u$. Berechne das Integral nach $u$. Ersetze dann wieder $h(u)$ durch $x$. 
+\end{enumerate}
+\subsubsection{Partialbruchzerlegung}
+Bei der Partialbruchzerlegung geht es darum, den Quotienten zweier Polynome $\frac{S(x)}{Q(x)}$ einfacher auszurücken als $R(x)+\sum_{i}\frac{a_i}{x-n_i}$, wobei $a_i, n_i\in\mathbb{R}$. Diese Zerlegung ist eindeutig. Sie hilft sehr dabei, wenn man Integrale von Polynombrüchen berechnen will.\\\\
+\textbf{Vorgehen:} Sei die Partialbruchzerlegung von $\frac{S(x)}{Q(x)}$ gesucht. Falls $\deg(S(x))\geq \deg(Q(x))$, führe eine Polynomdivision durch und erhalte $\frac{S(x)}{Q(x)} = R(x) + \frac{P(x)}{Q(x)}$. Bestimme dann die Nullstellen von $Q(x)$: Ist eine Nullstelle $x_0$ bestimmt, so finde die restlichen Nullstellen von $\frac{Q(x)}{x-x_0}$. Man erhält die $m_1,\dots,m_k$-fachen Nullstellen $x_0,\dots,x_k$ und macht folgenden Ansatz: 
+\begin{equation}
+	\frac{P(x)}{Q(x)} = \underbrace{\frac{A_{1,1}}{x-x_1} + 
+	\frac{A_{1,2}}{(x-x_1)^2} + \dots + \frac{A_{1,m_1}}{(x-x_1)^{m_1}}}_{\text{1. Nullstelle (} m_1\text{-fach) }} + \dots +
+	\underbrace{\frac{A_{k,1}}{(x-x_k)}+ \dots + \frac{A_{k,m_k}}{(x-x_k)^{m_k}}}_{\text{k-te Nullstelle (} m_k\text{-fach) }}
+\end{equation}
+Erweitere alle Summanden, damit alle den gleichen Nenner (=$Q(x)$) haben und bringe alle in denselben Bruch. Fasse den Zähler nach Potenzen von $x$ zusammen und mache dann einen Koeffizientenvergleich mit dem ursprünglichen $\frac{P(x)}{Q(x)}$, wobei man dann alle $A_{i,j}$ erhält. Feddisch. 
+\subsection{Das Riemannsche Integral}
+\subsubsection{Definitionen}
+Für eine beschränkte Funktion $f:[a,b]\to \mathbb{R}$. Dann werden 
+\begin{equation}
+	\underline{\int_{a}^{b}} f\diff x = \sup \left\{ \int_{a}^{b} e \diff x;\ e \text{ Trpfktn.} \right\}\quad \text{ und }\quad
+	\overline{\int_{a}^{b}} f\diff x = \inf \left\{ \int_{a}^{b} g \diff x;\ g \text{ Trpfktn.} \right\}
+\end{equation} 
+als \textbf{oberes} und \textbf{unteres Riemannintegral} bezeichnet. Die Funktion heisst dann \textbf{Riemann-integrabel}, wenn $\underline{\int_{a}^{b} }f\diff x = \overline{\int_{a}^{b}} f\diff x$.
+\subsubsection{Sätze}
+Sei $f:[a,b]\to \mathbb{R}$ monoton. Dann ist $f$ über $[a,b]$ R-integrabel. \\
+Sei $f:[a,b]\to \mathbb{R}$ stetig. Auch dann ist $f$ über $[a,b]$ R-integrabel.\\
+\section{Differentialrechnung im $\mathbb{R}^n$}
+\subsection{Definitionen}
+\subsubsection{Differenzierbarkeit im $\mathbb{R}^n$}
+Eine Funktion $f:\Omega \subset \mathbb{R}^n\to \mathbb{R}$ heisst im Punkt $x_0$ \textbf{differenzierbar}, falls eine Abbildung $A:\mathbb{R}^n\to \mathbb{R}$ existiert mit: 
+\begin{equation}
+	\lim\limits_{x\to x_0,\ x\neq 0} \frac{f(x) -f(x_0) - A(x-x_0)}{|x-x_0|}
+\end{equation}
+Dann ist $A$ das \textbf{Differential} (oder totale Ableitung) von $f$ an der Stelle $x_0$ und wird geschrieben als $\diff f(x_0)$ und entspricht: 
+\begin{equation}
+	\diff f(x_0) = \left( \frac{\partial f}{\partial x^1}(x_0), \dots , \frac{\partial f}{\partial x^n}(x_0)\right)
+\end{equation}
+Aber weil eine solche Definition unnötig kompliziert ist, gibt's noch folgenden Satz: \\\\
+\textbf{Differenzierbarkeit zeigen}:
+Eine Funktion $f:\Omega \subset\mathbb{R}^n\to \mathbb{R}$ ist von der\textbf{ Klasse $\boldsymbol{C^1}$ }also $f\in C^1(\Omega)$, falls $f$ an jeder Stelle in jede Dimension partiell differenzierbar ist und falls die Funktionen $x\mapsto \frac{\partial f}{\partial x^i}(x),\ 1\leq i\leq n$ auf $\Omega$ stetig sind. Daraus folgt, dass $f$ an jeder Stelle in $\Omega$ differenzierbar (und insbesondere stetig) ist. \\\\
+Die \textbf{Differentiationsregeln} aus \ref{DiffRegeln} gelten hier analog auch, wobei die Ableitung durch eine absolut Ableitung ersetzt wird. Die Kettenregel sieht ein bisschen anders aus:\\
+\textbf{Kettenregel:}  Sei $g:\Omega\to \mathbb{R}$ an der Stelle $x_0$ differenzierbar und $f:\mathbb{R}\to \mathbb{R}$ an der Stelle $g(x_0)$ differenzierbar. Dann gilt: 
+\begin{equation}
+	\diff (f\circ g)(x_0)=f'(g(x_0))\diff g(x_0)
+\end{equation}
+\subsubsection{Gradient}
+Im $\mathbb{R}^n$ mit euklidischem Skalarprodukt ist der Gradient einer partiell differenzierbaren Funktion $f:\mathbb{R}^n\to \mathbb{R}$ folgendermassen als Spaltenvektor definiert: 
+\begin{equation}
+	grad(f) = \nabla f(x) = \begin{pmatrix} \frac{\partial f}{\partial x^1}(x)\\ \vdots \\ \frac{\partial f}{\partial x^n}(x) \end{pmatrix}
+\end{equation}
+Der \textbf{Gradient} ist ein Vektor und zeigt in die Richtung des steilsten Anstieges der Funktion.
+\subsubsection{Richtungsableitung}
+Sei $\Omega\subset \mathbb{R}^n$ offen und $v\in\mathbb{R}^n$ ein \textbf{normierter} (Richtungs-)Vektor. Dann ist die \textbf{Richtungsableitung} der Funktion $f:\Omega \to \mathbb{R}$ gegeben durch: 
+\begin{equation}
+	\nabla f(x)\cdot v
+\end{equation}
+Diese Richtungsableitung gibt dann somit die Steigung der Funktion $f$ eines Punktes $x\in\mathbb{R}^n$ in eine gegebene Richtung $v$ an. 
+\subsubsection{Differentialform}
+Eine Abbildung $\lambda$ von $\Omega\subset\mathbb{R}^n$ auf eine lineare Abbildung $L(\mathbb{R}^n;\mathbb{R})$ nennt sich \textbf{Differentialform} vom Grad 1 oder 1-Form oder Pfaff'sche Form. \\
+Mithilfe des Skalarprodukts kann man ein Vektorfeld in eine 1-Form $\lambda$ umwandeln: $\lambda(x) w:= \langle v(x),w \rangle_{\mathbb{R}^n}$
+\subsection{Wegintegrale}
+Das Wegintegral einer 1-Form $\lambda$ über einem Weg $\gamma(t)$ mit $a\leq t \leq b$ ist gegeben durch: 
+\begin{equation}
+	\int_{\gamma}\lambda :=\int_{a}^{b} \lambda(\gamma(t))\gamma'(t)\diff t = \int_{\gamma} v\diff s
+\end{equation} 
+Hierbei ist $v$ das durch die 1-Form $\lambda$ induzierte Vektorfeld und $\diff s = \gamma'(t)$ nennt sich das \textit{gerichtete Längenelement}. \\
+Für Wegintegrale gilt Wegadditivität: $\int_{\gamma_1}\lambda+ \int_{\gamma_2}\lambda = \int_{\gamma} \lambda$. \\
+Ein Wegintegral ist genau dann wegunabhängig, wenn das Vektorfeld konservativ ist, d.h. die Rotation des Vektorfeldes (induziert durch eine 1-Form) 0 ist, also wenn gilt: $rot\ v(x) = \nabla \times v(x)=0$. Genauer ist's unten im Kapitel \ref{rotation}.\\
+Ausserdem ist eine 1-Form genau dann konservativ, falls ein \textbf{Potential} $f$ existiert:
+\begin{equation}
+	\lambda \in C^0(\Omega;\mathbb{R}^n) \text{ konservativ } \Leftrightarrow \exists f \in C^1(\Omega): \lambda = \diff f \text{ (Potential)}
+\end{equation}
+Sei $\lambda= A\diff x + B \diff y + C \diff z$. Es muss somit $f$ existieren: 
+\begin{equation*}
+\nabla f = v \Rightarrow 
+\begin{pmatrix} 
+\frac{\partial f}{\partial x}\\
+\frac{\partial f}{\partial y}\\
+\frac{\partial f}{\partial z} 
+\end{pmatrix}\overset{!}{=}
+\begin{pmatrix} A\\B\\C\end{pmatrix}
+\Rightarrow
+\begin{pmatrix} f\\ f\\ f\end{pmatrix}=
+\begin{pmatrix} \int A\diff x + f_1(y,z)\\ \int B\diff y + f_2(x,z) \\ \int C\diff z+ f_3(x,y) \end{pmatrix}
+\end{equation*}
+Durch Hinstarren findet man ein solches $f$, bzw. sieht, wenn keines existieren kann.\\
+Wenn ein Potential $f$ existiert und die 1-Form bzw. das Vektorfeld $\lambda(t), \ t\in[a,b]$ deswegen konservativ ist, kann man beim berechnen eines Wegintegrals $\int_\gamma \lambda$ ganz einfach die Grenzen ins Potential einsetzen, es gilt also: $\int_\gamma \lambda = f(b)-f(a)$.
+\subsubsection{Standardparametrisierungen von Wegen und Flächen}
+Es folgen ein paar Standardparametrisierungen: 
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+	\textbf{Beschreibung} & \textbf{Parametrisierung} & \textbf{Bereich}\\
+	\hline
+	Ellipse, HA $a$, $b$ und Mttlpkt. $(x_0,y_0)$& $\gamma(t)=(x_0+a\cos(t), y_0+b\sin(t))^T$ & $t\in ]0,2\pi]$\\
+	\hline
+	Strecke vom Punkt $p_1$ nach $p_2$ &$\gamma(t)=p_1+t(p_2-p_1)$ &$t \in[0,1]$\\
+	\hline
+	Graph einer Fktn. $f:\Omega\subset \mathbb{R}\to \mathbb{R}$& $\gamma(t)= (t,f(t))^T$& $t\in I$\\
+	\hline
+	Kugel mit Radius $r$, Mttlpkt. $(x_0,y_0,z_0)$ & $\gamma(r,\varphi, \vartheta)=(x_0+r\sin(\varphi)\cos(\vartheta),$ &$\varphi \in ]0,2\pi]$\\
+	&$y_0+r\sin(\varphi)\sin(\vartheta),z_0+r\cos(\varphi))^T$&$\vartheta\in ]0,\pi]$\\ 
+	\hline
+	Kegel auf $xy$-Ebene, Spitze: $(0,0,z_0)$ & $\gamma(r,\varphi)=(r\cos(\varphi),$ & $r\in[0,R]$\\
+	& $r\sin(\varphi),z_0-\frac{z_0}{R}r)^T$& $\varphi\in[0,2\pi]$\\
+	\hline
+	Zylinder Radius $r$ Höhe $H$, Mttlpkt $(x_0,y_0)$ & $\gamma(h,\varphi)= (r\cos(\varphi),$ & $h\in[0,H]$\\
+	& $r\sin(\varphi),h)^T$ & $\varphi\in[0,2\pi]$\\
+	\hline
+	\end{tabular}
+\end{center}
+\subsection{Mehrdimensionales Taylorpolynom}
+Das Taylor-Polynom $m$-ter Ordnung der Funktion $f$ um den (bekannten) Punkt $x_0$ ist gegeben durch:
+\begin{equation*}
+	T_mf(x,x_0) = 
+	f(x_0) + \diff f(x_0)(x-x_0) + 
+	\frac{1}{m!} \sum_{i_1,\dots, i_m =1}^{m} \frac{\partial^m f}{\partial x^{i_1}\dots \partial x^{i_m}}(x_0)
+	\prod_{j=1}^{m} (x_1^{i_j} - x_0^{i_j})
+\end{equation*}
+Ich definiere $f_x := \frac{\partial f}{\partial x}$ und $f_{x,y} := \frac{\partial^2 f}{\partial x\partial y}$ Das Taylor Polynom zweiter Ordnung ist somit gegeben durch: 
+\begin{equation*}
+	T_mf(x,x_0) = 
+	f(x_0) + f_{x^1}(x_0)(x^1-x_0^1) + f_{x^2}(x_0)(x^2-x_0^2)
+\end{equation*}
+\begin{equation*}
+	+ \frac{1}{2} f_{x^1x^1}(x_0)(x^1-x_0^1)^2 + 
+	f_{x^1x^2}(x_0)(x^1-x_0^1)(x^2-x_0^2) + 
+	\frac{1}{2} f_{x^2x^2}(x_0)(x^2-x_0^2)^2
+\end{equation*}
+Das erste Taylor-Polynom ist gegeben, wenn man sich nur die erste Zeile anschaut. 
+\subsection{Maxima und Minima bestimmen}
+Sei $\Omega\subset\mathbb{R}^n$ offen und $f\in C^2(\Omega), \ x_0\in \Omega$. \\
+Ein Punkt $x_0$ ist ein \textbf{kritischer Punkt}, wenn das Differential in $x_0$ gleich dem Nullvektor ist, also falls: $\diff f (x_0)=0$. \\
+Die \textbf{Hessematrix} ist definiert durch:
+\begin{equation}
+	\text{Hess}_f(x_0)=\left( \frac{\partial^2 f}{\partial x^i\partial x^j}(x_0)\right)_{1\leq i,j\leq n} \overset{n=2}{=} \begin{pmatrix} f_{x,x}&f_{x,y}\\f_{y,x}&f_{y,y} \end{pmatrix}
+\end{equation}
+Der Punkt darf nicht entartet sein. Es gilt: $x_0 \text{ entartet}\Leftrightarrow \det(\text{Hess}_f(x_0))=0$. Dann wäre $0$ ein Eigenwert der Hessematrix, was nicht sein darf.\\
+Falls die Hessematrix der Funkion $f$
+\begin{enumerate}[label=$\circ$]
+	\setlength{\itemsep}{-3pt}
+	\item positiv definit ist (alle Eigenwerte positiv), so ist $x_0$ eine strikte lokale Maximalstelle.
+	\item negativ definit ist (alle Eigenwerte negativ), so ist $x_0$ eine strikte lokale Minimalstelle.
+	\item indefinit ist (positive und negative Eigenwerte), so ist $x_0$ ein Sattelpunkt. 
+\end{enumerate}
+Eigenwerte $\lambda$ findet man durch Auflösen von $\det(\text{Hess}_f(x_0)-\lambda I)\overset{!}{=} 0$.
+\subsection{Vektorwertige Funktionen}
+Sei $\Omega \subset \mathbb{R}^n$ offen, $f=(f^i)_{1\leq i\leq l}:\Omega \to \mathbb{R}^l$. Die Funktion heisst \textbf{differenzierbar} in $x_0$, falls jede Komponente in $x_0$ differenzierbar ist.\\
+Das \textbf{Differential} bzw. die \textbf{Jacobi-} oder \textbf{Funktionalmatrix} sieht dann folgendermassen aus: 
+\begin{equation}
+	\diff f (x_0) = \begin{pmatrix}
+		f^1_{x^1}(x_0) & \dots & f^1_{x^n}(x_0)\\
+		\vdots& \ddots & \vdots\\
+		f^l_{x^1}(x_0) & \dots & f^l_{x^n}(x_0)
+	\end{pmatrix}
+\end{equation}
+\subsubsection{Umkehrsatz}
+Sei $f\in C^1(\Omega;\mathbb{R}^n)$ und sei die Jacobimatrix $\diff f(x_0)$ in jedem $x_0$ invertierbar. Dann ist $f$ in einer Umgebung um $x_0$ invertierbar. Genauer: Es existieren Umgebungen $U$ um $x_0$ und $V$ um $f(x_0)$ und eine Umkehrfunktion $g=(f|_U)^{-1}\in C^1(V;\mathbb{R}^n)$ und es gilt: 
+\begin{equation}
+	\forall x\in U:g(f(x))=x,\qquad \forall y\in V:f(g(y))=y 
+\end{equation}
+Und weiter gilt für alle $x\in U$: 
+\begin{equation}
+	\diff g(f(x))= (\diff f(x))^{-1}
+\end{equation}
+\subsubsection{Implizite Funktionen}
+Seien $ U\subseteq \mathbb {R} ^{m}$ und $V\subseteq \mathbb {R} ^{n}$ offene Menge und sei $F:U\times V\to \mathbb{R}^n, F(x,y) \overset{!}{=} 0$ eine implizit definierte Funktion. \\
+Der\textbf{ Satz der impliziten Funktionen} besagt, dass wenn für ein Punkt $(x_0,y_0)$ gilt, dass $F(x_0,y_0)=0$ und falls zusätzlich die Teilmatrix $\frac{\partial F(x_0,y_0)}{\partial y}$ invertierbar ist in $(x_0,y_0)$, so existieren offene Umgebungen $U_0 \subseteq U$ von $x_0$ und $V_0 \subseteq V$ von $y_0$ sowie eine eindeutige stetig differenzierbare Abbildung $f\colon U_0 \to V_0$ mit $f(x_0) = y_0$, sodass für alle $x \in U_0, y \in V_0$ gilt: 
+\begin{equation*}
+	F(x,y) = 0 \;\Leftrightarrow\; y = f(x)
+\end{equation*}
+Ein Punkt $p_0$ heisst \textbf{regulärer Punkt}, falls $\rang(\diff f(p_0))=\min\{n,l\}$, das heisst, falls der Rang der Jacobimatrix maximal ist. 
+\subsubsection{Lagrange-Multiplikatorenverfahren}
+Das Verfahren der Lagrange-Multiplikatoren wird benutzt, um Extremalstellen einer Funktion mit Nebenbedingungen zu finden. Im zweidimensionalen Fall benötigt man dazu eine Nebenbedingung. Man hat eine Funktion $f(x,y)$ gegeben, die jedem Punkt $(x,y)$ einen Wert zuordnet. Man kann sich $f(x,y)$ also als dreidimensionale Funktion vorstellen, wenn $f(x,y)$ auf $z$ abbildet. Ausserdem hat man eine Nebenbedingung $g(x,y)=c$, die für ein festes $c$ erfüllt sein soll und somit eine implizite Funktion einer Kurve auf $(x,y)$ darstellt. Die Aufgabe ist nun, die Extrema der Funktion $f(x,y)$ mit Nebenbedingung $g(x,y)=c$ zu finden. Ein Punkt $(x_0,y_0)$ auf $f(x,y)$ auf dem Weg $g(x,y)=c$ ist  genau dann ein Extremum, wenn in diesem Punkt der Weg $g(x_0,y_0)=c$ tangential zur Höhenlinie von $f(x_0,y_0)$ steht. Das bedeutet, dass die Gradienten von $g(x,y)=c$ und $f(x,y)$ kollinear sein müssen, also: 
+\begin{equation*}
+\nabla f(x,y) \overset{!}{=} -\lambda \nabla g(x,y) \text{, mit } g(x,y)=c \text{ und } \nabla g(x,y)\neq 0
+\end{equation*}
+Dabei ist $\lambda$ der Lagrange-Multiplikator. Dieser wird benötigt, da die Gradienten nicht zwingend gleich sein müssen und die Kollinearität zweier Vektoren einen konstanten Faktor zulässt. Alle Bedingungen lassen sich zusammenfassen zu: 
+\begin{equation*}
+\nabla \Lambda(x,y,\lambda) = \nabla (f(x,y) + \lambda(g(x,y)-c)) \overset{!}{=} 0
+\end{equation*}
+Dann sind die gefundenen Punkte kritische Punkte und somit Kandidaten fürs globale Maximum bzw. Minimum.. Hat der Weg Ecken, dann muss man dort auch noch den Wert berechnen und sie in die Kandidatenliste aufnehmen! Der grösste Kandidat ist dann ein Maximum, der kleinste ein Minimum. 
+\section{Integration im $\mathbb{R}^n$}
+\subsubsection{Satz von Fubini}
+Sei $Q=[a,b]\times [c,d]\subset \mathbb{R}^2$ und sei $f\in C^0(Q)$, dann gilt:
+\begin{equation}
+	\int_Q f \diff \mu  = \int_{a}^{b}\int_{c}^{d} f(x,y) \diff y \diff x = 
+	\int_{c}^{d}\int_{a}^{b} f(x,y) \diff x \diff y
+\end{equation}
+\subsection{Integral über einem Normalbereich berechnen}
+Sei ein Normalbereich gegeben, der in $x$-Richtung von $a$ nach $b$ läuft und in $y$-Richtung von den Funktionen $f(x)$ nach oben und $g(x)$ nach unten beschränkt ist. Dann ist das Integral von $f(x,y)$ über diesen Normalbereich gegeben durch: 
+\begin{equation}
+	\int_{a}^{b} \int_{g(x)}^{f(x)} f(x,y) \diff y \diff x
+\end{equation}
+\subsection{Satz von Green}
+Sei $\Omega\subset Q \subset \mathbb{R}^2$ von der Klasse $C^1_{pw}$ (piecewise) und seien $g,h\in C^1(\overline{\Omega})$. Dann gilt: 
+\begin{equation}
+	\int_{\Omega}\left( \frac{\partial h}{\partial x} - \frac{\partial g}{\partial y}\right) \diff \mu = 
+	\int_{\partial \Omega} (g\diff x+h\diff y)
+\end{equation}
+Wobei $\partial \Omega$ der Rand von $\Omega$ ist, der im Gegenuhrzeigersinn parametrisiert wird. \\
+\textbf{Wichtig:} Man kann den Flächeninhalt eines beliebigen beschränkten Gebietes $\Omega\subset \mathbb{R}^2$ der Klasse $C^1_{pw}$ berechnen, indem man $g(x,y)=-y$ und $h(x,y)=0$ setzt, weil dann $\frac{\partial h}{\partial x} - \frac{\partial g}{\partial y} =1$ gilt.\\\\
+\subsubsection{Rotation} \label{rotation}
+Man kann sich die 1-Form $(g\diff x+h\diff y)$ auch als Vektorfeld $v=(g,h)^\top$ vorstellen und dann die \textbf{Rotation} folgendermassen definieren: \begin{equation}
+rot\ v := \frac{\partial h}{\partial x} - \frac{\partial g}{\partial y}
+\end{equation}
+Dann gilt folgendes: 
+\begin{equation}
+	\int_Q rot \ v \diff \mu = \int_{\partial Q} v\cdot \diff s = \int_{\partial \Omega} (g\diff x+h\diff y)
+\end{equation}
+Falls der Rand $\partial \Omega$ eines Gebietes $\Omega$ in nur einer Komponente dargestellt werden kann und $\Omega$ wegzusammenhängend ist, heisst $\Omega$ \textbf{einfach zusammenhängend}.\\
+\subsubsection{Satz von Poincaré}
+Der \textbf{Satz von Poincaré} besagt: 
+Sei $\Omega\subset \mathbb{R}^2$ in $C^1_{pw}$ beschränkt und einfach zusammenhängend und sei $v\in C^1(\overline{\Omega};\mathbb{R}^2)$. Dann gilt: 
+\begin{equation}
+	v= (g,h)^\top \text{ ist konservativ} \Leftrightarrow rot \ v = \frac{\partial h}{\partial x} - \frac{\partial g}{\partial y} = 0
+\end{equation}
+\subsection{Substitution}
+\subsubsection{Diffeomorphismus}
+Sei $U\subset \mathbb{R}^n$ offen, $\Phi\in C^1(U;\mathbb{R}^n)$. Die Funktion $\Phi$ heisst \textbf{Diffeomorphismus} von $U$ auf $V:=\Phi(U)$, falls $\Phi$ injektiv ist und falls die Umkehrabbildung $\Psi=\Phi^{-1}$ existiert.\\
+Wichtige Diffeomorphismen sind die Umrechnungen von kartesischen in Polar-, Kugel- oder Zylinderkoordinaten mit Funktionaldeterminante: 
+\begin{equation}
+	\text{Polarkoordinaten: }
+	\begin{pmatrix}
+	x\\y
+	\end{pmatrix}
+	\mapsto
+	\begin{pmatrix}
+	r\cos(\varphi)\\
+	r\sin(\varphi)
+	\end{pmatrix}
+	\text{ und }
+	\det
+	\begin{pmatrix}
+	\cos \varphi & -r\sin\varphi\\
+	\sin \varphi & r\cos\varphi
+	\end{pmatrix}
+	=r
+\end{equation}
+\begin{equation}
+\text{Kugelkoord.: }
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+r\sin\theta\cos\varphi\\
+r\sin\theta\sin\varphi\\
+r\cos\theta
+\end{pmatrix}
+\text{ und }
+\det
+\begin{pmatrix}
+\sin\theta\cos \varphi & r\cos\theta\sin\varphi & -r\sin\theta\sin\varphi\\
+\sin\theta\sin \varphi & r\cos\theta\sin\varphi & r\sin\theta\cos\varphi \\
+§\cos\theta&-r\sin\theta & 0
+\end{pmatrix}
+=r^2\sin\theta
+\end{equation}
+\begin{equation}
+\text{Zylinderkoordinaten: }
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+\rho\cos\varphi\\
+\rho\sin\varphi\\
+z
+\end{pmatrix}
+\text{ und }
+\det
+\begin{pmatrix}
+\cos \varphi & -\rho\sin\varphi &0\\
+\sin \varphi & \rho\cos\varphi &0\\
+0&0&1
+\end{pmatrix}
+=\rho
+\end{equation}
+\subsubsection{Substitutionsregel}
+Sei $\Omega \subset \mathbb{R}^d$ offen und $\Phi : \Omega \to \Phi \subset \mathbb{R}^d$ ein Diffeomorphismus.
+
+\begin{equation*}
+\int_{\Phi(\Omega)} f(y) \diff y = \int_{\Omega} f(\Phi(x))\left|\det\left(\diff {\Phi(x)}\right)\right|\diff x
+\end{equation*}
+Wobei $\diff {\Phi(x)}$ die Jacobi-Matrix ist.
+\subsection{Satz von Stokes im $\mathbb{R}^3$}
+\subsubsection{Rotation eines Vektorfeldes}
+Die \textbf{Rotation} (Wirbelstärke) eines Vektorfeldes $K=(P,Q,R)^\top \in C^1(W;\mathbb{R}^3)$ ist definiert als:
+\begin{equation}
+	rot\ K = \begin{pmatrix}
+		R_y - Q_z\\
+		P_z - R_x\\
+		Q_x - P_y
+	\end{pmatrix} = 
+	\nabla \times K
+\end{equation}
+Sei $K$ ein stetig differenzierbares Vektorfeld. Dann gilt:
+\begin{equation}
+	\int_\Omega rot(K) \cdot n \diff o = 
+	\int_{\partial \Omega} K\cdot \diff s =
+	\int_{a}^{b} F(\gamma(t))\cdot \gamma'(t)\diff t
+\end{equation}
+Dabei ist $n=\frac{\Phi_u\times \Phi_v}{|\Phi_u \times \Phi_v|}$ der Normalenvektor, der senkrecht auf dem Gebiet steht. 
+\subsection{Satz von Gauss}
+\subsubsection{Divergenz}
+Sei $F=(f_1,f_2,f_3§): D\subset \mathbb{R}^3 \to \mathbb{R}^3$ ein stetig differenzierbares Vektorfeld ($D$ offen). Die Divergenz ist definiert als die Spur des Differentials, also: 
+\begin{equation}
+	div\ F(x,y,z) = \sum_{i=1}^{3} (\diff F(x,y,z))_{i,i} = \nabla \cdot F
+\end{equation}
+\subsubsection{Satz von Gauss}
+Sei $\Omega$ ein Normalgebiet (es wird in $x$, $y$ und $z$-Richtung von Funktionen begrenzt). Sei $p\in \partial\Omega$ ein Punkt auf dem Rand und $n(p)\in\mathbb{R}^2$ ein Vektor mit Länge 1, der senkrecht auf $p$ steht.\\
+ Der \textbf{Satz von Gauss} besagt: 
+\begin{equation}
+\text{Oberflächenintegral von $F$ über $\Omega$}=\int_\Omega div\ F(x,y,z) \diff \mu = \int_{\partial \Omega} F(p)\cdot n(p) \diff o(p) = \text{Fluss}(\partial \Omega)
+\end{equation}
+Das Oberflächenintegral eines Vektorfeldes $F$ über eine geschlossene Fläche $\Omega$ ist gleich dem Volumenintegral der Divergenz von $F$. 
+\pagebreak 
+
+\section{Appendix}
+\subsection{Standardumformungen Grenzwert Folgen}
+Um zu zeigen, dass eine Folge konvergiert, kann man zeigen, dass Monotonie und Beschränktheit zeigen. Oder man benutzt Bernoulli-L'Hôpital oder man formt folgendermassen um:\\
+\begin{tabular}{|c|c|c|}
+	\hline
+	$u(x)v(x)=\frac{u(x)}{\frac{1}{v(x)}}$, falls $0\cdot \infty$ & $u(x)^{v(x)} = e^{v(x)\cdot ln(u(x))}$, falls $0^0, \infty^\infty, 1^\infty$ & $u(x)=\frac{u^2(x)}{u(x)}$ \\
+	\hline
+	$u(x)+v(x)=\frac{(u(x)+v(x))(u(x)-v(x))}{u(x)-v(x)}$ & $u(x)-v(x)=\frac{\frac{1}{v(x)}-\frac{1}{u(x)}}{\frac{1}{u(x)v(x)}}$, falls $\infty-\infty$ & 
+	$\sqrt{u(x)} + v(x) = \frac{u(x)-v^2(x)}{\sqrt{u(x)}-v(x)}$\\
+	\hline
+\end{tabular}
+\subsection{Ableitungen und Stammfunktionen}
+\begin{multicols}{2}
+	\renewcommand\arraystretch{1.4}
+	\begin{tabular}{l|l}
+		$f(x)$ & $F(x)$ \\ \hline
+		
+		$ x^n $   &   $ \frac{1}{n+1} x^{n+1} $ \\
+		$ (ax+b)^n $  &  $ \frac{1}{a\cdot(n+1)} (ax+b)^{n+1} $ \\
+		$ \sqrt x $  &  $ \frac{2}{3} x^{ \frac{3}{2} } $ \\
+		$ \sqrt[n] x $  &  $ \frac{n}{n+1} x^{ \frac{1}{n}+1 } $ \\
+		$ \frac{1}{ax+b} $  &  $ \frac{1}{a} \ln |ax+b| $ \\
+		$ \frac{ax+b}{cx+d} $  &  $ \frac{ax}{c}-\frac{ad-bc}{c^2} \ln |cx+d| $ \\
+		$ \frac{1}{x^2-a^2} $  &  $ \frac{1}{2a} \ln { \big| \frac{x-a}{x+a} \big| } $ \\
+		$ \sqrt{a^2+x^2} $  &  $ \frac{x}{2} f(x) + \frac{a^2}{2} \ln ( x+f(x) ) $ \\
+		$ \sqrt{a^2-x^2} $  &  $ \frac{x}{2} \sqrt{a^2-x^2} - \frac{a^2}{2} \arcsin \frac{x}{|a|}  $ \\
+		$ \sqrt{x^2-a^2} $  &  $ \frac{x}{2} f(x) - \frac{a^2}{2} \ln {( x+f(x) )} $ \\
+		$ \frac{1}{\sqrt{x^2+a^2}} $  &  $ \ln( x+\sqrt{x^2+a^2} ) $ \\
+		$ \frac{1}{\sqrt{x^2-a^2}} $  &  $ \ln( x+\sqrt{x^2-a^2} ) $ \\
+		$ \frac{1}{\sqrt{a^2-x^2}} $  &  $ \arcsin( \frac{x}{|a|} ) $ \\
+		$ \frac{1}{\sqrt{1-x^2}} $  &  $ \arcsin( x ) $ \\
+		$ \frac{-1}{\sqrt{1-x^2}} $  &  $ \arccos(x) $ \\
+		$ \frac{1}{x^2+a^2} $  &  $ \frac{1}{a} \arctan(\frac{x}{a}) $ \\
+		$ \frac{-1}{1+x^2} $  &  $ \operatorname{arccot}(x) $ \\
+		$ \frac{1}{\sqrt{x^2+1}} $  &  $ \operatorname{arsinh} (x) $ \\
+		$ \frac{-1}{\sqrt{x^2-1}} $  &  $ \operatorname{arcosh} (x) $ \\
+		$ \frac{1}{1-x^2} $  &  $ \operatorname{artanh} (x) $ \\
+		$ \sin(ax+b) $  &  $-\frac{1}{a}\cos(ax+b)  $ \\
+		$ \cos(ax+b) $  &  $ \frac{1}{a}\sin(ax+b) $ \\
+		$ \tan(x) $  &  $ -\ln|\cos(x)| $ \\
+		$ \cot(x) $  &  $ \ln |\sin(x)| $ \\
+	\end{tabular}
+	
+	\columnbreak
+	\hspace{-20pt}
+	\begin{tabular}{l|l}
+		$f(x)$ & $F(x)$ \\ \hline
+		
+		$ \frac{1}{\sin(x)} $  &  $ \ln \left|\tan(\frac{x}{2})\right| $ \\
+		$ \frac{1}{\cos(x)} $  &  $ \ln \left|\tan(\frac{x}{2}+\frac{\pi}{4})\right| $ \\
+		$ \sin^2(x) $  &  $ \frac{1}{2} (x-\sin(x)\cos(x)) $ \\
+		$ \cos^2(x) $  &  $ \frac{1}{2} (x+\sin(x)\cos(x)) $ \\
+		$ \tan^2(x) $  &  $ \tan(x)-x $ \\
+		$ \cot^2(x) $  &  $ -\cot(x)-x $ \\
+		$ \arcsin(x) $  &  $ x \arcsin(x) + \sqrt{1-x^2} $ \\
+		$ \arccos(x) $  &  $ x \arccos(x) - \sqrt{1-x^2} $ \\
+		$ \arctan(x) $  &  $ x \arctan(x) - \frac{1}{2} \ln (1+x^2) $ \\
+		$ \sin^n(x) $  &  $ \scriptstyle s_n=-\frac{1}{n} \sin^{n-1}x \cos x+\frac{n-1}{n} s_{n-2} $ \\
+		$  $  &  $ \scriptstyle s_0 = x\quad s_1 = - \cos(x) $ \\
+		$ \cos^n(x) $  &  $ \scriptstyle c_n=\frac{1}{n} \sin x \cos^{n-1} x + \frac{n-1}{n} c_n $ \\
+		$  $  &  $ \scriptstyle c_0 = x\quad c_1 = \sin(x) $ \\
+		$ \sinh(x) $  &  $ \cosh(x)\quad \text{ und umgekehrt} $ \\
+		$ \tanh(x) $  &  $ \ln(\cosh(x)) $ \\
+		$  $  &  $  $ \\
+		$ \frac{f'(x)}{f(x)} $   &   $ \ln {| f(x) |} $ \\
+		$ \ln |x| $  &  $ x \cdot (\ln |x| - 1) $ \\
+		$ \frac{1}{x}(\ln x)^n $  &  $ \frac{1}{n+1} (\ln x)^{n+1} \quad \scriptstyle  n \neq -1 $ \\
+		$ \frac{1}{x}\ln x^n $  &  $ \frac{1}{2n} (\ln x^n)^{2} \quad \scriptstyle  n \neq 0 $ \\
+		$ \frac{1}{x \ln x} $  &  $ \ln |\ln x| \quad \scriptstyle x>0,x\neq 1 $ \\
+		$ a^{bx} $  &  $ \frac{1}{b \ln a} a^{bx} $ \\
+		$ x\cdot e^{cx} $  &  $ \frac{cx-1}{c^2} \cdot e^{cx} $ \\
+		$ x^n \ln x $  &  $ \frac{x^{n+1}}{n+1} \left( \ln x - \frac{1}{n+1} \right) \quad \scriptstyle  n \neq -1 $ \\
+		$ \scriptstyle e^{cx} \sin (ax+b)  $  &  $ \frac{e^{cx} \left( c \sin (ax+b)-a \cos(ax+b) \right)}{a^2+c^2}  $ \\
+		$ \scriptstyle e^{cx} \cos (ax+b)  $  &  $ \frac{e^{cx} \left( c \cos (ax+b)+a \sin(ax+b) \right)}{a^2+c^2}  $ \\
+	\end{tabular}
+\end{multicols}
+
+
+\begin{multicols}{2}
+	\renewcommand\arraystretch{1.4}
+	\begin{tabular}{l|l}
+		$f(x)$ & $f'(x)$ \\ \hline
+		
+		$ x^n $   &   $ nx^{n-1} $ \\
+		$ \sqrt x $  &  $ \frac{1}{2 \sqrt x} $ \\
+		$ \sqrt[n] x $  &  $ \frac{1}{n} {x}^{ \frac{1}{n} -1 } $ \\
+		$ \frac{1}{f(x)} $  &  $ \frac{-f'(x)}{(f(x))^2} $ \\
+		$ \tan(x) $  &  $ \tan^2(x)+1 = \frac{1}{\cos^2(x)} $ \\
+		$ \cot(x) $  &  $ -(1 + \cot^2(x)) = \frac{-1}{\sin^2(x)} $
+	\end{tabular}
+	
+	\columnbreak
+	\hspace{-20pt}
+	\begin{tabular}{l|l}
+		$f(x)$ & $f'(x)$ \\ \hline
+		
+		$ \ln |x| $  &  $ \frac{1}{x} $ \\
+		$ \log_a |x| $  &  $ \frac{1}{x \ln a} = \log_a(e) \frac{1}{x} $ \\
+		$ a^{cx} $  &  $ a^{cx} \cdot c \ln a $ \\
+		$ x^x $  &  $ x^x \cdot (1+\ln x) \quad \scriptstyle x > 0 $ \\
+		$ (x^x)^x $  &  $ (x^x)^x(x+2x\ln(x)) \quad \scriptstyle x > 0 $ \\
+		$ x^{(x^x)} $  &  $ x^{(x^x)}(x^{x-1}+\ln x \cdot x^x (1+\ln x))) $ 
+	\end{tabular}
+\end{multicols}
+
+	\subsection{Logarithmengesetze}
+	\begin{equation*}
+		\log_a(u\cdot v) = \log_a(u) + \log_a(v) \qquad 
+		\log\left(\frac{u}{v}\right) = \log_a(u) - \log_a(v) \qquad
+		\log_a(u^v) = v\cdot \log_a(u)
+	\end{equation*}
+	\begin{equation*}
+		\log_a(\sqrt[n]{u}) = \frac{1}{n} \cdot \log_a(u) \qquad
+		\log_b(r) = \frac{\log_a(r)}{\log_a(b)}
+	\end{equation*}
+	\subsection{Standardsubstitutionen}
+	{\small
+		\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l|l|l|p{4cm}}
+		Integral & Substitution &  Differential  & Bemerkungen \\ \hline \hline
+		
+		$\int f(g(x), g'(x))dx$
+		& $t = g(x)$
+		& $dx=\frac{dt}{g'(x)}$
+		& Lsg: $\frac{1}{2} [f(x)^2] + C$\\ \hline
+		
+		$\int f((ax+b))dx$
+		& $t = ax + b$
+		& $dx=\frac{dt}{a}$
+		& Lsg: $\frac{1}{a} \int f(u) du)$\\ \hline
+		
+		$\int f(x,\sqrt{ax+b})dx$
+		& $x=\frac{t^2-b}{a}$
+		& $dx=\frac{2tdt}{a}$
+		& $t\geq 0$\\ \hline
+		
+		$\int f(x,\sqrt{ax^2+bx+c})dx$
+		& $x=\alpha t+\beta$
+		& $dx=\alpha dt$
+		& wähle $\alpha$ und $\beta$ so, dass gilt
+		$ax^2+bx+c=\gamma\cdotp(\pm t^2\pm 1)$ \\ \hline
+		
+		$\int f(x,\sqrt{a^2-x^2})dx$
+		& $x=a\cdot\sin t$
+		& $dx=a \cdot\cos t dt$
+		& $-\frac{\pi}{2}\leq t \leq \frac{\pi}{2}$\\ \hline
+		
+		$\int f(x,\sqrt{a^2+x^2})dx$
+		& $x=a \cdot \sinh t$
+		& $dx=a \cdot \cosh t dt$
+		& $t\in\mathbb{R}$\\ \hline
+		
+		$\int f(x,\sqrt{x^2-a^2})dx$
+		& $x=a\cdot \cosh t$
+		& $dx=a\cdot \sinh t dt$
+		& $t \geq 0$\\ \hline
+		
+		$\int f(e^x, \sinh x, \cosh x)dx$
+		& $e^x=t$
+		& $dx=\frac{dt}{t}$
+		& $t>0$, und dabei gilt: \\
+		&&&$\sinh x =\frac{t^2-1}{2t}$ \\
+		&&&$\cosh x= \frac{t^2+1}{2t}$ \\ \hline
+		
+		$\int f(\sin x, \cos x)dx$
+		& $\tan \frac{x}{2} = t$
+		& $dx=\frac{2dt}{1+t^2}$
+		& $-\frac{\Pi}{2}<t<\frac{\Pi}{2}$, und dabei
+		gilt: $\sin x =\frac{2t}{1+t^2}$, $\cos x = \frac{1-t^2}{1+t^2}$
+	\end{tabular}
+}
+\subsection{Trigonometrie}
+\begin{tabular}{r | c c c c c c c}
+	Winkel     &0°   &30°                    &45°                   &60°                   &90°              &180°   &270°               \\\hline 
+	rad        &$0$  &$\frac{\pi}{6}$        &$\frac{\pi}{4}$       &$\frac{\pi}{3}$       &$\frac{\pi}{2}$  &$\pi$  &$\frac{3\pi}{2}$  \\\hline
+	Sinus      &$0$  &$\frac{1}{2}$          &$\frac{\sqrt{2}}{2}$  &$\frac{\sqrt{3}}{2}$  &$1$              &$0$    &$-1$              \\
+	Cosinus    &$1$  &$\frac{\sqrt{3}}{2}$   &$\frac{\sqrt{2}}{2}$  &$\frac{1}{2}$         &$0$              &$-1$   &$0$               \\
+	Tangens    &$0$  &$\frac{\sqrt{3}}{3}$   &$1$                   &$\sqrt{3}$            &-                &$0$    &-                 \\
+\end{tabular}
+\renewcommand\arraystretch{1.4}
+\begin{tabular}{r}
+	$ \cosh(x) = \frac{e^x+e^{-x}}{2} = -i \sin(ix) $ \\
+	$ \sinh(x) = \frac{e^x-e^{-x}}{2} = \cos(ix) $ \\
+	$ \tanh(x) = \frac{\sinh(x)}{\cosh(x)} = -i\tan(ix) $ \\
+	$ \cosh^2(x) - \sinh^2(x) = 1 $ \\
+	$ e^{\pm x} = \cosh(x) \pm \sinh(x) $
+\end{tabular}
+
+\begin{multicols}{2}
+	\renewcommand\arraystretch{1.3}
+	\hspace{-25pt}
+	\begin{tabular}{l l}
+		
+		$ \sin(-\alpha) $  &  $ = -\sin(\alpha) $ \\
+		$ \cos(-\alpha) $  &  $ = \cos(\alpha) $ \\
+		$ \tan(-\alpha) $  &  $ = -\tan(\alpha) $ \\
+		$ \sin(\alpha \pm \beta) $  &  $ = \scriptstyle \sin(\alpha)\cos(\beta) \pm \sin(\beta)\cos(\alpha) $ \\
+		$ \cos(\alpha \pm \beta) $  &  $ = \scriptstyle \cos(\alpha)\cos(\beta) \mp \sin(\alpha)\sin(\beta) $ \\
+		$ \tan(\alpha \pm \beta) $  &  $ = \frac{\tan(\alpha) \pm \tan(\beta)}{1 \mp \tan(\alpha)\tan(\beta)} $ \\
+		$ \sin(2\alpha) $  &  $ = 2 \sin(\alpha)\cos(\alpha) $ \\
+		$ \cos(2\alpha) $  &  $ = \cos^2(\alpha) - \sin^2(\alpha) $ \\
+		$ \tan(2\alpha) $  &  $ = \frac{2 \tan(\alpha)}{1-\tan^2(\alpha)} $ \\
+		$ \sin(3\alpha) $  &  $ = 3\sin(\alpha)-4 \sin^3(\alpha) $ \\
+		$ \cos(3\alpha) $  &  $ = 4\cos^3(\alpha) - 3 \cos(\alpha) $ \\
+		$ \tan(3\alpha) $  &  $ = \frac{3 \tan(\alpha) - \tan^3(\alpha)}{1-3\tan^2(\alpha)} $ \\
+		
+		$ \sin(\arccos(\alpha)) $  &  $ =  \sqrt{1-\alpha^2} \; \scriptstyle = \, \cos(\arcsin(\alpha)) $
+	\end{tabular}
+	
+	\columnbreak
+	\hspace{-25pt}
+	\begin{tabular}{l l}
+		$ \sin^2(\frac{\alpha}{2}) $  &  $ = \frac{1-\cos(\alpha)}{2} $ \\
+		$ \cos^2(\frac{\alpha}{2}) $  &  $ = \frac{1+\cos(\alpha)}{2} $ \\
+		$ \tan^2(\frac{\alpha}{2}) $  &  $ = \frac{1-\cos(\alpha)}{1+\cos(\alpha)} $ \\
+		$ \sin(\alpha) \pm \sin(\beta) $  &  $ = 2 \sin(\frac{\alpha \pm \beta}{2}) \cos(\frac{\alpha \mp \beta}{2}) $ \\
+		$ \cos(\alpha) + \cos(\beta) $  &  $ = 2 \cos(\frac{\alpha + \beta}{2}) \cos(\frac{\alpha - \beta}{2}) $ \\
+		$ \cos(\alpha) - \cos(\beta) $  &  $ = - 2 \sin(\frac{\alpha + \beta}{2}) \sin(\frac{\alpha - \beta}{2}) $ \\
+		$ \sin(\alpha)\sin(\beta) $  &  $ = \scriptstyle \frac{1}{2} \left( \cos(\alpha - \beta) - \cos(\alpha + \beta) \right) $ \\
+		$ \cos(\alpha)\cos(\beta) $  &  $ = \scriptstyle \frac{1}{2} \left( \cos(\alpha - \beta) + \cos(\alpha + \beta) \right) $ \\
+		$ \sin(\alpha)\cos(\beta) $  &  $ = \scriptstyle \frac{1}{2} \left( \sin(\alpha - \beta) + \sin(\alpha + \beta) \right) $ \\
+		$ {e^{i\phi}}^2 = 1 $  & $ = \sin^2(\phi)+\cos^2(\phi) $ \\
+		$ \sin(\phi) $  &  $ = \frac{e^{i \phi}-e^{-i\phi}}{2} $ \\
+		$ \cos(\phi) $  &  $ = \frac{e^{i \phi}+e^{-i\phi}}{2i} $ \\
+		$ e^{i\phi} $  &  $ = \cos(\phi)+i \sin(\phi) $ 
+	\end{tabular}
+\end{multicols}
+
+
+\end{document}

@@ -1,0 +1,246 @@
+\section{Statistik}
+
+\subsection{Schätzer}
+Schätzer sind Funktionen von Zufallsvariablen und somit selbst wieder Zufallsvariablen. Sie verfügen deshalb über einen Erwartungswert und eine Varianz.
+
+\subsubsection{Erwartungstreuer Schätzer}
+Ein Schätzer $T$ ist \emph{erwartungstreu} wenn der Erwartungswert des Schätzers gleich dem zu schätzenden Parameter $\vartheta$ ist:
+\[
+E_\vartheta [T] = \vartheta
+\]
+
+\subsubsection{Konsistenter Schätzer}
+Ein Folge von Schätzern $T^{(n)}$ ist \emph{konsistent} wenn diese mit zunehmendem Stichprobenumfang $n$ gegen den gesuchten Parameter $\vartheta$ konvergiert:
+\[
+\lim_{n\to\infty}P_{\vartheta}\left[|T^{(n)}-\vartheta| > \epsilon\right] = 0\text{ (für jedes $\epsilon > 0$)}
+\]
+
+\subsubsection{Momenten-Methode}
+Sei $X_1,X_2,...,X_n$ eine Stichprobe vom Umfang $n$ mit gegebener Verteilung $t$. Die Parameter von $t$ seien unbekannt. Mit der Momenten-Methode können diese geschätzt werden. Der Momentenschätzer ist i.d.R. nicht erwartungstreu.
+
+\vspace{10pt}
+
+\textbf{Vorgehen:}
+\begin{enumerate}
+\item 1. Moment berechnen:
+\[
+\overline{x} = \frac{1}{n}\sum\limits_{i=1}^{n}x_i
+\]
+\item 2. Moment berechnen:
+\[
+s^2 = \frac{1}{n}\sum\limits_{i=1}^{n}\left(x_i - \overline{x}\right)^2=\left( \frac{1}{n}\sum\limits_{i=1}^{n}x_i^2\right)-\overline{x}^2
+\]
+\item Nimm die Formel für den Erwartungswert der geg. Verteilung $t$ und setze sie gleich $\overline{x}$
+\item Nimm die Formel für die Varianz der geg. Verteilung $t$ und setze sie gleich $s^2$
+\item Löse das Gleichungssystem auf. Du erhälst die gesuchten Parameter.
+\end{enumerate}
+
+\subsubsection{Maximum-Likelihood-Methode}
+Methode zur systematischen Gewinnung von Schätzfunktionen.
+
+\vspace{10pt}
+
+\textbf{Vorgehen:}
+\begin{enumerate}
+\item Likelihood-Funktion aufstellen:
+\[
+L(x_1,...,x_n,\vartheta)= \prod \limits_{i=1}^{n} f(x_i,\vartheta)
+\]
+\item Log-Likelihood-Funktion aufstellen (logarithmieren von $L$):
+\[
+\log L(x_1,...,x_n,\vartheta)
+\]
+\item $\log L$ mit Hilfe elementarer Logarithmenregeln möglichst vereinfachen
+\item $\log L$ nach jedem unbekannten Parameter partiell ableiten
+\item Partielle Ableitungen = 0 setzen
+\item Gleichungssystem nach Parametern auflösen
+\end{enumerate}
+
+\subsection{Tests}
+
+\subsubsection{Wichtige Begriffe}
+
+\begin{itemize}
+\item \textbf{Einseitiger Test:} Einen einseitigen Test führt man durch, wenn man wissen will, ob sich ein Wert vergrössert oder verkleinert hat.
+\item \textbf{Zweiseitiger Test:} Einen zweiseitigen Test führt man durch, wenn man lediglich wissen will, ob sich ein Wert verändert hat.
+\item \textbf{Nullhypothese $H_0$:} Die zu prüfende Annahme.
+\item \textbf{Alternativhypothese $H_A$}: Alternative Annahme, falls $H_0$ verworfen werden muss.
+\item \textbf{Signifikanzniveau $\alpha$}: Ist die Wahrscheinlichkeit, dass die Nullhypothese verworfen werden muss (auch Wahrscheinlichkeit für Fehler 1. Art).
+\item \textbf{Teststatistik T:} Test- oder Prüfwert.
+\item \textbf{P-Wert:} Das kleinste Niveau, auf dem der Test die Nullhypothese noch verwirft.
+\item \textbf{Fehler 1. Art:} $H_0$ wird verworfen, obwohl sie richtig wäre.
+\item \textbf{Fehler 2. Art:} $H_0$ wird beibehalten, obwohl $H_A$ stimmt.
+\end{itemize}
+
+\subsubsection{Allgemeines Vorgehen}
+\begin{enumerate}
+\item Wahl des Modells
+\item Formulieren der Nullhypothese $H_0$
+\item Formulieren der Alternativhypothese $H_A$
+\item Teststatistik $T$ aufstellen
+\item Verteilung der Teststatistik unter der Nullhypothese
+\item Bestimmen des Verwerfungsbereichs
+\item Konkreter Wert für Teststatistik $T$ berechnen
+\item Testentscheidung: $H_0$ beibehalten oder verwerfen?
+\end{enumerate}
+
+\subsubsection{z-Test}
+Der z-Test ist ein Test für den Erwartungswert bei \emph{bekannter} Varianz $\sigma^2$. Es seien also $X_1,X_2,...,X_n \sim N(\mu,\sigma^2)\ i.i.d.$. Wir wollen die Nullhypothese $\mu=\mu_0$ testen.
+
+\vspace{10pt}
+
+\textbf{Nullhypothese und Alternativhypothese:}
+\begin{enumerate}[a)]
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu\neq \mu_0$ (zweiseitig)
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu > \mu_0$ (einseitig)
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu < \mu_0$ (einseitig)
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Teststatistik:}
+\[
+\begin{array}{ll}
+	\text{Mittelwert $\overline{X}$:} & \overline{X}=\frac{X_1+X_2+...+X_n}{n} \\
+	\text{Teststatistik $T$:} & T = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}\sim N(0,1) \\
+\end{array}
+\]
+
+\vspace{10pt}
+
+\textbf{Verwerfungsbereich:}
+\begin{enumerate}[a)]
+\item $|T|>t_{1-\frac{\alpha}{2}}=\Phi^{-1}(1-\frac{\alpha}{2})=c$ \\ 
+      ($P_{\vartheta_0}[|T|]>\Phi^{-1}(1-\frac{\alpha}{2}]=\alpha$) \\
+      Verwerfungsbereich $K=(-\infty,-c) \cup (c,\infty)$
+\item $T>\Phi^{-1}(1-\alpha)=c$ \\
+      Verwerfungsbereich $K=(c,\infty)$
+\item $T<t_{\alpha}=-t_{1-\alpha}=-\Phi^{-1}(1-\alpha)=c$ \\
+      Verwerfungsbereich $K=(-\infty,-c)$
+\end{enumerate}
+
+\subsubsection{t-Test}
+Der t-Test ist ein Test für den Erwartungswert bei \emph{unbekannter Varianz} $\sigma^2$. Es seien also $X_1,X_2,...,X_n \sim N(\mu,\sigma^2) i.i.d.$. Wir wollen die Nullhypothese $\mu=\mu_0$ testen.
+
+\vspace{10pt}
+
+\textbf{Nullhypothese und Alternativhypothese:}
+\begin{enumerate}[a)]
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu\neq \mu_0$ (zweiseitig)
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu > \mu_0$ (einseitig)
+\item $H_0: \mu=\mu_0$ gegen $H_A:\mu < \mu_0$ (einseitig)
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Teststatistik:}
+\[
+\begin{array}{ll}
+	\text{Mittelwert $\overline{X}$:} & \overline{X}=\frac{X_1+X_2+...+X_n}{n} \\
+	\text{Schätzfunktion für $S^2$:} & S^2 = \frac{1}{n-1}\cdot \sum\limits_{i=1}^{n}(X_i - \overline{X})^2 \\
+	\text{Teststatistik $T$:} & T = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}\sim t_{n-1} \\
+\end{array}
+\]
+
+Die Teststatistik $T$ ist \textbf{t-verteilt} mit \textbf{$n-1$ Freiheitsgraden}.
+
+\vspace{10pt}
+
+\textbf{Verwerfungsbereich:}
+\begin{enumerate}[a)]
+\item $|T|>t_{n-1,1-\frac{\alpha}{2}}=c$ \\
+      Verwerfungsbereich $K=(-\infty,-c) \cup (c,\infty)$
+\item $T>t_{n-1,1-\alpha}=c$ \\
+      Verwerfungsbereich $K=(c,\infty)$
+\item $T<-t_{n-1,1-\alpha}=-c$ \\
+      Verwerfungsbereich $K=(-\infty,-c)$
+\end{enumerate}
+
+
+
+
+
+\subsubsection{Likelihood-Quotienten-Test}
+Der Likelihood-Quotienten-Test kann man verwenden, um eine geeignete Teststatistik $T$ zu erhalten. 
+
+\vspace{10pt}
+
+\textbf{Vorgehen:}
+\begin{enumerate}
+\item Verallgemeinerter Likelihood-Quotient aufstellen:
+\[
+R(x_1,x_2,...,x_n;\vartheta_0,\vartheta_A):=\frac{L(x_1,x_2,...,x_n;\vartheta_0)}{L(x_1,x_2,...,x_n;\vartheta_A)}
+\]
+\item Formel vereinfachen. Im Exponent muss eine Summenformel stehen.
+\item Überlegen, welcher Wert grösser ist, $\vartheta_0$ oder $\vartheta_A$?                  
+\end{enumerate}
+
+Ist dieser Quotient klein, sind die Beobachtungen für die Alternativhypothese deutlich wahrscheinlicher als für die Nullhypothese. Der Verwerfungsbereich $K:=[0,c)$ wird so gewählt, dass der Test das gewünschte Signifikanzniveau einhält.
+
+\subsubsection{Ungepaarter Zweistichproben-z-Test}
+Seien $X_1,X_2,...,X_n \sim N(\mu_X,\sigma^2)$ und $Y_1,Y_2,...,Y_m \sim N(\mu_Y,\sigma^2)$ zwei Stichproben mit $m = n$ oder $m \neq n$. Die Erwartungswerte $\mu_X$ und $\mu_Y$ seien unbekannt, die Varianz $\sigma^2$ sei \emph{bekannt}. Der Test kann wie ein normaler z-Test durchgeführt werden, als Teststatistik $T$ wird jedoch folgende Formel verwendet:
+
+\vspace{10pt}
+
+Falls $m\neq n$:
+
+\[
+T = \frac{\left(\overline{X}_n-\overline{Y}_m\right)-\left(\mu_X-\mu_Y\right)}{\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim N(0,1)
+\]
+
+Falls $m=n$:
+
+\[
+T = \frac{\left(\overline{X}_n-\overline{Y}_m\right)-\left(\mu_X-\mu_Y\right)}{\sigma\sqrt{\frac{2}{n}}}\sim N(0,1)
+\]
+
+\subsubsection{Ungepaarter Zweichstichproben-t-Test}
+Seien $X_1,X_2,...,X_n \sim N(\mu_X,\sigma^2)$ und $Y_1,Y_2,...,Y_m \sim N(\mu_Y,\sigma^2)$ zwei Stichproben mit $m = n$ oder $m \neq n$. Die Erwartungswerte $\mu_X$ und $\mu_Y$ seien unbekannt, die Varianz $\sigma^2$ sei ebenfalls \emph{unbekannt}. Der Test kann wie ein normaler t-Test durchgeführt werden, als Teststatistik $T$ wird jedoch folgende Formel verwendet:
+
+\[
+S_{X}^{2}=\frac{1}{n-1}\sum\limits_{i=1}^{n}\left(X_i-\overline{X}_n\right)^2
+\]
+\[
+S_{Y}^{2}=\frac{1}{m-1}\sum\limits_{j=1}^{m}\left(Y_j-\overline{Y}_m\right)^2
+\]
+
+Falls $m\neq n$:
+
+\[
+S^2=\frac{1}{m+n-2}\left((n-1)S_{X}^{2}+(m-1)S_{Y}^{2}\right)
+\]
+\[
+T = \frac{\left(\overline{X}_n-\overline{Y}_m\right)-\left(\mu_X-\mu_Y\right)}{S\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim t_{n+m-2}
+\]
+
+Falls $m=n$:
+
+\[
+S^2=\frac{1}{2(n-1)}(n-1)\left(S_{X}^{2}+S_{Y}^{2}\right)
+\]
+\[
+T = \frac{\left(\overline{X}_n-\overline{Y}_m\right)-\left(\mu_X-\mu_Y\right)}{S\sqrt{\frac{2}{n}}}\sim t_{2n-2}
+\]
+
+\subsubsection{Gepaarter Zweistichproben-Test}
+In diesem Fall können die beiden Stichproben $X_1,X_2,...,X_n\ i.i.d\sim N(\mu_X,\sigma_X^2)$ und $Y_1,Y_2,...,Y_n\ i.i.d\sim N(\mu_Y,\sigma_Y^2)$ durch Definition einer neuen Zufallsvariable $Z=X_i-Y_i$ auf eine Stichprobe vereinfacht werden. Der Test kann dann wie ein normaler z-Test oder t-Test durchgeführt werden, wobei $Z_1,Z_2,...,Z_n\ i.i.d\sim N(\mu_X-\mu_Y,2\sigma^2)$ gilt.
+
+\subsection{Konfidenzbereiche}
+Ein Konfidenzbereich gibt ein Intervall an, in dem sich ein gesuchter Parameter mit sehr hoher Wahrscheinlichkeit befindet.\\
+
+\textbf{Standardabweichung $\sigma$ \emph{bekannt}:}
+\[
+C(X_1,...,X_n)=
+\]
+\[
+\left[\overline{X}_n-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\frac{\sigma}{\sqrt{n}},
+\overline{X}_n+\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\frac{\sigma}{\sqrt{n}}\right]
+\]
+\textbf{Standardabweichung $\sigma$ \emph{nicht bekannt}:}
+\[
+C(X_1,...,X_n)=
+\]
+\[
+\left[\overline{X}_n-t_{n-1,1-\frac{\alpha}{2}}\frac{S}{\sqrt{n}},
+\overline{X}_n+t_{n-1,1-\frac{\alpha}{2}}\frac{S}{\sqrt{n}}\right]
+\]

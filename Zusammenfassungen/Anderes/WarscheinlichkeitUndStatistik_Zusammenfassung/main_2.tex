@@ -1,0 +1,108 @@
+
+\documentclass[11pt]{article}
+\usepackage[left=4mm, right=4mm, top=3mm, bottom=7mm,paperwidth=140mm, paperheight=297mm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, amsfonts, amsmath, amsthm, amsxtra}
+\usepackage{xcolor}
+\usepackage[e]{esvect}
+\usepackage{floatrow} % allows to insert pictures into proofs and theorems
+
+\usepackage{cancel}
+\usepackage{paralist}
+
+\usepackage{pdfpages}
+% Grafik
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\usepackage{psfrag}
+\usepackage{epstopdf}
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% Graphs and Automata
+\usepackage{gastex}
+
+% farben
+\usepackage{color}
+\usepackage{bbold}
+\usepackage{graphicx}
+%\usepackage{picins}
+\usepackage{tabularx}
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{booktabs}
+\colorlet{shadecolor}{orange!15}
+
+\usepackage{multirow}
+\usepackage{multicol}
+\columnsep24pt
+\columnseprule0.1pt
+
+\input{style/style.sty}
+\input{style/style_2.sty}
+
+\usepackage[english,german]{babel} 
+\begin{document}
+
+
+\author{Miles Str"assle}
+\title{Zusammenfassung Wahrscheinlichkeit \& Statistik}
+\date{\today}
+\maketitle
+
+\setcounter{tocdepth}{2}
+%\tableofcontents
+
+%\thispagestyle{empty}
+%\newpage
+%\setcounter{page}{1}
+
+%\begin{multicols}{2}
+
+% include the individual chapters
+
+
+% Kapitel Wahrscheinlkeit
+\setcounter{part}{23} % 23 = W
+\part*{Wahrscheinlichkeit}
+\addcontentsline{toc}{part}{Wahrscheinlichkeit}
+
+\input{src2/w1_wahrscheinlichkeit.tex}
+\input{src2/w2_zufallsvariablen.tex}
+\input{src2/w3_wichtige_verteilungen.tex}
+\input{src2/w4_mehrdim_zufallsvariablen.tex}
+\input{src2/w5_funktionen.tex}
+\input{src2/w6_grenzwertsaetze.tex}
+
+% Kapitel Statistik
+\setcounter{part}{19} % 19 = S
+\part*{Statistik}
+\addcontentsline{toc}{part}{Statistik}
+\setcounter{section}{0}
+
+%\input{src2/s1_deskStat.tex}
+\input{src2/s1_grundlagen.tex}
+\input{src2/s2_schaetzer.tex}
+
+
+% Kapitel Anhang
+\input{src2/s3_tests.tex}
+\input{src2/a1_anhang.tex}
+\input{src/rest.tex}
+
+\input{src2/a3_alte_pruefungen.tex}
+%\input{src2/a2_tabellen.tex}
+%\label{lastpage}
+
+
+% fill the page
+%\clearpage
+
+%\end{multicols}
+
+
+\end{document}
+
+

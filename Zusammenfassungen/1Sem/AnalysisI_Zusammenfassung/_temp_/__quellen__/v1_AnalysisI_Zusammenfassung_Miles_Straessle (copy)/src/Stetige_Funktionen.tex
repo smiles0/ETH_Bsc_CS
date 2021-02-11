@@ -1,0 +1,97 @@
+
+%%%%%%%%%%
+
+\section{Stetigkeit}
+
+\subsection{Zwischenwertsatz}
+Sei $f: [a,b] \to \R$ eine stetige reele Funktion, die auf einem Intervall
+definiert ist. Dann existiert zu jedem $u \in [f(a), f(b)]$ (falls $f(a) \leq
+f(b)$, sonst $u \in [f(b), f(a)]$) ein $c \in [a,b]$, sodass gilt: $f(c)= u$.
+
+\subsubsection{Beispiel (Fixpunkt)}
+Sei $f: [0,1] \to [0,1]$. Zeige: $f$ hat einen Fixpunkt, d.h. es gibt ein $x
+\in [0,1]$ derart, dass $f(x) = x$.
+
+Man erzeugt die Funktion $g: [0,1] \to \R, g(x) := f(x) - x$. Es gilt: $f(x) =
+x \Leftrightarrow g(x) = 0$, d.h. ein Punkt x ist genau dann ein Fixpunkt von
+$f$ wenn er eine Nullstelle von $g$ ist. Es ist zu zeigen, dass $g$ immer eine
+Nullstelle auf $[0,1]$ hat. Als Differenz von zwei stetigen Funktionen ist $g$
+stetig. Weil ausserdem $f(x) \in [0,1] \; \forall x \in [0,1]$ gilt, ist $g(0)
+\geq 0 \geq g(1)$. Da $g$ stetig ist, gibt es daher nach dem Zwischenwertsatz
+ein $x \in [0,1]$ mit $g(x) = 0$ und somit gibt es $f(x) = x$.
+
+
+\subsection{Lipschitz-Stetigkeit}
+Es existiert eine Konstante $L\in \mathbb{R}$, sodass:
+\begin{equation*}
+	|f(x)-f(y)|\leq L|x-y| \quad \forall x,y \in \Omega
+\end{equation*}
+
+\emph{Bemerkung:} Ist $f'$ \textbf{auf $\Omega$ beschr{\"a}nkt}, so ist $f$ Lipschitz-stetig. Lipschitz-Stetigkeit impliziert gleichm{\"a}ssige Stetigkeit.
+
+\subsection{Weierstrass-Kriterium}
+F{\"u}r alle $\epsilon > 0$ gibt es ein $\delta(\epsilon, a) >0$, sodass f{\"u}r alle $|x-a|<\delta$ gilt:
+\begin{equation*}
+	|f(x) -f(a)|<\epsilon
+\end{equation*}
+
+\subsection{Gleichm{\"a}ssige Stetigkeit}
+F{\"u}r alle $\epsilon > 0$ gibt es ein $\delta(\epsilon) >0$, sodass f{\"u}r alle $|x-y|<\delta$ gilt:
+\begin{equation*}
+	|f(x)-f(y)| < \epsilon
+\end{equation*}
+\emph{Bemerkung:} Ist $f$ \textbf{stetig und kompakt}, dann ist sie auch gleichm{\"a}ssig stetig.
+
+\subsection{Punktweise Konvergenz}
+
+$f_n(x)$ konvergiert punktweise falls:
+\begin{equation*}
+	\forall x\in \Omega \quad \lim_{n\rightarrow\infty}f_n(x) = f(x)
+\end{equation*}
+
+\subsection{Gleichm{\"a}ssige Konvergenz}
+
+\paragraph{Grundsatz:} Falls eine Folge stetiger Funktionen $f_n$ gleichm{\"a}ssig gegen $f$ konvergiert, muss $f$ stetig sein.\\
+
+$f_n(x)$ konvergiert gleichm{\"a}ssig falls:
+\begin{equation*}
+	\lim_{n\rightarrow\infty} \sup|f_n(x) - f(x)| = 0
+\end{equation*}
+
+\emph{Bemerkung:} Gleichm{\"a}ssige Konvergenz impliziert punktweise Konvergenz.\\
+\underline{Rezpet f{\"u}r gleichm{\"a}ssige Konvergenz} 
+\begin{enumerate}[label=(\roman*), noitemsep,topsep=0pt]
+	\item Punktweiser Limes berechnen
+	\[
+	\lim_{n\rightarrow\infty}f_n(x) = f(x) \text{\quad = Grenzfunktion}
+	\]
+	\item Supremum bestimmen \\
+	(Ableitung von $f_n(x)$  oder Absch{\"a}tzung benutzen)
+	\[
+	\sup|f_n(x) - f(x)|
+	\]
+	\item Limes $n \to \infty$ bestimmen (vgl. Kriterium glm. Konvergenz)
+	\[
+	\lim_{n\rightarrow\infty} \sup|f_n(x) - f(x)|
+	\]
+	Limes = 0 $\rightarrow$ Glm. konvergent mit Grenzfunktion f(x)
+	\item Indirekte Methode \\
+	\begin{itemize}
+		\item $f(x)$ unstetig  auf $\Omega \Rightarrow$ keine glm. Konvergenz	
+		\item $f(x)$ stetig, $f_n(x) \leq f_{n+1}(x) \forall x \in \Omega $ und $\Omega$ kompakt $\Rightarrow$ Glm. Konvergenz
+	\end{itemize}
+	
+\end{enumerate}
+
+\begin{equation*}
+	\begin{split}
+		\text{gegeben:} \quad & f_n:[0,1] \mapsto \mathbb{R},\ f_n(x) = (1 - x^2)x^n \\
+		\textbf{punktweisen Limes berechnen:} \quad & \lim_{n \to \infty} (1 - x^2)x^n = 0 \equiv f(x) \\
+		& \Rightarrow\ \text{konvergiert gegen 0} \\
+		\text{Supremum berechnen:} \quad & \sup_{x \in [0,1]} |f_n(x) -f(x)| = \sup_{x \in [0,1]} |f_n(x)| = \sup_{x \in [0,1]}f_n(x) \\
+		\text{Maximum finden:} \quad & \frac{d}{dx} f_n(x) nx^{n-1}(1-x^2)-2xx^n = x^{n-1}(n - (n+2)x^2) = 0 \\
+		& \Rightarrow x_1 = 0,\ x_2 = \sqrt{\frac{n}{n+2}} \Rightarrow x_2\ \text{ist Maximum} \\
+		\textbf{Limes berechnen:} \quad & \lim_{n \to \infty} \sup_{x \in [0,1]} |f_n(x) - f(x)| = \lim_{n \to \infty} f_n(x_2) = 0 \\
+		\textbf{Folgerung:} \quad & \text{$f_n$ konvergiert auf $[0,1]$ glm. gegen $f$}
+	\end{split}
+\end{equation*}

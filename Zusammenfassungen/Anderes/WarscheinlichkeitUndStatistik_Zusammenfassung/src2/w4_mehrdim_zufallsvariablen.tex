@@ -1,0 +1,219 @@
+
+% ------------------------------------------------------------------------------------------------ %
+% ZUFALLSVARIABLEN IN R^n
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Zufallsvariablen in \(\R^n\)}
+
+\begin{definition}[Verteilung]
+	Das stochastische Verhalten einer Zufallsvariablen \\ \(X=(X_1,\ldots,X_n)\)
+	über \textbf{einem} Wahrscheinlichkeitsraum wird durch ihre \emph{Verteilung} beschrieben.
+	\(\mu_X :\R^n \rightarrow[0,1]\)
+	\begin{eqnarray*}
+		\begin{split}
+			\mu_X(B)	 &:= \P[(X_1,\ldots,X_n) \in B] \\
+			&:=  P[\{\omega \mid (X_1(\omega),\ldots,X_n(\omega)) \in B\}]
+			\quad \text{für } B \subseteq \R^n
+		\end{split}
+	\end{eqnarray*}
+	\begin{note}
+
+		Jedes Wahrscheinlichkeitsmass \(\mu_X\) erfüllt:
+		\begin{compactenum}
+			\item \(\mu_X(B) \geq 0 \quad \text{für alle } B \subseteq \R^n \)
+			\item \(\mu_X(\mathcal{W}(X)) = \mu_X(\R^n) = 1\)
+		\end{compactenum}
+	\end{note}
+
+\end{definition}
+
+% ------------------------------------------------------------------------------------------------ %
+% GEMEINSAME VERTEILUNGEN
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Gemeinsame Verteilungen}
+
+
+\begin{definition}[Gemeinsame Verteilung]
+	Die \emph{gemeinsame Verteilungsfunktion} ist die Abbildung \(F_X:\R^n \rightarrow [0,1]\),
+	\begin{eqnarray*}
+		\begin{split}
+			F_X(t_1,\ldots,t_n) &:= \P[X_1 \leq t_1,\ldots,X_n \leq t_n] \\
+			&:= \mu_X(  (-\infty, t_1] \times \ldots \times (-\infty, t_n] )
+		\end{split}
+	\end{eqnarray*}
+\end{definition}
+
+
+\begin{definition}[Gemeinsame Gewichtsfunktion]
+	Im diskreten Fall ist die \emph{gemeinsame Gewichtungsfunktion} \(p_X:\R^n\rightarrow [0,1]\) definiert:
+	\[		p_X(x_1,\ldots,x_n) := \P[X_1=x_1,\ldots,X_n=x_n]	\]
+
+	Somit lässt sich die \emph{diskrete Verteilung \(\mu_X\)} berechnen:
+	\[\mu_X(B) = \sum_{ (x_1, \ldots, x_n)_i \in B } p_X( (x_1, \ldots, x_n)_i ) \]
+
+\end{definition}
+
+
+\begin{definition}[Gemeinsame Dichte]
+	Im stetigen Fall ist die \emph{gemeinsame Dichte} \(f_X : \R^n \rightarrow [0,\infty)\) definiert, falls für alle \(t_i \in \R\) gilt
+	\[
+		F_X(t_1,\ldots,t_n) = \int_{-\infty}^{t_1} \ldots \int_{-\infty}^{t_n} f_X(x_1,\ldots,x_n) \d x_n \ldots \d x_1
+	\]
+
+	Somit lässt sich die \emph{stetige Verteilung \(\mu_X\)} berechnen:
+	\[\mu_X(B) = \int_{ (t_1, \ldots, t_n)   \in B } f_X(t_1,\ldots,t_n) \d\mu \]
+
+
+	\begin{note}
+		\(f_X(t_1,\ldots,t_n) = \frac{\partial^n}{\partial t_1 \cdots \partial t_n} F(t_1,\ldots,t_n)\)
+	\end{note}
+
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% RANDVERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Randverteilungen}
+
+\begin{definition}[Randverteilung]
+
+	Seien \(X\) und \(Y\) Zufallsvariablen mit gemeinsamer Verteilungsfunktion \(F_{X,Y}\),
+	dann ist die \emph{Randverteilung} \(F_X:\R \rightarrow [0,1]\) von \(X\) definiert durch
+	\[
+		F_X(x) := \P[X \leq x] = \P[X \leq x, Y < \infty] = \lim_{y\rightarrow\infty}F_{X,Y}(x,y).
+	\]
+\end{definition}
+
+\begin{definition}[Randgewichtsfunktion]
+
+	Für zwei diskrete Zufallsvariablen \(X\) und \(Y\) mit gemeinsamer Gewichtsfunktion \(p_{X,Y}(x,y)\)
+	ist die Gewichtsfunktion der Randverteilung von \(X\) gegeben:
+	\[
+		p_X(x) =
+		\P[X=x] =
+		\sum_j \P[X=x,Y=y_j] =
+		\sum_j p_{X,Y}(x,y_j).
+	\]
+\end{definition}
+
+\begin{definition}[Randdichte]
+
+	Für zwei stetige Zufallsvariablen \(X\) und \(Y\) mit gemeinsamer Dichte \(f_{X,Y}(x,y)\) ist die Randdichte (Dichtefunktion der Randverteilung) von \(X\) gegeben durch
+	\[
+		f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x,y) \d y.
+	\]
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BEDINGTE VERTEILUNG
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Bedingte Verteilung}
+
+\begin{definition}[Bedingte Gewichtsfunktion]
+	Seien \(X\) und \(Y\) diskrete Zufallsvariablen mit gemeinsamer Gewichtsfunktion \(p_{X,Y}(x,y)\),
+	dann ist die \emph{bedingte Gewichtsfunktion} \(p_{X \mid Y}(x \mid y)\) von \(X\) gegeben \(Y\) definiert durch
+	\[
+		p_{X \mid Y}(x \mid y) := \P[X = x \mid Y = y] = \frac{p_{X,Y}(x,y)}{p_Y(y)}
+	\]
+	falls \(p_Y(y) > 0\) und \(0\) falls \(p_Y(y) = 0\).
+\end{definition}
+
+\begin{definition}[Bedingte Dichte]
+	Für zwei stetige Zufallsvariablen \(X\) und \(Y\) mit gemeinsamer Dichte \(f_{X,Y}(x,y)\) ist
+	die \emph{bedingte Dichte} \(f_{X \mid Y}\) von \(X\) gegeben \(Y\) definiert durch
+	\[
+		f_{X \mid Y}(x \mid y) := \frac{f_{X,Y}(x,y)}{f_Y(y)}
+	\]
+	falls \(f_Y(y) > 0\) und \(0\) falls \(f_Y(y) = 0\).
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% UNABHÄNGIGKEIT
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Unabhängigkeit}
+
+\begin{definition}[Unabhängigkeit]
+
+	Die Zufallsvariablen \(X_1,\ldots,X_n\) heissen \emph{unabhängig}, falls gilt:
+	\[
+		F(x_1,\ldots,x_n) = \prod_{i=1}^n F_{X_i}(x_i)
+	\]
+
+\end{definition}
+
+\begin{note}
+	Es gelten folgende Rechenregeln:
+	\begin{compactenum}[i:]
+		\item \(p(x_1,\ldots,x_n) = \prod p_{X_i}(x_i)\)
+		\item \(	f(x_1,\ldots,x_n) = \prod f_{X_i}(x_i)\)
+		\item \(\mathcal{M}_{(X_1, \ldots, X_n)}(t_1, \ldots, t_n)= \prod \mathcal{M}_{X_i}(t_i)\)
+		\item \(Y_i = f_i(X_i)\) sind für beliebige \(f_i\) unabhängig
+	\end{compactenum}
+
+\end{note}
+
+\begin{definition}[i.i.d Annahme]
+	Die Abkürzung \emph{i.i.d.} kommt vom Englischen \emph{independent and identically distributed}.
+\end{definition}
+
+\begin{note}
+	Es gelten die Implikationen: \\
+	unabhängig	\(\Rightarrow\) paarweise unabhängig \(\Rightarrow\) unkorreliert
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Erwartungswert
+% ------------------------------------------------------------------------------------------------ %
+\subsection{Erwartungswert und Varianz}
+
+\begin{note}
+	Der Erwartungswert einer \(n\)-dimensionalen Verteilung wird
+	als \(n\)-Tupel der Erwartungswerte aller Randverteilungen \(\E[X_i]\) angegeben.
+\end{note}
+
+\begin{theorem}[4.2]
+	Für den Erwartungswert \(\E[Y]\) einer Funktion \(Y := g(X_1, \ldots X_n)\) der Zufallsvariablen \(X_1,\ldots,X_n\) gilt
+	\[
+		\E[Y] = \sum_{x_1,\ldots,x_n} g(x_1,\ldots,x_n) p(x_1,\ldots,x_n)
+	\]
+	\[
+		\E[Y] = \underset{\R^n}{\int\ldots\int} g(x_1,\ldots,x_n)f(x_1,\ldots,x_n) \d x_n \ldots \d x_1.
+	\]
+\end{theorem}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% KOVARIANZ UND KORRELATION
+% ------------------------------------------------------------------------------------------------ %
+
+
+\begin{note}
+
+	Es gelten folgende Rechenregeln:
+	\begin{compactenum}[i:]
+
+		\item \(\E\left[a+\sum_{i=1}^n b_i X_i\right]=a + \sum_{i=1}^n b_i \E[X_i]\)
+
+		\item \(\E[\prod_{i=1}^n X_i] = \prod_{i=1}^n X_i \E[X_i] \Leftrightarrow X_i\) unabhängig
+
+		\item \(\var[a+\sum_{i=1}^n b_iX_i] = \sum_{i=1}^n b_i^2 \var[X_i]\), für \(X_i\) unabhängig
+
+		\item \(\cov[a+\sum_{i=1}^n b_iX_i,c+\sum_{j=1}^m d_jY_j]\) \\
+		\(=\sum_{i=1}^n\sum_{j=1}^m b_i d_j \cov[X_i,Y_j]\)
+
+	\end{compactenum}
+\end{note}
+
+% ------------------------------------------------------------------------------------------------ %
